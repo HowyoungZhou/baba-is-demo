@@ -1,0 +1,14 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
+
+[entry]
+
+Windows.64="res://bin/windows/baba-is-you.debug.64.dll"
+
+[dependencies]
+
+Windows.64=[  ]

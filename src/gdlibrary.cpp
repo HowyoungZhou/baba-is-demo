@@ -1,3 +1,6 @@
+#include "entity.h"
+#include "level_controller.h"
+
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
     godot::Godot::gdnative_init(o);
 }
@@ -10,4 +13,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
     godot::Godot::nativescript_init(handle);
 
     // TODO: register classes using godot::register_class<T>();
+    godot::register_class<Entity>();
+    godot::register_class<LevelController>();
 }

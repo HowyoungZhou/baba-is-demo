@@ -3,7 +3,7 @@ project(baba-is-you)
 
 set(TARGET_PATH ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/bin CACHE PATH "Path of the target to be built.")
 set(BUILD_GODOT_CPP ON CACHE BOOL "Build godot-cpp library automatically.")
-set(GODOT_CPP_TARGET_PATH ${CMAKE_SOURCE_DIR}/godot-cpp/bin CACHE PATH "Target path of the godot-cpp library.")
+set(GODOT_CPP_TARGET_PATH ${CMAKE_SOURCE_DIR}/bin CACHE PATH "Target path of the godot-cpp library.")
 
 set(BITS 32)
 if (CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -32,7 +32,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB_RECURSE SOURCES src/*.c**)
 file(GLOB_RECURSE HEADERS src/*.h**)
 
-add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 
 target_include_directories(
         ${PROJECT_NAME} PUBLIC
