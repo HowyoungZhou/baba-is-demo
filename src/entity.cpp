@@ -1,9 +1,4 @@
 #include "entity.h"
 
-void Entity::_enter_tree() {
-    LevelController::instance->register_entity(this);
-}
-
-void Entity::_exit_tree() {
-    LevelController::instance->unregister_entity(this);
-}
+std::unordered_map<Noun, std::unordered_set<Entity *>> Entity::nounEntityMap;
+std::unordered_map<TilePosition, std::unordered_set<Entity *>, HashVector2> Entity::posEntityMap;
