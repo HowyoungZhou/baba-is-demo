@@ -25,4 +25,8 @@ public:
     }
 };
 
+extern Property default_property;
+extern MoveProperty move_property;
+extern StopProperty stop_property;
+
 #endif //BABA_IS_YOU_PROPERTY_H
