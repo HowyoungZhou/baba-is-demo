@@ -36,6 +36,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Set the executable jar file of ANTLR using -DANTLR_EXECUTABLE
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+add_definitions(-DANTLR4CPP_STATIC)
+
+set(WITH_STATIC_CRT OFF)
+
 find_package(ANTLR REQUIRED)
 
 antlr_target(BabaIsYouLexer ${CMAKE_CURRENT_SOURCE_DIR}/src/grammar/BabaIsYouLexer.g4 LEXER)
@@ -51,6 +55,11 @@ file(GLOB_RECURSE SOURCES src/*.c**)
 file(GLOB_RECURSE HEADERS src/*.h**)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS} ${ANTLR_BabaIsYouLexer_CXX_OUTPUTS} ${ANTLR_BabaIsYouParser_CXX_OUTPUTS})
+
+# Use the dynamic MSVC runtime
+if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    target_compile_options(${PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+endif()
 
 target_include_directories(
         ${PROJECT_NAME} PUBLIC
@@ -82,14 +91,14 @@ else ()
 
     find_library(GODOT_CPP ${GODOT_CPP_TARGET} ${GODOT_CPP_TARGET_PATH})
 
-    target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${GODOT_CPP})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${GODOT_CPP})
 endif ()
 
 if (BUILD_ANTLR_RUNTIME)
     add_subdirectory(antlr4/runtime/Cpp)
     target_link_libraries(${PROJECT_NAME} PUBLIC antlr4_static)
 else()
-    find_library(ANTLR_RUNTIME "antlr4-runtime" ${ANTLR_RUNTIME_TARGET_PATH})
+    find_library(ANTLR_RUNTIME "antlr4-runtime-static" ${ANTLR_RUNTIME_TARGET_PATH})
 
-    target_link_libraries(${PROJECT_NAME} LINK_PUBLIC ${ANTLR_RUNTIME})
+    target_link_libraries(${PROJECT_NAME} PUBLIC ${ANTLR_RUNTIME})
 endif ()
