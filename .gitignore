@@ -55,3 +55,6 @@ data_*/
 # VS CMake cache and build
 out
 CMakeSettings.json
+
+# ANTLR
+gen

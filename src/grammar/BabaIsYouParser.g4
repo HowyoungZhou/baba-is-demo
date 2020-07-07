@@ -2,13 +2,13 @@ parser grammar BabaIsYouParser;
 
 options { tokenVocab=BabaIsYouLexer; }
 
-rule: expr (SEMICOLON expr)* SEMICOLON*;
+exprs: expr (SEMICOLON expr)* SEMICOLON*;
 
 expr
- : (NOT | LONELY) expr # UnaryOp
- | expr AND expr # And
- | expr AND? NOT? (ON | NEAR | FACING) expr # Condition
- | expr AND? (IS | HAS | MAKE) NOT? expr # Verb
+ : (OP_NOT | LONELY) expr # UnaryOp
+ | expr OP_AND expr # OP_AND
+ | expr OP_AND? OP_NOT? (ON | NEAR | FACING) expr # Condition
+ | expr OP_AND? (IS | HAS | MAKE) OP_NOT? expr # Verb
  | noun # NounLiteral
  | property # PropertyLiteral
  ;
@@ -140,7 +140,7 @@ property
  | DONE
  | END
  | FALL
- | FLOAT
+ | P_FLOAT
  | HIDE
  | HOT
  | MELT

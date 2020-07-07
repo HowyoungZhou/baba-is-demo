@@ -143,7 +143,7 @@ Z : [zZ];
 // Operators
 // A
 ABOVE : A B O V E;
-AND : A N D;
+OP_AND : A N D;
 // F
 FACING : F A C I N G;
 FEAR : F E A R;
@@ -160,7 +160,7 @@ MAKE : M A K E;
 MIMIC : M I M I C;
 // N
 NEAR : N E A R;
-NOT : N O T;
+OP_NOT : N O T;
 // O
 ON : O N;
 // P
@@ -188,7 +188,7 @@ DONE : D O N E;
 END : E N D;
 // F
 FALL : F A L L;
-FLOAT : F L O A T;
+P_FLOAT : F L O A T;
 // H
 HIDE : H I D E;
 HOT : H O T;
