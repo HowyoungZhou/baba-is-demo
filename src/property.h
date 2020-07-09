@@ -8,6 +8,8 @@ class Entity;
 
 class Property {
 public:
+    virtual ~Property() = default;
+
     virtual int get_priority() const { return 0; }
 
     virtual bool on_collision(const Entity *source, Entity *target, TilePosition movement) const;

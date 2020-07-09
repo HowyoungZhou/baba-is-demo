@@ -19,6 +19,6 @@ bool Property::on_collision(const Entity *source, Entity *target, TilePosition m
 
 bool MoveProperty::on_collision(const Entity *source, Entity *target, TilePosition movement) const {
     if (!Property::on_collision(source, target, movement)) return false;
-    target->move_entity(target->get_tile_pos() + movement);
+    target->set_tile_pos(target->get_tile_pos() + movement);
     return true;
 }

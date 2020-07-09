@@ -5,10 +5,12 @@ options { tokenVocab=BabaIsYouLexer; }
 exprs: expr (SEMICOLON expr)* SEMICOLON*;
 
 expr
- : (OP_NOT | LONELY) expr # UnaryOp
- | expr OP_AND expr # OP_AND
+ : OP_NOT? LONELY expr # LonelyCondition
+ | OP_NOT expr # NotExpr
+ | expr OP_AND expr # AndExpr
  | expr OP_AND? OP_NOT? (ON | NEAR | FACING) expr # Condition
- | expr OP_AND? (IS | HAS | MAKE) OP_NOT? expr # Verb
+ | <assoc=right> expr (IS | HAS | MAKE) OP_NOT? expr # Verb
+ | expr OP_AND (IS | HAS | MAKE) OP_NOT? expr # ConjunctVerb
  | noun # NounLiteral
  | property # PropertyLiteral
  ;
