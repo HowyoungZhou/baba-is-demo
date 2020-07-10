@@ -5,13 +5,18 @@
 #include "condition.h"
 
 #include <vector>
+#include <memory>
 
 struct Noun {
     bool inverted = false;
     Nouns noun;
-    std::vector<Condition *> conditions;
+    std::vector<std::shared_ptr<Condition>> conditions;
 
     explicit Noun(Nouns noun) : noun(noun) {}
+
+    bool operator==(const Noun &other) const {
+        return inverted == other.inverted && noun == other.noun && conditions == other.conditions;
+    }
 };
 
 class Rule {

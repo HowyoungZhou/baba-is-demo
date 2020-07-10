@@ -8,28 +8,21 @@
 
 #include <variant>
 
-class RuleSyntaxError : std::exception {
+class SyntaxError : std::exception {
 public:
-    explicit RuleSyntaxError(const char *message) : std::exception(message) {}
+    const antlr4::Token *offendingSymbol;
+
+    explicit SyntaxError(const char *message, const antlr4::Token *offendingSymbol = nullptr) : std::exception(message), offendingSymbol(offendingSymbol) {}
 };
 
 class RuleParserVisitor : public BabaIsYouParserBaseVisitor {
 public:
     using TextList = std::vector<std::variant<Noun, Properties>>;
-    using RuleList = std::vector<Rule *>;
+    using RuleList = std::vector<std::shared_ptr<Rule>>;
     using TextListPtr = std::shared_ptr<TextList>;
     using RuleListPtr = std::shared_ptr<RuleList>;
 
-    antlrcpp::Any visitExprs(BabaIsYouParser::ExprsContext *context) override {
-        RuleList list;
-        for (auto expr : context->expr()) {
-            auto res = visit(expr);
-            if (!res.is<RuleListPtr>()) continue;
-            auto &rules = res.as<RuleListPtr>();
-            list.insert(list.end(), rules->cbegin(), rules->cend());
-        }
-        return std::make_shared<RuleList>(list);
-    }
+    antlrcpp::Any visitExprs(BabaIsYouParser::ExprsContext *context) override;
 
 private:
     static size_t getChildToken(antlr4::tree::ParseTree *tree) {
@@ -39,7 +32,7 @@ private:
     template<class ...Types>
     static Noun *getNoun(std::variant<Types...> &variant) {
         if (auto res = std::get_if<Noun>(&variant)) return res;
-        else throw RuleSyntaxError("Property can not appear in this type of expression.");
+        else throw SyntaxError("Property can not appear in this type of expression.");
     }
 
     antlrcpp::Any visitNoun(BabaIsYouParser::NounContext *context) override {
@@ -66,108 +59,45 @@ private:
         return list0;
     }
 
-    antlrcpp::Any visitCondition(BabaIsYouParser::ConditionContext *context) override {
-        Condition *condition;
-        if (context->FACING())
-            condition = new FacingCondition();
-        else if (context->NEAR())
-            condition = new NearCondition();
-        else if (context->ON())
-            condition = new OnCondition();
-        else
-            throw RuleSyntaxError("Missing condition word in the condition expression.");
+    antlrcpp::Any visitCondition(BabaIsYouParser::ConditionContext *context) override;
 
-        condition->inverted = context->OP_NOT();
+    antlrcpp::Any visitLonelyCondition(BabaIsYouParser::LonelyConditionContext *context) override;
 
-        auto list1 = visit(context->expr()[1]).as<TextListPtr>();
-        for (auto &item : *list1) {
-            condition->objects.push_back(getNoun(item)->noun);
-        }
+    antlrcpp::Any visitVerb(BabaIsYouParser::VerbContext *context) override;
 
-        auto list0 = visit(context->expr()[0]).as<TextListPtr>();
-        for (auto &item : *list0) {
-            getNoun(item)->conditions.push_back(condition);
-        }
-
-        return list0;
-    }
-
-    antlrcpp::Any visitLonelyCondition(BabaIsYouParser::LonelyConditionContext *context) override {
-        auto condition = new LonelyCondition;
-        condition->inverted = context->OP_NOT();
-
-        auto list = visit(context->expr()).as<TextListPtr>();
-        for (auto &item : *list) {
-            getNoun(item)->conditions.push_back(condition);
-        }
-
-        return list;
-    }
-
-    antlrcpp::Any visitVerb(BabaIsYouParser::VerbContext *context) override {
-        auto resLeft = visit(context->expr()[0]);
-        if (!resLeft.is<TextListPtr>()) throw RuleSyntaxError("Different verbs must be joined using AND.");
-
-        auto resRight = visit(context->expr()[1]);
-        bool inverted = context->OP_NOT();
-
-        if (resRight.is<TextListPtr>())
-            return handleSimpleVerb(context, resLeft.as<TextListPtr>(), resRight.as<TextListPtr>(), inverted);
-        else if (resRight.is<RuleListPtr>())
-            return handleChainedVerb(context, resLeft.as<TextListPtr>(), resRight.as<RuleListPtr>(), inverted);
-        else return nullptr;
-    }
-
-    antlrcpp::Any visitConjunctVerb(BabaIsYouParser::ConjunctVerbContext *context) override {
-        return nullptr;
-    }
+    antlrcpp::Any visitConjunctVerb(BabaIsYouParser::ConjunctVerbContext *context) override;
 
     static RuleListPtr
-    handleSimpleVerb(BabaIsYouParser::VerbContext *context, const TextListPtr &left, const TextListPtr &right,
-                     bool inverted) {
-        RuleList rules;
-        try {
-            if (context->IS()) {
-                for (auto &leftItem : *left) {
-                    auto leftNoun = getNoun(leftItem);
-                    for (auto &rightItem : *right) {
-                        if (auto prop = std::get_if<Properties>(&rightItem)) {
-                            rules.push_back(new PropertyRule(inverted, *leftNoun, *prop));
-                        }
-                        else if (auto noun = std::get_if<Noun>(&rightItem)) {
-                            rules.push_back(new TransformRule(inverted, *leftNoun, *noun));
-                        }
-                    }
-                }
-            }
-            else if (context->HAS()) {
-                for (auto &leftItem : *left) {
-                    auto leftNoun = getNoun(leftItem);
-                    for (auto &rightItem : *right) {
-                        rules.push_back(new HasRule(inverted, *leftNoun, *getNoun(rightItem)));
-                    }
-                }
-            }
-            else if (context->MAKE()) {
-                for (auto &leftItem : *left) {
-                    auto leftNoun = getNoun(leftItem);
-                    for (auto &rightItem : *right) {
-                        rules.push_back(new MakeRule(inverted, *leftNoun, *getNoun(rightItem)));
-                    }
-                }
-            }
-        }
-        catch (RuleSyntaxError &) {
-            for (auto rule : rules) delete rule;
-            throw;
-        }
-        return std::make_shared<RuleList>(rules);
-    }
+    handleSimpleVerb(Operators op, const TextListPtr &left, const TextListPtr &right, bool inverted);
 
     static RuleListPtr
-    handleChainedVerb(BabaIsYouParser::VerbContext *context, const TextListPtr &left, const RuleListPtr &right,
-                      bool inverted) {
-        return RuleListPtr();
+    handleChainedVerb(Operators op, const TextListPtr &left, const RuleListPtr &right,
+                      bool inverted);
+
+    template<class T>
+    static void handleNounOperators(const RuleListPtr &rules, const TextListPtr &left, const TextListPtr &right, bool inverted) {
+        for (auto &leftItem : *left) {
+            auto leftNoun = getNoun(leftItem);
+            for (auto &rightItem : *right) {
+                rules->push_back(std::make_shared<T>(inverted, *leftNoun, *getNoun(rightItem)));
+            }
+        }
+    }
+
+    template<class T>
+    Operators getOperator(T context) {
+        if (context->IS()) return Operators::IS;
+        if (context->HAS()) return Operators::HAS;
+        if (context->MAKE()) return Operators::MAKE;
+    }
+};
+
+class SyntaxErrorListener : public antlr4::BaseErrorListener {
+public:
+    void
+    syntaxError(antlr4::Recognizer *recognizer, antlr4::Token *offendingSymbol, size_t line, size_t charPositionInLine,
+                const std::string &msg, std::exception_ptr e) override {
+        throw SyntaxError(msg.c_str(), offendingSymbol);
     }
 };
 
@@ -196,6 +126,11 @@ private:
     static void parseRule(antlr4::TokenSource *source, OutIter output) {
         antlr4::CommonTokenStream tokenStream(source);
         BabaIsYouParser parser(&tokenStream);
+
+        SyntaxErrorListener errorListener;
+        parser.removeErrorListeners();
+        parser.addErrorListener(&errorListener);
+
         RuleParserVisitor visitor;
         RuleParserVisitor::RuleListPtr list = visitor.visitExprs(parser.exprs());
         std::copy(list->cbegin(), list->cend(), output);
