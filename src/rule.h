@@ -15,7 +15,12 @@ struct Noun {
     explicit Noun(Nouns noun) : noun(noun) {}
 
     bool operator==(const Noun &other) const {
-        return inverted == other.inverted && noun == other.noun && conditions == other.conditions;
+        if (inverted != other.inverted || noun != other.noun) return false;
+        if (conditions.empty() && other.conditions.empty()) return true;
+        if (conditions.size() != other.conditions.size()) return false;
+        auto equal = [](std::shared_ptr<Condition> ptr1, std::shared_ptr<Condition> ptr2) { return *ptr1 == *ptr2; };
+        using Iter = std::vector<std::shared_ptr<Condition>>::const_iterator;
+        return std::equal<Iter, Iter, decltype(equal)>(conditions.cbegin(), conditions.cend(), other.conditions.cbegin(), equal);
     }
 };
 
@@ -28,7 +33,13 @@ public:
 
     virtual ~Rule() = default;
 
+    virtual bool complementary(const Rule &other) const {
+        return typeid(*this) == typeid(other) && noun == other.noun && inverted != other.inverted;
+    }
+
     virtual void apply() = 0;
+
+    virtual void revert() = 0;
 };
 
 class PropertyRule : public Rule {
@@ -37,7 +48,13 @@ public:
 
     PropertyRule(bool inverted, Noun noun, Properties property) : Rule(inverted, std::move(noun)), property(property) {}
 
+    bool complementary(const Rule &other) const override {
+        return Rule::complementary(other) && property == dynamic_cast<const PropertyRule &>(other).property;
+    }
+
     void apply() override {}
+
+    void revert() override {}
 };
 
 
@@ -46,6 +63,14 @@ public:
     Noun object;
 
     NounRule(bool inverted, Noun noun, Noun object) : Rule(inverted, std::move(noun)), object(std::move(object)) {}
+
+    bool complementary(const Rule &other) const override {
+        return Rule::complementary(other) && object == dynamic_cast<const NounRule &>(other).object;
+    }
+
+    void apply() override {}
+
+    void revert() override {}
 };
 
 class TransformRule : public NounRule {

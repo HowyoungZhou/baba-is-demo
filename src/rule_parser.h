@@ -8,20 +8,20 @@
 
 #include <variant>
 
-class SyntaxError : std::exception {
+using TextList = std::vector<std::variant<Noun, Properties>>;
+using RuleList = std::vector<std::shared_ptr<Rule>>;
+using TextListPtr = std::shared_ptr<TextList>;
+using RuleListPtr = std::shared_ptr<RuleList>;
+
+class SyntaxError : std::runtime_error {
 public:
     const antlr4::Token *offendingSymbol;
 
-    explicit SyntaxError(const char *message, const antlr4::Token *offendingSymbol = nullptr) : std::exception(message), offendingSymbol(offendingSymbol) {}
+    explicit SyntaxError(const char *message, const antlr4::Token *offendingSymbol = nullptr) : std::runtime_error(message), offendingSymbol(offendingSymbol) {}
 };
 
 class RuleParserVisitor : public BabaIsYouParserBaseVisitor {
 public:
-    using TextList = std::vector<std::variant<Noun, Properties>>;
-    using RuleList = std::vector<std::shared_ptr<Rule>>;
-    using TextListPtr = std::shared_ptr<TextList>;
-    using RuleListPtr = std::shared_ptr<RuleList>;
-
     antlrcpp::Any visitExprs(BabaIsYouParser::ExprsContext *context) override;
 
 private:
@@ -108,9 +108,10 @@ public:
     template<class InIter, class OutIter>
     static void parseRule(InIter begin, InIter end, OutIter output) {
         std::vector<std::unique_ptr<antlr4::Token>> tokens;
-        for (; begin != end; ++begin) tokens.emplace_back(antlr4::CommonToken(*begin));
+        antlr4::CommonTokenFactory factory;
+        for (; begin != end; ++begin) tokens.push_back(std::make_unique<antlr4::CommonToken>(static_cast<size_t>(*begin)));
 
-        antlr4::ListTokenSource tokenSource(tokens);
+        antlr4::ListTokenSource tokenSource(std::move(tokens));
         parseRule(&tokenSource, output);
     }
 
@@ -132,7 +133,7 @@ private:
         parser.addErrorListener(&errorListener);
 
         RuleParserVisitor visitor;
-        RuleParserVisitor::RuleListPtr list = visitor.visitExprs(parser.exprs());
+        RuleListPtr list = visitor.visitExprs(parser.exprs());
         std::copy(list->cbegin(), list->cend(), output);
     }
 };

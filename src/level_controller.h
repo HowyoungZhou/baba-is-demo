@@ -3,7 +3,7 @@
 
 #include "vector2.h"
 
-#include <godot.hpp>
+#include <Godot.hpp>
 #include <Node2D.hpp>
 #include <InputEvent.hpp>
 
@@ -50,6 +50,15 @@ public:
 
     void set_tile_size(real_t value) {
         tileSize = value;
+    }
+
+    Vector2<long> get_tile_dim() {
+        auto size = get_viewport_rect().get_size() / tileSize;
+        return Vector2<long>(std::ceil(size.x), std::ceil(size.y));
+    }
+
+    void set_tile_dim(Vector2<long> dim) {
+        get_viewport_rect().set_size(static_cast<godot::Vector2>(dim * get_tile_size()));
     }
 
 private:

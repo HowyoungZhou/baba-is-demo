@@ -32,9 +32,7 @@ public:
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
 
-    void _init() {
-        update_tile_pos();
-    }
+    void _init() { }
 
     Nouns get_noun() const {
         return static_cast<Nouns>(noun + static_cast<size_t>(Nouns::ALGAE));
@@ -50,6 +48,7 @@ public:
 
     void _enter_tree() {
         register_entity();
+        update_tile_pos();
         LevelController::instance->controlledEntities.insert(this);// TODO: temporarily add to controlled entities for test
     }
 
@@ -73,7 +72,7 @@ public:
         posEntityMap[get_tile_pos()].erase(this);
     }
 
-    void set_tile_pos(TilePosition newPos) {
+    virtual void set_tile_pos(TilePosition newPos) {
         unregister_entity();
         auto tileSize = get_tile_size();
         auto pos = static_cast<godot::Vector2>(newPos) * tileSize + 0.5f * godot::Vector2(tileSize, tileSize);
@@ -93,13 +92,13 @@ protected:
     TilePosition tile_pos_;
 
     static std::unordered_map<Nouns, std::unordered_set<Entity *>> nounEntityMap;
-    static std::unordered_map<TilePosition, std::unordered_set<Entity *>, HashVector2> posEntityMap;
+    static std::unordered_map<TilePosition, std::unordered_set<Entity *>> posEntityMap;
 
     static real_t get_tile_size() {
         return LevelController::instance->get_tile_size();
     }
 
-    void update_tile_pos() {
+    virtual void update_tile_pos() {
         auto tileSize = get_tile_size();
         auto tilePos = (get_position() - 0.5f * godot::Vector2(tileSize, tileSize)) / tileSize;
         tile_pos_ = TilePosition(std::lround(tilePos.x), std::lround(tilePos.y));

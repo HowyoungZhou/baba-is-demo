@@ -12,6 +12,10 @@ public:
     bool inverted = false;
     std::vector<Nouns> objects;
 
+    virtual bool operator==(const Condition &other) {
+        return inverted == other.inverted && objects == other.objects;
+    }
+
     virtual bool eval() = 0;
 };
 

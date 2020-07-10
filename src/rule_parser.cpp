@@ -65,9 +65,8 @@ antlrcpp::Any RuleParserVisitor::visitVerb(BabaIsYouParser::VerbContext *context
     else return nullptr;
 }
 
-RuleParserVisitor::RuleListPtr
-RuleParserVisitor::handleSimpleVerb(Operators op, const RuleParserVisitor::TextListPtr &left,
-                                    const RuleParserVisitor::TextListPtr &right, bool inverted) {
+RuleListPtr
+RuleParserVisitor::handleSimpleVerb(Operators op, const TextListPtr &left, const TextListPtr &right, bool inverted) {
     auto rules = std::make_shared<RuleList>();
     switch (op) {
         case Operators::IS:
@@ -76,8 +75,7 @@ RuleParserVisitor::handleSimpleVerb(Operators op, const RuleParserVisitor::TextL
                 for (auto &rightItem : *right) {
                     if (auto prop = std::get_if<Properties>(&rightItem)) {
                         rules->push_back(std::make_shared<PropertyRule>(inverted, *leftNoun, *prop));
-                    }
-                    else if (auto noun = std::get_if<Noun>(&rightItem)) {
+                    } else if (auto noun = std::get_if<Noun>(&rightItem)) {
                         rules->push_back(std::make_shared<TransformRule>(inverted, *leftNoun, *noun));
                     }
                 }
@@ -93,9 +91,8 @@ RuleParserVisitor::handleSimpleVerb(Operators op, const RuleParserVisitor::TextL
     return rules;
 }
 
-RuleParserVisitor::RuleListPtr
-RuleParserVisitor::handleChainedVerb(Operators op, const RuleParserVisitor::TextListPtr &left,
-                                     const RuleParserVisitor::RuleListPtr &right, bool inverted) {
+RuleListPtr
+RuleParserVisitor::handleChainedVerb(Operators op, const TextListPtr &left, const RuleListPtr &right, bool inverted) {
     auto hashNoun = [](const Noun &noun) { return std::hash<Nouns>{}(noun.noun); };
     std::unordered_set<Noun, decltype(hashNoun)> rightNouns({}, hashNoun);
     for (auto &rule : *right) rightNouns.insert(rule->noun);

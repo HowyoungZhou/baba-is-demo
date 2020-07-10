@@ -3,6 +3,8 @@
 
 #include "Vector2.hpp"
 
+#include <functional>
+
 template<class T>
 struct Vector2 {
     T x, y;
@@ -31,16 +33,18 @@ struct Vector2 {
 };
 
 template<class T>
-Vector2<T> operator*(T k, const Vector2<T> &v) { return Vector2(x * k, y * k); }
+Vector2<T> operator*(T k, const Vector2<T> &v) { return Vector2(v.x * k, v.y * k); }
 
-struct HashVector2 {
+namespace std {
     template<class T>
-    size_t operator()(const Vector2<T> &p) const {
-        auto hash1 = std::hash<T>{}(p.x);
-        auto hash2 = std::hash<T>{}(p.y);
-        return hash1 ^ hash2;
-    }
-};
+    struct hash<Vector2<T>> {
+        size_t operator()(const Vector2<T> &p) const {
+            auto hash1 = std::hash<T>{}(p.x);
+            auto hash2 = std::hash<T>{}(p.y);
+            return hash1 ^ hash2;
+        }
+    };
+}
 
 using TilePosition = Vector2<long>;
 
