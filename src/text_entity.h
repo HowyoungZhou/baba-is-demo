@@ -102,7 +102,13 @@ protected:
                 break;
             }
         }
-        RuleParser::parseRule(words.cbegin(), words.cend(), output);
+        try {
+            RuleParser::parseRule(words.cbegin(), words.cend(), output);
+        }
+        catch (SyntaxError &e) {
+            std::cout << "Syntax error at " << std::string(x_axis ? "row " : "column ")
+                      << index << ": " << e.what() << std::endl;
+        }
     }
 };
 

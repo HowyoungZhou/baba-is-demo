@@ -10,7 +10,7 @@ expr
  | expr OP_AND expr # AndExpr
  | expr OP_AND? OP_NOT? (ON | NEAR | FACING) expr # Condition
  | <assoc=right> expr (IS | HAS | MAKE) OP_NOT? expr # Verb
- | expr OP_AND (IS | HAS | MAKE) OP_NOT? expr # ConjunctVerb
+ | expr OP_AND (IS | HAS | MAKE) OP_NOT? expr # Verb
  | noun # NounLiteral
  | property # PropertyLiteral
  ;

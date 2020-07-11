@@ -9,22 +9,31 @@
 #include <variant>
 
 using TextList = std::vector<std::variant<Noun, Properties>>;
-using RuleList = std::vector<std::shared_ptr<Rule>>;
 using TextListPtr = std::shared_ptr<TextList>;
-using RuleListPtr = std::shared_ptr<RuleList>;
 
-class SyntaxError : std::runtime_error {
+using RuleList = std::vector<std::shared_ptr<Rule>>;
+
+class SyntaxError : public std::runtime_error {
 public:
     const antlr4::Token *offendingSymbol;
 
-    explicit SyntaxError(const char *message, const antlr4::Token *offendingSymbol = nullptr) : std::runtime_error(message), offendingSymbol(offendingSymbol) {}
+    explicit SyntaxError(const char *message, const antlr4::Token *offendingSymbol = nullptr) :
+            std::runtime_error(message), offendingSymbol(offendingSymbol) {}
 };
 
+template<class OutIter>
 class RuleParserVisitor : public BabaIsYouParserBaseVisitor {
 public:
-    antlrcpp::Any visitExprs(BabaIsYouParser::ExprsContext *context) override;
+    explicit RuleParserVisitor(OutIter output) : output(output) {}
+
+    antlrcpp::Any visitExprs(BabaIsYouParser::ExprsContext *context) override {
+        for (auto expr : context->expr()) visit(expr);
+        return nullptr;
+    }
 
 private:
+    OutIter output;
+
     static size_t getChildToken(antlr4::tree::ParseTree *tree) {
         return dynamic_cast<antlr4::tree::TerminalNode *>(tree->children.front())->getSymbol()->getType();
     }
@@ -59,27 +68,80 @@ private:
         return list0;
     }
 
-    antlrcpp::Any visitCondition(BabaIsYouParser::ConditionContext *context) override;
+    antlrcpp::Any visitCondition(BabaIsYouParser::ConditionContext *context) override {
+        std::shared_ptr<Condition> condition;
+        if (context->FACING())
+            condition = std::make_shared<FacingCondition>();
+        else if (context->NEAR())
+            condition = std::make_shared<NearCondition>();
+        else if (context->ON())
+            condition = std::make_shared<OnCondition>();
+        else
+            throw SyntaxError("Missing condition word in the condition expression.");
 
-    antlrcpp::Any visitLonelyCondition(BabaIsYouParser::LonelyConditionContext *context) override;
+        condition->inverted = context->OP_NOT();
 
-    antlrcpp::Any visitVerb(BabaIsYouParser::VerbContext *context) override;
+        auto list1 = visit(context->expr()[1]).as<TextListPtr>();
+        for (auto &item : *list1) {
+            condition->objects.push_back(getNoun(item)->noun);
+        }
 
-    antlrcpp::Any visitConjunctVerb(BabaIsYouParser::ConjunctVerbContext *context) override;
+        auto list0 = visit(context->expr()[0]).as<TextListPtr>();
+        for (auto &item : *list0) {
+            getNoun(item)->conditions.push_back(condition);
+        }
 
-    static RuleListPtr
-    handleSimpleVerb(Operators op, const TextListPtr &left, const TextListPtr &right, bool inverted);
+        return list0;
+    }
 
-    static RuleListPtr
-    handleChainedVerb(Operators op, const TextListPtr &left, const RuleListPtr &right,
-                      bool inverted);
+    antlrcpp::Any visitLonelyCondition(BabaIsYouParser::LonelyConditionContext *context) override {
+        auto condition = std::make_shared<LonelyCondition>();
+        condition->inverted = context->OP_NOT();
+
+        auto list = visit(context->expr()).as<TextListPtr>();
+        for (auto &item : *list) {
+            getNoun(item)->conditions.push_back(condition);
+        }
+
+        return list;
+    }
+
+    antlrcpp::Any visitVerb(BabaIsYouParser::VerbContext *context) override {
+        auto exprs = context->expr();
+        TextListPtr left = visit(exprs[0]), right = visit(exprs[1]);
+        bool inverted = context->OP_NOT();
+
+        switch (getOperator(context)) {
+            case Operators::IS:
+                for (auto &leftItem : *left) {
+                    auto leftNoun = getNoun(leftItem);
+                    for (auto &rightItem : *right) {
+                        if (auto prop = std::get_if<Properties>(&rightItem)) {
+                            *output++ = std::make_shared<PropertyRule>(inverted, *leftNoun, *prop);
+                        } else if (auto noun = std::get_if<Noun>(&rightItem)) {
+                            *output++ = std::make_shared<TransformRule>(inverted, *leftNoun, *noun);
+                        }
+                    }
+                }
+                break;
+            case Operators::HAS:
+                handleNounOperators<HasRule>(left, right, inverted);
+                break;
+            case Operators::MAKE:
+                handleNounOperators<MakeRule>(left, right, inverted);
+                break;
+            default:;
+        }
+
+        return left;
+    }
 
     template<class T>
-    static void handleNounOperators(const RuleListPtr &rules, const TextListPtr &left, const TextListPtr &right, bool inverted) {
+    void handleNounOperators(const TextListPtr &left, const TextListPtr &right, bool inverted) {
         for (auto &leftItem : *left) {
             auto leftNoun = getNoun(leftItem);
             for (auto &rightItem : *right) {
-                rules->push_back(std::make_shared<T>(inverted, *leftNoun, *getNoun(rightItem)));
+                *output++ = std::make_shared<T>(inverted, *leftNoun, *getNoun(rightItem));
             }
         }
     }
@@ -109,7 +171,8 @@ public:
     static void parseRule(InIter begin, InIter end, OutIter output) {
         std::vector<std::unique_ptr<antlr4::Token>> tokens;
         antlr4::CommonTokenFactory factory;
-        for (; begin != end; ++begin) tokens.push_back(std::make_unique<antlr4::CommonToken>(static_cast<size_t>(*begin)));
+        for (; begin != end; ++begin)
+            tokens.push_back(std::make_unique<antlr4::CommonToken>(static_cast<size_t>(*begin)));
 
         antlr4::ListTokenSource tokenSource(std::move(tokens));
         parseRule(&tokenSource, output);
@@ -132,9 +195,7 @@ private:
         parser.removeErrorListeners();
         parser.addErrorListener(&errorListener);
 
-        RuleParserVisitor visitor;
-        RuleListPtr list = visitor.visitExprs(parser.exprs());
-        std::copy(list->cbegin(), list->cend(), output);
+        RuleParserVisitor(output).visit(parser.exprs());
     }
 };
 
