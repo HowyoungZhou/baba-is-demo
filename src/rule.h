@@ -3,6 +3,7 @@
 
 #include "words.h"
 #include "condition.h"
+#include "entity.h"
 
 #include <vector>
 #include <memory>
@@ -26,6 +27,8 @@ struct Noun {
 
 class Rule {
 public:
+    static const std::vector<std::shared_ptr<Rule>> base_rules;
+
     bool inverted = false;
     Noun noun;
 
@@ -37,9 +40,18 @@ public:
         return typeid(*this) == typeid(other) && noun == other.noun && inverted != other.inverted;
     }
 
-    virtual void apply() = 0;
+    virtual void apply_all() {
+        switch (noun.noun) {
+            default:
+                auto range = Entity::find_entities_of_noun(noun.noun);
+                for (auto iter = range.first; iter != range.second; ++iter) apply(iter->second);
+                break;
+        }
+    }
 
-    virtual void revert() = 0;
+    virtual void revert_all() { }
+
+    virtual void apply(Entity *entity) { }
 };
 
 class PropertyRule : public Rule {
@@ -52,9 +64,28 @@ public:
         return Rule::complementary(other) && property == dynamic_cast<const PropertyRule &>(other).property;
     }
 
-    void apply() override {}
+    void apply(Entity *entity) override {
+        switch (property) {
+            case Properties::PUSH:
+                add_property<PushProperty>(entity);
+                break;
+            case Properties::STOP:
+                add_property<StopProperty>(entity);
+                break;
+            case Properties::YOU:
+                add_property<YouProperty>(entity);
+                break;
+        }
+    }
 
-    void revert() override {}
+private:
+    template<class T>
+    void add_property(Entity *entity) {
+        auto prop = std::make_unique<T>();
+        prop->conditions.insert(prop->conditions.end(), noun.conditions.cbegin(), noun.conditions.cend());
+        prop->on_registered(entity);
+        entity->properties.push(std::move(prop));
+    }
 };
 
 
@@ -67,31 +98,27 @@ public:
     bool complementary(const Rule &other) const override {
         return Rule::complementary(other) && object == dynamic_cast<const NounRule &>(other).object;
     }
-
-    void apply() override {}
-
-    void revert() override {}
 };
 
 class TransformRule : public NounRule {
 public:
     TransformRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, noun, object) {}
 
-    void apply() override {}
+    void apply(Entity *entity) override {}
 };
 
 class HasRule : public NounRule {
 public:
     HasRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, std::move(noun), std::move(object)) {}
 
-    void apply() override {}
+    void apply(Entity *entity) override {}
 };
 
 class MakeRule : public NounRule {
 public:
     MakeRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, std::move(noun), std::move(object)) {}
 
-    void apply() override {}
+    void apply(Entity *entity) override {}
 };
 
 #endif //BABA_IS_YOU_RULE_H

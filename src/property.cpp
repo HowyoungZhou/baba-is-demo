@@ -1,10 +1,6 @@
 #include "property.h"
 #include "entity.h"
 
-Property property;
-MoveProperty move_property;
-StopProperty stop_property;
-
 bool Property::on_collision(const Entity *source, Entity *target, TilePosition movement) const {
     std::vector<Entity *> nextEntities;
     Entity::get_entities_at_pos(target->get_tile_pos() + movement, std::back_inserter(nextEntities));
@@ -17,7 +13,7 @@ bool Property::on_collision(const Entity *source, Entity *target, TilePosition m
     return res;
 }
 
-bool MoveProperty::on_collision(const Entity *source, Entity *target, TilePosition movement) const {
+bool PushProperty::on_collision(const Entity *source, Entity *target, TilePosition movement) const {
     if (!Property::on_collision(source, target, movement)) return false;
     target->set_tile_pos(target->get_tile_pos() + movement);
     return true;

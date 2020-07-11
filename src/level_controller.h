@@ -16,18 +16,21 @@ class LevelController : public godot::Node2D {
 GODOT_CLASS(LevelController, godot::Node2D);
 public:
     static LevelController *instance;
-    std::unordered_set<Entity*> controlledEntities;
+    std::unordered_set<Entity*> controlled_entities;
 
     static void _register_methods() {
         godot::register_method("_enter_tree", &LevelController::_enter_tree);
         godot::register_method("_exit_tree", &LevelController::_exit_tree);
         godot::register_method("_unhandled_input", &LevelController::_unhandled_input);
+        godot::register_method("_ready", &LevelController::_ready);
 
         godot::register_property<LevelController, real_t>("tileSize", &LevelController::set_tile_size,
                                                           &LevelController::get_tile_size, 128.f);
     }
 
     void _init() {}
+
+    void _ready();
 
     void _enter_tree() {
         instance = this;
@@ -60,6 +63,8 @@ public:
     void set_tile_dim(Vector2<long> dim) {
         get_viewport_rect().set_size(static_cast<godot::Vector2>(dim * get_tile_size()));
     }
+
+    void add_controlled_entity(Entity *entity) { controlled_entities.insert(entity); }
 
 private:
     real_t tileSize = 128.f;

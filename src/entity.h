@@ -14,7 +14,7 @@
 #include <unordered_map>
 
 struct PropertyPriorityComparer {
-    bool operator()(const Property *prop1, const Property *prop2) const {
+    bool operator()(const std::unique_ptr<Property> &prop1, const std::unique_ptr<Property> &prop2) const {
         return prop1->get_priority() < prop2->get_priority();
     }
 };
@@ -22,7 +22,7 @@ struct PropertyPriorityComparer {
 class Entity : public godot::Node2D {
 GODOT_CLASS(Entity, Node2D)
 public:
-    std::priority_queue<Property *, std::vector<Property *>, PropertyPriorityComparer> properties;
+    std::priority_queue<std::unique_ptr<Property>, std::vector<std::unique_ptr<Property>>, PropertyPriorityComparer> properties;
 
     static void _register_methods() {
         godot::register_method("_enter_tree", &Entity::_enter_tree);
@@ -32,7 +32,7 @@ public:
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
 
-    void _init() { }
+    void _init() {}
 
     Nouns get_noun() const {
         return static_cast<Nouns>(noun + static_cast<size_t>(Nouns::ALGAE));
@@ -47,14 +47,12 @@ public:
     }
 
     void _enter_tree() {
-        register_entity();
         update_tile_pos();
-        LevelController::instance->controlledEntities.insert(this);// TODO: temporarily add to controlled entities for test
+        register_entity();
     }
 
     void _exit_tree() {
         unregister_entity();
-        LevelController::instance->controlledEntities.erase(this);
     }
 
     void set_position(const godot::Vector2 value) {
@@ -63,13 +61,13 @@ public:
     }
 
     void register_entity() {
-        nounEntityMap[get_noun()].insert(this);
-        posEntityMap[get_tile_pos()].insert(this);
+        nounEntityMap.insert({get_noun(), this});
+        posEntityMap.insert({get_tile_pos(), this});
     }
 
     void unregister_entity() {
-        nounEntityMap[get_noun()].erase(this);
-        posEntityMap[get_tile_pos()].erase(this);
+        erase_pair(nounEntityMap, get_noun(), this);
+        erase_pair(posEntityMap, get_tile_pos(), this);
     }
 
     virtual void set_tile_pos(TilePosition newPos) {
@@ -82,20 +80,33 @@ public:
 
     template<class OutIter>
     static OutIter get_entities_at_pos(TilePosition pos, OutIter dest) {
-        auto iter = posEntityMap.find(pos);
-        if (iter == posEntityMap.cend()) return dest;
-        return std::copy(iter->second.cbegin(), iter->second.cend(), dest);
+        auto range = posEntityMap.equal_range(pos);
+        for (auto iter = range.first; iter != range.second; ++iter, ++dest) *dest = iter->second;
+        return dest;
+    }
+
+    static auto find_entities_of_noun(Nouns noun) {
+        return nounEntityMap.equal_range(noun);
     }
 
 protected:
     size_t noun = 0;
     TilePosition tile_pos_;
 
-    static std::unordered_map<Nouns, std::unordered_set<Entity *>> nounEntityMap;
-    static std::unordered_map<TilePosition, std::unordered_set<Entity *>> posEntityMap;
+    static std::unordered_multimap<Nouns, Entity *> nounEntityMap;
+    static std::unordered_multimap<TilePosition, Entity *> posEntityMap;
 
     static real_t get_tile_size() {
         return LevelController::instance->get_tile_size();
+    }
+
+    template<class Map>
+    static void erase_pair(Map &map, typename Map::key_type key, typename Map::mapped_type value) {
+        for (auto iter = map.equal_range(key); iter.first != iter.second; ++iter.first) {
+            if (!(iter.first->second == value)) continue;
+            map.erase(iter.first);
+            return;
+        }
     }
 
     virtual void update_tile_pos() {

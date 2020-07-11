@@ -1,4 +1,4 @@
 #include "entity.h"
 
-std::unordered_map<Nouns, std::unordered_set<Entity *>> Entity::nounEntityMap;
-std::unordered_map<TilePosition, std::unordered_set<Entity *>> Entity::posEntityMap;
+std::unordered_multimap<Nouns, Entity *> Entity::nounEntityMap;
+std::unordered_multimap<TilePosition, Entity *> Entity::posEntityMap;

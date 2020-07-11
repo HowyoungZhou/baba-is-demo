@@ -248,8 +248,6 @@ GREY : G R E Y;
 SILVER : S I L V E R;
 WHITE : W H I T E;
 
-SEMICOLON : ';';
-
 SPACES
  : [ \u000B\t\r\n] -> channel(HIDDEN)
  ;

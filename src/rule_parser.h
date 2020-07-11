@@ -151,6 +151,7 @@ private:
         if (context->IS()) return Operators::IS;
         if (context->HAS()) return Operators::HAS;
         if (context->MAKE()) return Operators::MAKE;
+        throw SyntaxError("Missing operator word in the expression.");
     }
 };
 

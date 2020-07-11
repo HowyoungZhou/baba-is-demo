@@ -2,7 +2,7 @@ parser grammar BabaIsYouParser;
 
 options { tokenVocab=BabaIsYouLexer; }
 
-exprs: expr (SEMICOLON expr)* SEMICOLON*;
+exprs: expr+;
 
 expr
  : OP_NOT? LONELY expr # LonelyCondition
