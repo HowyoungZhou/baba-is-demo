@@ -11,18 +11,12 @@
 #include <nativescript/godot_nativescript.h>
 
 #include <queue>
-#include <unordered_map>
-
-struct PropertyPriorityComparer {
-    bool operator()(const std::unique_ptr<Property> &prop1, const std::unique_ptr<Property> &prop2) const {
-        return prop1->get_priority() < prop2->get_priority();
-    }
-};
+#include <set>
 
 class Entity : public godot::Node2D {
 GODOT_CLASS(Entity, Node2D)
 public:
-    std::priority_queue<std::unique_ptr<Property>, std::vector<std::unique_ptr<Property>>, PropertyPriorityComparer> properties;
+    PropertyList properties;
 
     static void _register_methods() {
         godot::register_method("_enter_tree", &Entity::_enter_tree);
@@ -78,11 +72,8 @@ public:
         register_entity();
     }
 
-    template<class OutIter>
-    static OutIter get_entities_at_pos(TilePosition pos, OutIter dest) {
-        auto range = posEntityMap.equal_range(pos);
-        for (auto iter = range.first; iter != range.second; ++iter, ++dest) *dest = iter->second;
-        return dest;
+    static auto get_entities_at_pos(TilePosition pos) {
+        return posEntityMap.equal_range(pos);
     }
 
     static auto find_entities_of_noun(Nouns noun) {

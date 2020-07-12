@@ -5,6 +5,8 @@
 
 #include <vector>
 
+class Entity;
+
 class Condition {
 public:
     virtual ~Condition() = default;
@@ -16,27 +18,27 @@ public:
         return inverted == other.inverted && objects == other.objects;
     }
 
-    virtual bool eval() = 0;
+    virtual bool eval(const Entity *entity) = 0;
 };
 
 class OnCondition : public Condition {
 public:
-    bool eval() override { return false; }
+    bool eval(const Entity *entity) override;
 };
 
 class NearCondition : public Condition {
 public:
-    bool eval() override { return false; }
+    bool eval(const Entity *entity) override { return true; }
 };
 
 class FacingCondition : public Condition {
 public:
-    bool eval() override { return false; }
+    bool eval(const Entity *entity) override { return true; }
 };
 
 class LonelyCondition : public Condition {
 public:
-    bool eval() override { return false; }
+    bool eval(const Entity *entity) override { return true; }
 };
 
 #endif //BABA_IS_YOU_CONDITION_H

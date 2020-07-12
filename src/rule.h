@@ -81,10 +81,10 @@ public:
 private:
     template<class T>
     void add_property(Entity *entity) {
-        auto prop = std::make_unique<T>();
+        auto prop = new T;
         prop->conditions.insert(prop->conditions.end(), noun.conditions.cbegin(), noun.conditions.cend());
         prop->on_registered(entity);
-        entity->properties.push(std::move(prop));
+        entity->properties.insert(prop);
     }
 };
 

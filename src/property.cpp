@@ -2,13 +2,13 @@
 #include "entity.h"
 
 bool Property::on_collision(const Entity *source, Entity *target, TilePosition movement) const {
-    std::vector<Entity *> nextEntities;
-    Entity::get_entities_at_pos(target->get_tile_pos() + movement, std::back_inserter(nextEntities));
-    if (nextEntities.empty()) return true;
+    auto range = Entity::get_entities_at_pos(target->get_tile_pos() + movement);
+    std::vector<Entity *> next_entities;
+    for (auto iter = range.first; iter != range.second; ++iter) next_entities.push_back(iter->second);
+
     auto res = true;
-    for (auto nextEntity : nextEntities) {
-        if (nextEntity->properties.empty()) continue;
-        if (!nextEntity->properties.top()->on_collision(target, nextEntity, movement)) res = false;
+    for (auto entity : next_entities) {
+        if (!entity->properties.on_collision(target, entity, movement)) res = false;
     }
     return res;
 }

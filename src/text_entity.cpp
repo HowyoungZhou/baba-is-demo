@@ -44,7 +44,7 @@ void TextEntity::rule_check() {
         if (!rule_deleted) ++negative_iter;// if the iterator was not increased before, do it here
     }
 
-    for (auto pair : posEntityMap) pair.second->properties = {};
+    for (auto pair : posEntityMap) pair.second->properties.clear();
     LevelController::instance->controlled_entities.clear();
     // TODO: undo transformation
 

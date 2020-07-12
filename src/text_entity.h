@@ -51,15 +51,14 @@ protected:
     static void scan_line(long index, long length, bool x_axis, OutIter output) {
         std::vector<Words> words;
         for (long cursor = 0; cursor < length; ++cursor) {
-            std::vector<const Entity *> entities;
-            get_entities_at_pos(x_axis ? TilePosition(cursor, index) : TilePosition(index, cursor),
-                                std::back_inserter(entities));
+            auto range = get_entities_at_pos(x_axis ? TilePosition(cursor, index) : TilePosition(index, cursor));
             auto found_text = false;
-            for (auto entity : entities) {
-                if (typeid(*entity) != typeid(const TextEntity)) continue;
-                words.push_back(dynamic_cast<const TextEntity *>(entity)->get_word());
-                found_text = true;
-                break;
+            for (auto iter = range.first; iter != range.second; ++iter) {
+                if (const auto text_entity = dynamic_cast<const TextEntity *>(iter->second)) {
+                    words.push_back(text_entity->get_word());
+                    found_text = true;
+                    break;
+                }
             }
             if (words.empty()) continue;
             if (found_text && cursor < length - 1) continue;
