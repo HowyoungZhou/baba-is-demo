@@ -61,7 +61,8 @@ protected:
                 found_text = true;
                 break;
             }
-            if (found_text || words.empty()) continue;
+            if (words.empty()) continue;
+            if (found_text && cursor < length - 1) continue;
             try {
                 RuleParser::parseRule(words.cbegin(), words.cend(), output);
             } catch (SyntaxError &e) {
