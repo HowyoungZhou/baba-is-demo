@@ -2,6 +2,7 @@
 #include "entity.h"
 #include "text_entity.h"
 #include "directional_entity.h"
+#include "character_entity.h"
 
 LevelController *LevelController::instance = nullptr;
 
@@ -32,5 +33,7 @@ void LevelController::move_entities(Vector2<long> movement, Directions direction
         PushProperty().on_collision(nullptr, entity, movement);
         if (auto directional_entity = dynamic_cast<DirectionalEntity *>(entity))
             directional_entity->set_direction(direction);
+        if (auto character = dynamic_cast<CharacterEntity *>(entity))
+            character->next_animation();
     }
 }

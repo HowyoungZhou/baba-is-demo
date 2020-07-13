@@ -43,21 +43,21 @@ public:
 protected:
     size_t direction_ = 3;
 
-    virtual void update_animation() {
+    virtual godot::String get_animation_name() const {
         switch (get_direction()) {
             case Directions::UP:
-                set_animation("up");
-                break;
+                return "up";
             case Directions::DOWN:
-                set_animation("down");
-                break;
+                return "down";
             case Directions::LEFT:
-                set_animation("left");
-                break;
+                return "left";
             case Directions::RIGHT:
-                set_animation("right");
-                break;
+                return "right";
         }
+    }
+    
+    virtual void update_animation() {
+        set_animation(get_animation_name());
     }
 };
 
