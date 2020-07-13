@@ -1,6 +1,7 @@
 #include "level_controller.h"
 #include "entity.h"
 #include "text_entity.h"
+#include "directional_entity.h"
 
 LevelController *LevelController::instance = nullptr;
 
@@ -8,7 +9,7 @@ void LevelController::_ready() {
     TextEntity::rule_check();
 }
 
-void LevelController::move_entities(Vector2<long> movement) {
+void LevelController::move_entities(Vector2<long> movement, Directions direction) {
     auto comp = [movement](const Entity *e1, const Entity *e2) {
         return e1->get_tile_pos().dot(movement) > e2->get_tile_pos().dot(movement);
     };
@@ -29,5 +30,7 @@ void LevelController::move_entities(Vector2<long> movement) {
 
     for (auto entity : sortedEntities) {
         PushProperty().on_collision(nullptr, entity, movement);
+        if (auto directional_entity = dynamic_cast<DirectionalEntity *>(entity))
+            directional_entity->set_direction(direction);
     }
 }

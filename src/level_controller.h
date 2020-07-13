@@ -2,6 +2,7 @@
 #define BABA_IS_YOU_LEVEL_CONTROLLER_H
 
 #include "vector2.h"
+#include "words.h"
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
@@ -25,7 +26,7 @@ public:
         godot::register_method("_ready", &LevelController::_ready);
 
         godot::register_property<LevelController, real_t>("tileSize", &LevelController::set_tile_size,
-                                                          &LevelController::get_tile_size, 128.f);
+                                                          &LevelController::get_tile_size, 24.f);
     }
 
     void _init() {}
@@ -41,10 +42,10 @@ public:
     }
 
     void _unhandled_input(const godot::Ref<godot::InputEvent> event) {
-        if (event->is_action_pressed("ui_up")) move_entities(Vector2<long>(0, -1));
-        else if (event->is_action_pressed("ui_down")) move_entities(Vector2<long>(0, 1));
-        else if (event->is_action_pressed("ui_left")) move_entities(Vector2<long>(-1, 0));
-        else if (event->is_action_pressed("ui_right")) move_entities(Vector2<long>(1, 0));
+        if (event->is_action_pressed("ui_up")) move_entities(Vector2<long>(0, -1), Directions::UP);
+        else if (event->is_action_pressed("ui_down")) move_entities(Vector2<long>(0, 1), Directions::DOWN);
+        else if (event->is_action_pressed("ui_left")) move_entities(Vector2<long>(-1, 0), Directions::LEFT);
+        else if (event->is_action_pressed("ui_right")) move_entities(Vector2<long>(1, 0), Directions::RIGHT);
     }
 
     real_t get_tile_size() const {
@@ -67,9 +68,9 @@ public:
     void add_controlled_entity(Entity *entity) { controlled_entities.insert(entity); }
 
 private:
-    real_t tileSize = 128.f;
+    real_t tileSize = 24.f;
 
-    void move_entities(Vector2<long> movement);
+    void move_entities(Vector2<long> movement, Directions direction);
 };
 
 #endif //BABA_IS_YOU_LEVEL_CONTROLLER_H

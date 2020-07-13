@@ -7,14 +7,14 @@
 #include "vector2.h"
 
 #include <Godot.hpp>
-#include <Node2D.hpp>
+#include <AnimatedSprite.hpp>
 #include <nativescript/godot_nativescript.h>
 
 #include <queue>
 #include <set>
 
-class Entity : public godot::Node2D {
-GODOT_CLASS(Entity, Node2D)
+class Entity : public godot::AnimatedSprite {
+GODOT_CLASS(Entity, AnimatedSprite)
 public:
     PropertyList properties;
 
