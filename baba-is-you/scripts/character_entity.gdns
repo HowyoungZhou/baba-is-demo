@@ -1,0 +1,8 @@
+[gd_resource type="NativeScript" load_steps=2 format=2]
+
+[ext_resource path="res://gdnlibrary.gdnlib" type="GDNativeLibrary" id=1]
+
+[resource]
+resource_name = "CharacterEntity"
+class_name = "CharacterEntity"
+library = ExtResource( 1 )
