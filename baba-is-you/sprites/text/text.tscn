@@ -2,5 +2,5 @@
 
 [ext_resource path="res://scripts/text_entity.gdns" type="Script" id=1]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="text" type="AnimatedSprite"]
 script = ExtResource( 1 )

@@ -6,5 +6,4 @@
 [node name="baba" instance=ExtResource( 2 )]
 frames = ExtResource( 1 )
 animation = "right0"
-frame = 1
 Noun = 3
