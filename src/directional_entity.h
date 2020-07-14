@@ -4,31 +4,19 @@
 #include "entity.h"
 
 class DirectionalEntity : public Entity {
-GODOT_CLASS(DirectionalEntity, AnimatedSprite);
+GODOT_SUBCLASS(DirectionalEntity, Entity)
 public:
     static void _register_methods() {
         godot::register_method("_enter_tree", &DirectionalEntity::_enter_tree);
-        godot::register_method("_exit_tree", &DirectionalEntity::_exit_tree);
-        godot::register_property<DirectionalEntity, size_t>("Noun", &DirectionalEntity::noun, 0,
-                                                 GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
-                                                 GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
+
         godot::register_property<DirectionalEntity, size_t>("Direction", &DirectionalEntity::direction_, 3,
                                                             GODOT_METHOD_RPC_MODE_DISABLED,
                                                             GODOT_PROPERTY_USAGE_DEFAULT,
                                                             GODOT_PROPERTY_HINT_ENUM, kDirectionsHintString);
     }
 
-    void _init() {
-        Entity::_init();
-    }
-
     void _enter_tree() {
-        Entity::_enter_tree();
         update_animation();
-    }
-
-    void _exit_tree() {
-        Entity::_exit_tree();
     }
 
     void set_direction(Directions value) {
@@ -55,7 +43,7 @@ protected:
                 return "right";
         }
     }
-    
+
     virtual void update_animation() {
         set_animation(get_animation_name());
     }

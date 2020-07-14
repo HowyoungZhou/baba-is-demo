@@ -8,6 +8,7 @@
 
 #include <Godot.hpp>
 #include <AnimatedSprite.hpp>
+#include <Tween.hpp>
 #include <nativescript/godot_nativescript.h>
 
 #include <queue>
@@ -19,14 +20,21 @@ public:
     PropertyList properties;
 
     static void _register_methods() {
+        godot::register_method("_ready", &Entity::_ready);
         godot::register_method("_enter_tree", &Entity::_enter_tree);
         godot::register_method("_exit_tree", &Entity::_exit_tree);
+
         godot::register_property<Entity, size_t>("Noun", &Entity::noun, 0,
                                                  GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
 
-    void _init() {}
+    void _init() { std::cout << "init " << get_name().alloc_c_string() << std::endl; }
+
+    void _ready() {
+        tween = godot::Tween::_new();
+        add_child(tween);
+    }
 
     Nouns get_noun() const {
         return static_cast<Nouns>(noun + static_cast<size_t>(Nouns::ALGAE));
@@ -66,10 +74,14 @@ public:
 
     virtual void set_tile_pos(TilePosition newPos) {
         unregister_entity();
+        tile_pos_ = newPos;
+        register_entity();
+
         auto tileSize = get_tile_size();
         auto pos = static_cast<godot::Vector2>(newPos) * tileSize + 0.5f * godot::Vector2(tileSize, tileSize);
-        set_position(pos);
-        register_entity();
+        tween->interpolate_property(this, "position", get_position(), pos, 1.0 / speed, godot::Tween::TRANS_QUAD,
+                                    godot::Tween::EASE_IN_OUT);
+        tween->start();
     }
 
     static auto get_entities_at_pos(TilePosition pos) {
@@ -81,8 +93,11 @@ public:
     }
 
 protected:
+    const real_t speed = 4;
+
     size_t noun = 0;
     TilePosition tile_pos_;
+    godot::Tween *tween;
 
     static std::unordered_multimap<Nouns, Entity *> nounEntityMap;
     static std::unordered_multimap<TilePosition, Entity *> posEntityMap;

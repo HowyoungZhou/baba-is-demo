@@ -6,27 +6,20 @@
 #include "rule_parser.h"
 
 class TextEntity : public Entity {
-GODOT_CLASS(TextEntity, Node2D)
+GODOT_SUBCLASS(TextEntity, Entity)
 public:
     static void _register_methods() {
-        godot::register_method("_enter_tree", &TextEntity::_enter_tree);
-        godot::register_method("_exit_tree", &TextEntity::_exit_tree);
         godot::register_property<TextEntity, size_t>("Text", &TextEntity::word_, 0,
                                                      GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
                                                      GODOT_PROPERTY_HINT_ENUM, kWordsHintString);
+        godot::register_property<TextEntity, size_t>("Noun", &TextEntity::noun, 76,
+                                                 GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
+                                                 GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
 
     void _init() {
         Entity::_init();
         set_noun(Nouns::TEXT);
-    }
-
-    void _enter_tree() {
-        Entity::_enter_tree();
-    }
-
-    void _exit_tree() {
-        Entity::_exit_tree();
     }
 
     void set_word(Words value) {
