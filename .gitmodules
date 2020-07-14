@@ -1,6 +1,6 @@
 [submodule "godot-cpp"]
-	path = godot-cpp
+	path = libs/godot-cpp
 	url = https://github.com/GodotNativeTools/godot-cpp
 [submodule "antlr4"]
-	path = antlr4
+	path = libs/antlr4
 	url = https://github.com/antlr/antlr4.git

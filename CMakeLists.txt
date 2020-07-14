@@ -49,7 +49,7 @@ antlr_target(BabaIsYouParser ${CMAKE_CURRENT_SOURCE_DIR}/src/grammar/BabaIsYouPa
 
 include_directories(${ANTLR_BabaIsYouLexer_OUTPUT_DIR})
 include_directories(${ANTLR_BabaIsYouParser_OUTPUT_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/antlr4/runtime/Cpp/runtime/src)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/antlr4/runtime/Cpp/runtime/src)
 
 file(GLOB_RECURSE SOURCES src/*.c**)
 file(GLOB_RECURSE HEADERS src/*.h**)
@@ -63,10 +63,10 @@ endif()
 
 target_include_directories(
         ${PROJECT_NAME} PUBLIC
-        godot-cpp/godot_headers
-        godot-cpp/include
-        godot-cpp/include/gen
-        godot-cpp/include/core
+        libs/godot-cpp/godot_headers
+        libs/godot-cpp/include
+        libs/godot-cpp/include/gen
+        libs/godot-cpp/include/core
 )
 
 if (ANDROID)
@@ -79,7 +79,7 @@ else ()
 endif ()
 
 if (BUILD_GODOT_CPP)
-    add_subdirectory(godot-cpp)
+    add_subdirectory(libs/godot-cpp)
     target_link_libraries(${PROJECT_NAME} PUBLIC godot-cpp)
 else ()
     # Generate the name of godot-cpp library
@@ -95,7 +95,7 @@ else ()
 endif ()
 
 if (BUILD_ANTLR_RUNTIME)
-    add_subdirectory(antlr4/runtime/Cpp)
+    add_subdirectory(libs/antlr4/runtime/Cpp)
     target_link_libraries(${PROJECT_NAME} PUBLIC antlr4_static)
 else()
     find_library(ANTLR_RUNTIME "antlr4-runtime-static" ${ANTLR_RUNTIME_TARGET_PATH})
