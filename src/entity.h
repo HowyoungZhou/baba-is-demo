@@ -29,7 +29,7 @@ public:
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
 
-    void _init() { std::cout << "init " << get_name().alloc_c_string() << std::endl; }
+    void _init() {}
 
     void _ready() {
         tween = godot::Tween::_new();
