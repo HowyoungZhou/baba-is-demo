@@ -3,21 +3,20 @@
 [ext_resource path="res://scripts/text_entity.gdns" type="Script" id=1]
 [ext_resource path="res://sprites/sprites.png" type="Texture" id=2]
 
-
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 384, 792, 24, 24 )
+region = Rect2( 432, 720, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 384, 816, 24, 24 )
+region = Rect2( 432, 744, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 384, 840, 24, 24 )
+region = Rect2( 432, 768, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -27,10 +26,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="skull_text" type="AnimatedSprite"]
-modulate = Color( 0.509804, 0.14902, 0.109804, 1 )
+[node name="is_text" type="AnimatedSprite"]
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 1 )
-Text = 69
+Text = 120

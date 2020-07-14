@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/entity.gdns" type="Script" id=1]
+
+[node name="static" type="AnimatedSprite"]
+playing = true
+script = ExtResource( 1 )
