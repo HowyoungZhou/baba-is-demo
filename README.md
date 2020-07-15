@@ -18,8 +18,7 @@ git clone https://github.com/HowyoungZhou/baba-is-you.git
 Then, fetch git modules with:
 
 ```bash
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 Finally, build the project with:
