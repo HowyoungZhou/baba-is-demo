@@ -75,6 +75,9 @@ public:
             case Properties::YOU:
                 add_property<YouProperty>(entity);
                 break;
+            case Properties::DEFEAT:
+                 add_property<DefeatProperty>(entity);
+                break;
         }
     }
 
