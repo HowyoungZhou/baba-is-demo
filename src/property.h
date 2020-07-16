@@ -63,6 +63,50 @@ public:
     bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
+
+//added by zdz 20.07.16
+class SinkProperty : public Property {
+public:
+	Properties get_type() override { return Properties::SINK; }
+
+	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class MeltProperty : public Property {
+public:
+	Properties get_type() override { return Properties::MELT; }
+	//bool if_melt(Entity *source) const;
+};
+
+class HotProperty : public Property {
+public:
+	Properties get_type() override { return Properties::HOT; }
+
+	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class WinProperty : public Property {
+public:
+	Properties get_type() override { return Properties::WIN; }
+	
+	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class OpenProperty : public Property {
+public:
+	Properties get_type() override { return Properties::OPEN; }
+	//virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class ShutProperty : public Property {
+	Properties get_type() override { return Properties::SHUT; }
+
+	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+//added end
+
+
 struct PropertyPriorityComparer {
     bool operator()(const Property *prop1, const Property *prop2) const {
         return prop1->get_priority() < prop2->get_priority();
