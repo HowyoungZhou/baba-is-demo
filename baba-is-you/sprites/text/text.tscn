@@ -3,4 +3,5 @@
 [ext_resource path="res://scripts/text_entity.gdns" type="Script" id=1]
 
 [node name="text" type="AnimatedSprite"]
+playing = true
 script = ExtResource( 1 )

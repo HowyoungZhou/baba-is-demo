@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/character/frames/robot_frames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://sprites/character/character.tscn" type="PackedScene" id=2]
+
+[node name="robot" instance=ExtResource( 2 )]
+modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
+frames = ExtResource( 1 )
+animation = "down0"
+frame = 1
+Noun = 62

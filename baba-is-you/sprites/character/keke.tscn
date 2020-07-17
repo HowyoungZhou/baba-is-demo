@@ -7,6 +7,5 @@
 modulate = Color( 0.807843, 0.482353, 0.321569, 1 )
 frames = ExtResource( 2 )
 animation = "down0"
-frame = 1
 Direction = 1
 Noun = 48

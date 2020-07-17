@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/directional/frames/bug_frames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://sprites/directional/directional.tscn" type="PackedScene" id=2]
+
+[node name="bug" instance=ExtResource( 2 )]
+modulate = Color( 0.313726, 0.247059, 0.141176, 1 )
+frames = ExtResource( 1 )
+animation = "down"
+frame = 1
+Noun = 12
