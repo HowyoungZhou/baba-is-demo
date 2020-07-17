@@ -36,12 +36,16 @@ class PushProperty : public Property {
 public:
     Properties get_type() override { return Properties::PUSH; }
 
+    int get_priority() const override { return 1; }
+
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 class StopProperty : public Property {
 public:
     Properties get_type() override { return Properties::STOP; }
+
+    int get_priority() const override { return 2; }
 
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override {
         return false;
@@ -60,6 +64,9 @@ public:
 class DefeatProperty : public Property {
 public:
     virtual Properties get_type() { return Properties::DEFEAT; }
+
+    int get_priority() const override { return 3; }
+
     bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
@@ -67,6 +74,8 @@ public:
 class SinkProperty : public Property {
 public:
     Properties get_type() override { return Properties::SINK; }
+
+    int get_priority() const override { return 3; }
 
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
@@ -79,6 +88,8 @@ public:
 class HotProperty : public Property {
 public:
     Properties get_type() override { return Properties::HOT; }
+
+    int get_priority() const override { return 3; }
 
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
@@ -99,13 +110,15 @@ class ShutProperty : public Property {
 public:
     Properties get_type() override { return Properties::SHUT; }
 
+    int get_priority() const override { return 3; }
+
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 
 struct PropertyPriorityComparer {
     bool operator()(const Property *prop1, const Property *prop2) const {
-        return prop1->get_priority() < prop2->get_priority();
+        return prop1->get_priority() > prop2->get_priority();
     }
 };
 
