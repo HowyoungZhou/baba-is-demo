@@ -96,6 +96,7 @@ public:
 };
 
 class ShutProperty : public Property {
+public:
     Properties get_type() override { return Properties::SHUT; }
 
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;

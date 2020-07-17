@@ -91,7 +91,7 @@ public:
                 add_property<WinProperty>(entity);
                 break;
             case Properties::OPEN:
-                add_property<Property>(entity);
+                add_property<OpenProperty>(entity);
                 break;
             case Properties::SHUT:
                 add_property<ShutProperty>(entity);
