@@ -25,23 +25,29 @@ public:
 
     virtual int get_priority() const { return 0; }
 
-    virtual bool on_collision(const Entity *source, Entity *target, TilePosition movement) const;
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const;
 
-    virtual void on_registered(Entity *entity) {}
+    virtual void on_registered(Entity *entity) const {}
+
+    virtual void on_destroyed(Entity *entity) const {}
 };
 
 class PushProperty : public Property {
 public:
     Properties get_type() override { return Properties::PUSH; }
 
-    virtual bool on_collision(const Entity *source, Entity *target, TilePosition movement) const override;
+    int get_priority() const override { return 1; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 class StopProperty : public Property {
 public:
     Properties get_type() override { return Properties::STOP; }
 
-    virtual bool on_collision(const Entity *source, Entity *target, TilePosition movement) const override {
+    int get_priority() const override { return 2; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override {
         return false;
     }
 };
@@ -50,14 +56,69 @@ class YouProperty : public Property {
 public:
     Properties get_type() override { return Properties::YOU; }
 
-    void on_registered(Entity *entity) override {
+    void on_registered(Entity *entity) const override {
         LevelController::instance->controlled_entities.insert(entity);
     }
 };
 
+class DefeatProperty : public Property {
+public:
+    virtual Properties get_type() { return Properties::DEFEAT; }
+
+    int get_priority() const override { return 3; }
+
+    bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+// added by zdz 20.07.16
+class SinkProperty : public Property {
+public:
+    Properties get_type() override { return Properties::SINK; }
+
+    int get_priority() const override { return 3; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class MeltProperty : public Property {
+public:
+    Properties get_type() override { return Properties::MELT; }
+};
+
+class HotProperty : public Property {
+public:
+    Properties get_type() override { return Properties::HOT; }
+
+    int get_priority() const override { return 3; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class WinProperty : public Property {
+public:
+    Properties get_type() override { return Properties::WIN; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+class OpenProperty : public Property {
+public:
+    Properties get_type() override { return Properties::OPEN; }
+};
+
+class ShutProperty : public Property {
+public:
+    Properties get_type() override { return Properties::SHUT; }
+
+    int get_priority() const override { return 3; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+};
+
+
 struct PropertyPriorityComparer {
     bool operator()(const Property *prop1, const Property *prop2) const {
-        return prop1->get_priority() < prop2->get_priority();
+        return prop1->get_priority() > prop2->get_priority();
     }
 };
 
@@ -78,15 +139,26 @@ public:
         props_map.clear();
     }
 
-    bool on_collision(const Entity *source, Entity *target, TilePosition movement) {
+    bool on_collision(Entity *source, Entity *target, TilePosition movement) const {
         for (auto prop : properties)
             if (prop->enabled(target))
                 return prop->on_collision(source, target, movement);
         return true;
     }
 
-    auto get_properties_of_type(Properties type) {
+    void on_destroyed(Entity *entity) const {
+        for (auto prop : properties)
+            if (prop->enabled(entity))
+                prop->on_destroyed(entity);
+    }
+
+    auto get_properties_of_type(Properties type) const {
         return props_map.equal_range(type);
+    }
+
+    bool has_property(Properties type) const {
+        auto range = get_properties_of_type(type);
+        return range.first != range.second;
     }
 
 private:

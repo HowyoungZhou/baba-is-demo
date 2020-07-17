@@ -75,6 +75,27 @@ public:
             case Properties::YOU:
                 add_property<YouProperty>(entity);
                 break;
+            case Properties::DEFEAT:
+                add_property<DefeatProperty>(entity);
+                break;
+            case Properties::SINK:
+                add_property<SinkProperty>(entity);
+                break;
+            case Properties::MELT:
+                add_property<MeltProperty>(entity);
+                break;
+            case Properties::HOT:
+                add_property<HotProperty>(entity);
+                break;
+            case Properties::WIN:
+                add_property<WinProperty>(entity);
+                break;
+            case Properties::OPEN:
+                add_property<OpenProperty>(entity);
+                break;
+            case Properties::SHUT:
+                add_property<ShutProperty>(entity);
+                break;
         }
     }
 

@@ -92,6 +92,11 @@ public:
         return nounEntityMap.equal_range(noun);
     }
 
+    void destroy() {
+        queue_free();
+        properties.on_destroyed(this);
+    }
+
 protected:
     const real_t speed = 4;
 
