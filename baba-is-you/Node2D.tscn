@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/character/keke.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/level_controller.gdns" type="Script" id=2]
+[ext_resource path="res://sprites/text/keke_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=7]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="keke" parent="." instance=ExtResource( 1 )]
+position = Vector2( 60, 84 )
+
+[node name="keke_text" parent="." instance=ExtResource( 3 )]
+position = Vector2( 132, 60 )
+frame = 1
+
+[node name="is_text" parent="." instance=ExtResource( 5 )]
+position = Vector2( 156, 60 )
+
+[node name="you_text" parent="." instance=ExtResource( 4 )]
+position = Vector2( 180, 60 )
+frame = 2
+
+[node name="is_text2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 180, 84 )
+frame = 1
+
+[node name="you_text2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 204, 84 )
+frame = 1
+
+[node name="baba_text" parent="." instance=ExtResource( 6 )]
+position = Vector2( 156, 84 )
+frame = 2
+
+[node name="baba" parent="." instance=ExtResource( 7 )]
+position = Vector2( 60, 108 )
+frame = 2

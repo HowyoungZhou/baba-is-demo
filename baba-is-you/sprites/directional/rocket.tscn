@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/directional/directional.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/directional/frames/rocket_frames.tres" type="SpriteFrames" id=2]
+
+[node name="rocket" instance=ExtResource( 1 )]
+modulate = Color( 0.894118, 0.6, 0.313726, 1 )
+frames = ExtResource( 2 )
+animation = "down"
+Noun = 64

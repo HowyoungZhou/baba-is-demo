@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/directional/frames/bird_frames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://sprites/directional/directional.tscn" type="PackedScene" id=2]
+
+[node name="bird" instance=ExtResource( 2 )]
+modulate = Color( 0.898039, 0.32549, 0.231373, 1 )
+frames = ExtResource( 1 )
+animation = "down"
+frame = 1
+Noun = 6

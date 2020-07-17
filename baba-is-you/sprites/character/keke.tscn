@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/character/character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/character/frames/keke_frames.tres" type="SpriteFrames" id=2]
+
+[node name="keke" instance=ExtResource( 1 )]
+modulate = Color( 0.807843, 0.482353, 0.321569, 1 )
+frames = ExtResource( 2 )
+animation = "down0"
+Direction = 1
+Noun = 48

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/directional/frames/bolt_frames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://sprites/directional/directional.tscn" type="PackedScene" id=2]
+
+[node name="bolt" instance=ExtResource( 2 )]
+modulate = Color( 0.894118, 0.6, 0.313726, 1 )
+frames = ExtResource( 1 )
+animation = "left"
+frame = 1
+Noun = 8
