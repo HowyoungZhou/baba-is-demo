@@ -24,41 +24,27 @@ bool DefeatProperty::on_collision(Entity *source, Entity *target, TilePosition m
     return true;
 }
 
-
-//added by zdz 20.07.16
-
-bool SinkProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const
-{
-	//target destroyed
-	target->destroy();
-	//game over
-	source->destroy();
-	return true;
+// added by zdz 20.07.16
+bool SinkProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+    // target destroyed
+    target->destroy();
+    source->destroy();
+    return true;
 }
 
-
-bool HotProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const
-{
-	if (!source->properties.has_property(Properties::MELT)) return false;
-
-	//game over
-	source->destroy();
-	return true;
+bool HotProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+    if (source->properties.has_property(Properties::MELT)) source->destroy();
+    return true;
 }
 
-bool WinProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const
-{
-
-	//stage win: change scene, need operate outside
-	return true;
+bool WinProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+    // TODO: stage win: change scene, need operate outside
+    return true;
 }
 
-bool ShutProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const
-{
-	if (!source->properties.has_property(Properties::OPEN)) return false; //STOP
-	source->destroy();
-	target->destroy();
-	return true;
+bool ShutProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+    if (!source->properties.has_property(Properties::OPEN)) return false;//STOP
+    source->destroy();
+    target->destroy();
+    return true;
 }
-
-//added end

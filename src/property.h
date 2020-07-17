@@ -63,48 +63,43 @@ public:
     bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
-
-//added by zdz 20.07.16
+// added by zdz 20.07.16
 class SinkProperty : public Property {
 public:
-	Properties get_type() override { return Properties::SINK; }
+    Properties get_type() override { return Properties::SINK; }
 
-	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 class MeltProperty : public Property {
 public:
-	Properties get_type() override { return Properties::MELT; }
-	//bool if_melt(Entity *source) const;
+    Properties get_type() override { return Properties::MELT; }
 };
 
 class HotProperty : public Property {
 public:
-	Properties get_type() override { return Properties::HOT; }
+    Properties get_type() override { return Properties::HOT; }
 
-	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 class WinProperty : public Property {
 public:
-	Properties get_type() override { return Properties::WIN; }
-	
-	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+    Properties get_type() override { return Properties::WIN; }
+
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
 
 class OpenProperty : public Property {
 public:
-	Properties get_type() override { return Properties::OPEN; }
-	//virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+    Properties get_type() override { return Properties::OPEN; }
 };
 
 class ShutProperty : public Property {
-	Properties get_type() override { return Properties::SHUT; }
+    Properties get_type() override { return Properties::SHUT; }
 
-	virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
+    virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const override;
 };
-
-//added end
 
 
 struct PropertyPriorityComparer {
