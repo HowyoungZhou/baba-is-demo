@@ -1,0 +1,295 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://sprites/text/defeat_text.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/text/skull_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/static/rock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/text/push_text.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/text/flag_text.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/text/rock_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/directional/skull.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=14]
+
+[node name="level_controller" instance=ExtResource( 6 )]
+
+[node name="flag_text" parent="." index="0" instance=ExtResource( 10 )]
+position = Vector2( 12, 12 )
+
+[node name="is_text" parent="." index="1" instance=ExtResource( 12 )]
+position = Vector2( 36, 12 )
+frame = 0
+
+[node name="win_text" parent="." index="2" instance=ExtResource( 14 )]
+position = Vector2( 60, 12 )
+frame = 1
+
+[node name="baba_text" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( 12, 36 )
+frame = 1
+
+[node name="is_text2" parent="." index="4" instance=ExtResource( 12 )]
+position = Vector2( 36, 36 )
+frame = 0
+
+[node name="you_text" parent="." index="5" instance=ExtResource( 7 )]
+position = Vector2( 60, 36 )
+frame = 2
+
+[node name="rock_text" parent="." index="6" instance=ExtResource( 11 )]
+position = Vector2( 60, 132 )
+frame = 2
+
+[node name="is_text3" parent="." index="7" instance=ExtResource( 12 )]
+position = Vector2( 84, 132 )
+
+[node name="push_text" parent="." index="8" instance=ExtResource( 8 )]
+position = Vector2( 108, 132 )
+
+[node name="skull" parent="." index="9" instance=ExtResource( 13 )]
+position = Vector2( 132, 180 )
+frame = 0
+
+[node name="skull2" parent="." index="10" instance=ExtResource( 13 )]
+position = Vector2( 132, 204 )
+
+[node name="skull3" parent="." index="11" instance=ExtResource( 13 )]
+position = Vector2( 132, 228 )
+frame = 2
+
+[node name="skull4" parent="." index="12" instance=ExtResource( 13 )]
+position = Vector2( 108, 228 )
+frame = 2
+
+[node name="skull5" parent="." index="13" instance=ExtResource( 13 )]
+position = Vector2( 84, 228 )
+frame = 2
+
+[node name="skull6" parent="." index="14" instance=ExtResource( 13 )]
+position = Vector2( 84, 252 )
+frame = 0
+
+[node name="skull7" parent="." index="15" instance=ExtResource( 13 )]
+position = Vector2( 84, 276 )
+frame = 2
+
+[node name="skull8" parent="." index="16" instance=ExtResource( 13 )]
+position = Vector2( 84, 300 )
+frame = 0
+
+[node name="skull9" parent="." index="17" instance=ExtResource( 13 )]
+position = Vector2( 84, 324 )
+
+[node name="skull10" parent="." index="18" instance=ExtResource( 13 )]
+position = Vector2( 84, 348 )
+frame = 2
+
+[node name="skull11" parent="." index="19" instance=ExtResource( 13 )]
+position = Vector2( 108, 348 )
+frame = 0
+
+[node name="skull12" parent="." index="20" instance=ExtResource( 13 )]
+position = Vector2( 132, 348 )
+frame = 0
+
+[node name="skull13" parent="." index="21" instance=ExtResource( 13 )]
+position = Vector2( 156, 348 )
+frame = 0
+
+[node name="skull14" parent="." index="22" instance=ExtResource( 13 )]
+position = Vector2( 180, 348 )
+frame = 2
+
+[node name="skull15" parent="." index="23" instance=ExtResource( 13 )]
+position = Vector2( 204, 348 )
+frame = 2
+
+[node name="skull16" parent="." index="24" instance=ExtResource( 13 )]
+position = Vector2( 180, 180 )
+
+[node name="skull17" parent="." index="25" instance=ExtResource( 13 )]
+position = Vector2( 180, 204 )
+frame = 0
+
+[node name="skull18" parent="." index="26" instance=ExtResource( 13 )]
+position = Vector2( 180, 228 )
+frame = 2
+
+[node name="skull19" parent="." index="27" instance=ExtResource( 13 )]
+position = Vector2( 204, 228 )
+frame = 0
+
+[node name="skull20" parent="." index="28" instance=ExtResource( 13 )]
+position = Vector2( 228, 228 )
+frame = 0
+
+[node name="skull21" parent="." index="29" instance=ExtResource( 13 )]
+position = Vector2( 228, 252 )
+
+[node name="skull22" parent="." index="30" instance=ExtResource( 13 )]
+position = Vector2( 228, 276 )
+frame = 2
+
+[node name="skull23" parent="." index="31" instance=ExtResource( 13 )]
+position = Vector2( 228, 300 )
+frame = 2
+
+[node name="skull24" parent="." index="32" instance=ExtResource( 13 )]
+position = Vector2( 228, 324 )
+frame = 2
+
+[node name="skull25" parent="." index="33" instance=ExtResource( 13 )]
+position = Vector2( 228, 348 )
+frame = 0
+
+[node name="rock" parent="." index="34" instance=ExtResource( 5 )]
+position = Vector2( 156, 228 )
+
+[node name="rock2" parent="." index="35" instance=ExtResource( 5 )]
+position = Vector2( 156, 204 )
+frame = 0
+
+[node name="rock3" parent="." index="36" instance=ExtResource( 5 )]
+position = Vector2( 156, 252 )
+
+[node name="skull26" parent="." index="37" instance=ExtResource( 13 )]
+position = Vector2( 324, 228 )
+frame = 2
+
+[node name="skull27" parent="." index="38" instance=ExtResource( 13 )]
+position = Vector2( 324, 252 )
+frame = 0
+
+[node name="skull28" parent="." index="39" instance=ExtResource( 13 )]
+position = Vector2( 324, 276 )
+frame = 0
+
+[node name="skull29" parent="." index="40" instance=ExtResource( 13 )]
+position = Vector2( 348, 276 )
+frame = 0
+
+[node name="skull30" parent="." index="41" instance=ExtResource( 13 )]
+position = Vector2( 372, 276 )
+frame = 2
+
+[node name="skull31" parent="." index="42" instance=ExtResource( 13 )]
+position = Vector2( 396, 276 )
+frame = 2
+
+[node name="skull32" parent="." index="43" instance=ExtResource( 13 )]
+position = Vector2( 420, 276 )
+frame = 0
+
+[node name="skull33" parent="." index="44" instance=ExtResource( 13 )]
+position = Vector2( 444, 276 )
+frame = 2
+
+[node name="skull34" parent="." index="45" instance=ExtResource( 13 )]
+position = Vector2( 468, 276 )
+frame = 0
+
+[node name="skull35" parent="." index="46" instance=ExtResource( 13 )]
+position = Vector2( 492, 276 )
+frame = 0
+
+[node name="skull36" parent="." index="47" instance=ExtResource( 13 )]
+position = Vector2( 516, 276 )
+
+[node name="skull37" parent="." index="48" instance=ExtResource( 13 )]
+position = Vector2( 324, 84 )
+frame = 2
+
+[node name="skull38" parent="." index="49" instance=ExtResource( 13 )]
+position = Vector2( 324, 108 )
+
+[node name="skull39" parent="." index="50" instance=ExtResource( 13 )]
+position = Vector2( 324, 132 )
+frame = 0
+
+[node name="skull40" parent="." index="51" instance=ExtResource( 13 )]
+position = Vector2( 324, 156 )
+
+[node name="skull41" parent="." index="52" instance=ExtResource( 13 )]
+position = Vector2( 324, 180 )
+frame = 2
+
+[node name="skull42" parent="." index="53" instance=ExtResource( 13 )]
+position = Vector2( 324, 204 )
+
+[node name="skull43" parent="." index="54" instance=ExtResource( 13 )]
+position = Vector2( 516, 84 )
+frame = 0
+
+[node name="skull44" parent="." index="55" instance=ExtResource( 13 )]
+position = Vector2( 348, 84 )
+frame = 2
+
+[node name="skull45" parent="." index="56" instance=ExtResource( 13 )]
+position = Vector2( 372, 84 )
+
+[node name="skull46" parent="." index="57" instance=ExtResource( 13 )]
+position = Vector2( 420, 84 )
+frame = 2
+
+[node name="skull47" parent="." index="58" instance=ExtResource( 13 )]
+position = Vector2( 468, 84 )
+
+[node name="skull48" parent="." index="59" instance=ExtResource( 13 )]
+position = Vector2( 516, 132 )
+frame = 0
+
+[node name="skull49" parent="." index="60" instance=ExtResource( 13 )]
+position = Vector2( 516, 180 )
+
+[node name="skull50" parent="." index="61" instance=ExtResource( 13 )]
+position = Vector2( 516, 228 )
+frame = 2
+
+[node name="skull51" parent="." index="62" instance=ExtResource( 13 )]
+position = Vector2( 396, 84 )
+frame = 2
+
+[node name="skull52" parent="." index="63" instance=ExtResource( 13 )]
+position = Vector2( 444, 84 )
+
+[node name="skull53" parent="." index="64" instance=ExtResource( 13 )]
+position = Vector2( 492, 84 )
+frame = 0
+
+[node name="skull54" parent="." index="65" instance=ExtResource( 13 )]
+position = Vector2( 516, 108 )
+frame = 2
+
+[node name="skull55" parent="." index="66" instance=ExtResource( 13 )]
+position = Vector2( 516, 156 )
+
+[node name="skull56" parent="." index="67" instance=ExtResource( 13 )]
+position = Vector2( 516, 204 )
+frame = 0
+
+[node name="skull57" parent="." index="68" instance=ExtResource( 13 )]
+position = Vector2( 516, 252 )
+
+[node name="skull_text" parent="." index="69" instance=ExtResource( 4 )]
+position = Vector2( 372, 132 )
+frame = 1
+
+[node name="is_text4" parent="." index="70" instance=ExtResource( 12 )]
+position = Vector2( 372, 156 )
+frame = 1
+
+[node name="defeat_text" parent="." index="71" instance=ExtResource( 1 )]
+position = Vector2( 372, 180 )
+frame = 0
+
+[node name="flag" parent="." index="72" instance=ExtResource( 2 )]
+position = Vector2( 444, 228 )
+frame = 1
+
+[node name="baba" parent="." index="73" instance=ExtResource( 9 )]
+position = Vector2( 156, 300 )
+frame = 0
