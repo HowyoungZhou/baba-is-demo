@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="baba-is-you"
+run/main_scene="res://scenes/level_10.tscn"
 config/icon="res://icon.png"
 
 [rendering]
