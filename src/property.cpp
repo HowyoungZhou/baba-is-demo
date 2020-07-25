@@ -53,7 +53,9 @@ bool HotProperty::on_collision(Entity *source, Entity *target, TilePosition move
 }
 
 bool WinProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
-    // TODO: stage win: change scene, need operate outside
+    if (source->properties.has_property(Properties::YOU)) {
+        LevelController::instance->show_win_screen();
+    }
     return true;
 }
 
