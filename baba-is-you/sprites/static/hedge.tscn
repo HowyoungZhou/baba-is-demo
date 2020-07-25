@@ -6,17 +6,17 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 1368, 24, 24 )
+region = Rect2( 384, 1224, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 1392, 24, 24 )
+region = Rect2( 384, 1248, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 1416, 24, 24 )
+region = Rect2( 384, 1272, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -26,7 +26,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="wall" instance=ExtResource( 1 )]
-modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
+[node name="hedge" instance=ExtResource( 1 )]
+modulate = Color( 0.294118, 0.360784, 0.109804, 1 )
 frames = SubResource( 4 )
-Noun = 84
+frame = 1
+Noun = 42
