@@ -1,0 +1,460 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://sprites/text/wall_text.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/text/defeat_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/directional/skull.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/static/grass.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/static/rock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/text/flag_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/text/rock_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/text/skull_text.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=17]
+
+[node name="level_controller" instance=ExtResource( 9 )]
+
+[node name="rock_text" parent="." index="0" instance=ExtResource( 12 )]
+position = Vector2( 12, 12 )
+
+[node name="stop_text" parent="." index="1" instance=ExtResource( 5 )]
+position = Vector2( 60, 12 )
+
+[node name="skull_text" parent="." index="2" instance=ExtResource( 16 )]
+position = Vector2( 12, 60 )
+frame = 2
+
+[node name="win_text" parent="." index="3" instance=ExtResource( 15 )]
+position = Vector2( 60, 108 )
+frame = 0
+
+[node name="defeat_text" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( 60, 60 )
+frame = 1
+
+[node name="flag_text" parent="." index="5" instance=ExtResource( 11 )]
+position = Vector2( 12, 108 )
+frame = 2
+
+[node name="is_text" parent="." index="6" instance=ExtResource( 14 )]
+position = Vector2( 36, 12 )
+
+[node name="is_text2" parent="." index="7" instance=ExtResource( 14 )]
+position = Vector2( 36, 60 )
+
+[node name="is_text3" parent="." index="8" instance=ExtResource( 14 )]
+position = Vector2( 36, 108 )
+frame = 1
+
+[node name="rock" parent="." index="9" instance=ExtResource( 8 )]
+position = Vector2( 12, 156 )
+
+[node name="rock2" parent="." index="10" instance=ExtResource( 8 )]
+position = Vector2( 36, 156 )
+frame = 0
+
+[node name="rock3" parent="." index="11" instance=ExtResource( 8 )]
+position = Vector2( 60, 156 )
+frame = 0
+
+[node name="rock4" parent="." index="12" instance=ExtResource( 8 )]
+position = Vector2( 84, 156 )
+frame = 1
+
+[node name="rock5" parent="." index="13" instance=ExtResource( 8 )]
+position = Vector2( 108, 156 )
+
+[node name="rock6" parent="." index="14" instance=ExtResource( 8 )]
+position = Vector2( 108, 12 )
+
+[node name="rock7" parent="." index="15" instance=ExtResource( 8 )]
+position = Vector2( 108, 36 )
+frame = 1
+
+[node name="rock8" parent="." index="16" instance=ExtResource( 8 )]
+position = Vector2( 108, 60 )
+
+[node name="rock9" parent="." index="17" instance=ExtResource( 8 )]
+position = Vector2( 108, 84 )
+frame = 1
+
+[node name="rock10" parent="." index="18" instance=ExtResource( 8 )]
+position = Vector2( 108, 108 )
+
+[node name="rock11" parent="." index="19" instance=ExtResource( 8 )]
+position = Vector2( 108, 132 )
+frame = 0
+
+[node name="wall" parent="." index="20" instance=ExtResource( 13 )]
+position = Vector2( 156, 108 )
+
+[node name="wall2" parent="." index="21" instance=ExtResource( 13 )]
+position = Vector2( 156, 132 )
+frame = 2
+
+[node name="wall3" parent="." index="22" instance=ExtResource( 13 )]
+position = Vector2( 156, 156 )
+frame = 2
+
+[node name="wall4" parent="." index="23" instance=ExtResource( 13 )]
+position = Vector2( 156, 180 )
+frame = 2
+
+[node name="wall5" parent="." index="24" instance=ExtResource( 13 )]
+position = Vector2( 156, 204 )
+
+[node name="wall6" parent="." index="25" instance=ExtResource( 13 )]
+position = Vector2( 180, 108 )
+
+[node name="wall7" parent="." index="26" instance=ExtResource( 13 )]
+position = Vector2( 204, 108 )
+
+[node name="wall8" parent="." index="27" instance=ExtResource( 13 )]
+position = Vector2( 228, 108 )
+frame = 1
+
+[node name="wall9" parent="." index="28" instance=ExtResource( 13 )]
+position = Vector2( 252, 108 )
+frame = 2
+
+[node name="wall10" parent="." index="29" instance=ExtResource( 13 )]
+position = Vector2( 252, 36 )
+frame = 2
+
+[node name="wall11" parent="." index="30" instance=ExtResource( 13 )]
+position = Vector2( 252, 60 )
+frame = 2
+
+[node name="wall12" parent="." index="31" instance=ExtResource( 13 )]
+position = Vector2( 252, 84 )
+
+[node name="wall13" parent="." index="32" instance=ExtResource( 13 )]
+position = Vector2( 276, 36 )
+frame = 2
+
+[node name="wall14" parent="." index="33" instance=ExtResource( 13 )]
+position = Vector2( 324, 36 )
+frame = 1
+
+[node name="wall15" parent="." index="34" instance=ExtResource( 13 )]
+position = Vector2( 348, 36 )
+
+[node name="wall16" parent="." index="35" instance=ExtResource( 13 )]
+position = Vector2( 372, 36 )
+
+[node name="wall17" parent="." index="36" instance=ExtResource( 13 )]
+position = Vector2( 372, 60 )
+frame = 2
+
+[node name="wall18" parent="." index="37" instance=ExtResource( 13 )]
+position = Vector2( 396, 36 )
+frame = 2
+
+[node name="wall19" parent="." index="38" instance=ExtResource( 13 )]
+position = Vector2( 420, 36 )
+frame = 1
+
+[node name="wall20" parent="." index="39" instance=ExtResource( 13 )]
+position = Vector2( 444, 36 )
+frame = 1
+
+[node name="wall21" parent="." index="40" instance=ExtResource( 13 )]
+position = Vector2( 468, 36 )
+frame = 1
+
+[node name="wall22" parent="." index="41" instance=ExtResource( 13 )]
+position = Vector2( 468, 60 )
+frame = 2
+
+[node name="wall23" parent="." index="42" instance=ExtResource( 13 )]
+position = Vector2( 468, 84 )
+
+[node name="wall24" parent="." index="43" instance=ExtResource( 13 )]
+position = Vector2( 252, 132 )
+frame = 2
+
+[node name="wall25" parent="." index="44" instance=ExtResource( 13 )]
+position = Vector2( 180, 204 )
+
+[node name="wall26" parent="." index="45" instance=ExtResource( 13 )]
+position = Vector2( 252, 180 )
+
+[node name="wall27" parent="." index="46" instance=ExtResource( 13 )]
+position = Vector2( 204, 204 )
+frame = 2
+
+[node name="wall28" parent="." index="47" instance=ExtResource( 13 )]
+position = Vector2( 228, 204 )
+frame = 1
+
+[node name="wall29" parent="." index="48" instance=ExtResource( 13 )]
+position = Vector2( 252, 204 )
+frame = 1
+
+[node name="wall30" parent="." index="49" instance=ExtResource( 13 )]
+position = Vector2( 372, 108 )
+frame = 2
+
+[node name="wall31" parent="." index="50" instance=ExtResource( 13 )]
+position = Vector2( 372, 132 )
+frame = 1
+
+[node name="wall32" parent="." index="51" instance=ExtResource( 13 )]
+position = Vector2( 396, 132 )
+frame = 1
+
+[node name="wall33" parent="." index="52" instance=ExtResource( 13 )]
+position = Vector2( 468, 132 )
+frame = 1
+
+[node name="wall34" parent="." index="53" instance=ExtResource( 13 )]
+position = Vector2( 420, 132 )
+frame = 1
+
+[node name="wall35" parent="." index="54" instance=ExtResource( 13 )]
+position = Vector2( 444, 132 )
+
+[node name="wall36" parent="." index="55" instance=ExtResource( 13 )]
+position = Vector2( 468, 108 )
+frame = 1
+
+[node name="wall37" parent="." index="56" instance=ExtResource( 13 )]
+position = Vector2( 324, 156 )
+
+[node name="wall38" parent="." index="57" instance=ExtResource( 13 )]
+position = Vector2( 348, 156 )
+frame = 2
+
+[node name="wall39" parent="." index="58" instance=ExtResource( 13 )]
+position = Vector2( 372, 156 )
+
+[node name="wall40" parent="." index="59" instance=ExtResource( 13 )]
+position = Vector2( 372, 204 )
+
+[node name="wall41" parent="." index="60" instance=ExtResource( 13 )]
+position = Vector2( 252, 228 )
+frame = 2
+
+[node name="wall42" parent="." index="61" instance=ExtResource( 13 )]
+position = Vector2( 252, 252 )
+frame = 1
+
+[node name="wall43" parent="." index="62" instance=ExtResource( 13 )]
+position = Vector2( 252, 276 )
+
+[node name="wall44" parent="." index="63" instance=ExtResource( 13 )]
+position = Vector2( 276, 276 )
+frame = 2
+
+[node name="wall45" parent="." index="64" instance=ExtResource( 13 )]
+position = Vector2( 372, 228 )
+frame = 1
+
+[node name="wall46" parent="." index="65" instance=ExtResource( 13 )]
+position = Vector2( 372, 276 )
+
+[node name="wall47" parent="." index="66" instance=ExtResource( 13 )]
+position = Vector2( 372, 252 )
+
+[node name="wall48" parent="." index="67" instance=ExtResource( 13 )]
+position = Vector2( 300, 276 )
+
+[node name="wall49" parent="." index="68" instance=ExtResource( 13 )]
+position = Vector2( 324, 276 )
+frame = 1
+
+[node name="wall50" parent="." index="69" instance=ExtResource( 13 )]
+position = Vector2( 348, 276 )
+frame = 2
+
+[node name="skull" parent="." index="70" instance=ExtResource( 3 )]
+position = Vector2( 300, 180 )
+frame = 0
+
+[node name="skull2" parent="." index="71" instance=ExtResource( 3 )]
+position = Vector2( 300, 12 )
+
+[node name="skull3" parent="." index="72" instance=ExtResource( 3 )]
+position = Vector2( 300, 36 )
+frame = 0
+
+[node name="skull4" parent="." index="73" instance=ExtResource( 3 )]
+position = Vector2( 300, 60 )
+
+[node name="skull5" parent="." index="74" instance=ExtResource( 3 )]
+position = Vector2( 300, 84 )
+
+[node name="skull6" parent="." index="75" instance=ExtResource( 3 )]
+position = Vector2( 300, 108 )
+
+[node name="skull7" parent="." index="76" instance=ExtResource( 3 )]
+position = Vector2( 300, 132 )
+frame = 0
+
+[node name="skull8" parent="." index="77" instance=ExtResource( 3 )]
+position = Vector2( 300, 156 )
+
+[node name="skull9" parent="." index="78" instance=ExtResource( 3 )]
+position = Vector2( 324, 180 )
+frame = 2
+
+[node name="skull10" parent="." index="79" instance=ExtResource( 3 )]
+position = Vector2( 348, 180 )
+frame = 0
+
+[node name="skull11" parent="." index="80" instance=ExtResource( 3 )]
+position = Vector2( 372, 180 )
+frame = 0
+
+[node name="skull12" parent="." index="81" instance=ExtResource( 3 )]
+position = Vector2( 396, 180 )
+frame = 2
+
+[node name="skull13" parent="." index="82" instance=ExtResource( 3 )]
+position = Vector2( 420, 180 )
+frame = 0
+
+[node name="skull14" parent="." index="83" instance=ExtResource( 3 )]
+position = Vector2( 444, 180 )
+
+[node name="skull15" parent="." index="84" instance=ExtResource( 3 )]
+position = Vector2( 468, 180 )
+
+[node name="skull16" parent="." index="85" instance=ExtResource( 3 )]
+position = Vector2( 492, 180 )
+
+[node name="skull17" parent="." index="86" instance=ExtResource( 3 )]
+position = Vector2( 516, 180 )
+frame = 2
+
+[node name="skull18" parent="." index="87" instance=ExtResource( 3 )]
+position = Vector2( 540, 180 )
+
+[node name="skull19" parent="." index="88" instance=ExtResource( 3 )]
+position = Vector2( 564, 180 )
+
+[node name="flag" parent="." index="89" instance=ExtResource( 6 )]
+position = Vector2( 444, 84 )
+frame = 0
+
+[node name="wall_text" parent="." index="90" instance=ExtResource( 1 )]
+position = Vector2( 300, 228 )
+
+[node name="is_text4" parent="." index="91" instance=ExtResource( 14 )]
+position = Vector2( 324, 228 )
+frame = 1
+
+[node name="stop_text2" parent="." index="92" instance=ExtResource( 5 )]
+position = Vector2( 348, 228 )
+
+[node name="baba_text" parent="." index="93" instance=ExtResource( 7 )]
+position = Vector2( 204, 252 )
+frame = 1
+
+[node name="is_text5" parent="." index="94" instance=ExtResource( 14 )]
+position = Vector2( 204, 276 )
+frame = 0
+
+[node name="you_text" parent="." index="95" instance=ExtResource( 10 )]
+position = Vector2( 204, 300 )
+frame = 1
+
+[node name="grass" parent="." index="96" instance=ExtResource( 4 )]
+position = Vector2( 132, 12 )
+
+[node name="grass2" parent="." index="97" instance=ExtResource( 4 )]
+position = Vector2( 156, 12 )
+
+[node name="grass3" parent="." index="98" instance=ExtResource( 4 )]
+position = Vector2( 180, 12 )
+frame = 0
+
+[node name="grass4" parent="." index="99" instance=ExtResource( 4 )]
+position = Vector2( 204, 12 )
+frame = 2
+
+[node name="grass5" parent="." index="100" instance=ExtResource( 4 )]
+position = Vector2( 228, 12 )
+
+[node name="grass6" parent="." index="101" instance=ExtResource( 4 )]
+position = Vector2( 156, 36 )
+
+[node name="grass7" parent="." index="102" instance=ExtResource( 4 )]
+position = Vector2( 180, 36 )
+frame = 0
+
+[node name="grass8" parent="." index="103" instance=ExtResource( 4 )]
+position = Vector2( 564, 36 )
+frame = 2
+
+[node name="grass9" parent="." index="104" instance=ExtResource( 4 )]
+position = Vector2( 564, 12 )
+
+[node name="grass10" parent="." index="105" instance=ExtResource( 4 )]
+position = Vector2( 516, 12 )
+
+[node name="grass11" parent="." index="106" instance=ExtResource( 4 )]
+position = Vector2( 540, 12 )
+frame = 0
+
+[node name="grass12" parent="." index="107" instance=ExtResource( 4 )]
+position = Vector2( 540, 36 )
+
+[node name="grass13" parent="." index="108" instance=ExtResource( 4 )]
+position = Vector2( 564, 60 )
+frame = 0
+
+[node name="grass14" parent="." index="109" instance=ExtResource( 4 )]
+position = Vector2( 60, 228 )
+
+[node name="grass15" parent="." index="110" instance=ExtResource( 4 )]
+position = Vector2( 36, 252 )
+frame = 0
+
+[node name="grass16" parent="." index="111" instance=ExtResource( 4 )]
+position = Vector2( 60, 252 )
+frame = 2
+
+[node name="grass17" parent="." index="112" instance=ExtResource( 4 )]
+position = Vector2( 60, 276 )
+
+[node name="grass18" parent="." index="113" instance=ExtResource( 4 )]
+position = Vector2( 84, 252 )
+frame = 2
+
+[node name="grass19" parent="." index="114" instance=ExtResource( 4 )]
+position = Vector2( 84, 276 )
+
+[node name="grass20" parent="." index="115" instance=ExtResource( 4 )]
+position = Vector2( 516, 300 )
+frame = 2
+
+[node name="grass21" parent="." index="116" instance=ExtResource( 4 )]
+position = Vector2( 540, 300 )
+
+[node name="grass22" parent="." index="117" instance=ExtResource( 4 )]
+position = Vector2( 564, 324 )
+
+[node name="grass23" parent="." index="118" instance=ExtResource( 4 )]
+position = Vector2( 468, 324 )
+frame = 0
+
+[node name="grass24" parent="." index="119" instance=ExtResource( 4 )]
+position = Vector2( 492, 324 )
+
+[node name="grass25" parent="." index="120" instance=ExtResource( 4 )]
+position = Vector2( 516, 324 )
+frame = 0
+
+[node name="grass26" parent="." index="121" instance=ExtResource( 4 )]
+position = Vector2( 540, 324 )
+
+[node name="baba" parent="." index="122" instance=ExtResource( 17 )]
+position = Vector2( 204, 156 )
+frame = 0

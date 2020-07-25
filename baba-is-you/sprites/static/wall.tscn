@@ -27,6 +27,7 @@ animations = [ {
 } ]
 
 [node name="wall" instance=ExtResource( 1 )]
+modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
+self_modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
 frames = SubResource( 4 )
-frame = 2
 Noun = 84
