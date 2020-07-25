@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/static/key.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/static/hedge.tscn" type="PackedScene" id=4]
@@ -19,6 +19,7 @@
 [ext_resource path="res://sprites/text/keke_text.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/character/keke.tscn" type="PackedScene" id=18]
 [ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=19]
+
 
 [node name="lake-10 tuo doors" instance=ExtResource( 1 )]
 

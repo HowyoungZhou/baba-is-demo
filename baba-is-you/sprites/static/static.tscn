@@ -3,6 +3,5 @@
 [ext_resource path="res://scripts/entity.gdns" type="Script" id=1]
 
 [node name="static" type="AnimatedSprite"]
-position = Vector2( 12, -12 )
 playing = true
 script = ExtResource( 1 )

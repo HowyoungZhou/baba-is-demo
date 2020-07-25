@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=6]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sprites/text/push_text.tscn" type="PackedScene" id=18]
 [ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=19]
 [ext_resource path="res://sprites/text/open_text.tscn" type="PackedScene" id=20]
+
 
 
 

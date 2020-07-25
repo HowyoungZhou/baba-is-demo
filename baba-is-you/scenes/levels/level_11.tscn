@@ -1,0 +1,206 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://sprites/static/pillar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/text/pillar_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/text/flag_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/text/wall_text.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/text/defeat_text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/static/star.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/text/push_text.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/text/star_text.tscn" type="PackedScene" id=17]
+
+[node name="lake-4 pillar yard" instance=ExtResource( 9 )]
+
+[node name="wall" parent="." index="0" instance=ExtResource( 8 )]
+position = Vector2( 132, 420 )
+frame = 0
+
+[node name="wall2" parent="." index="1" instance=ExtResource( 8 )]
+position = Vector2( 156, 420 )
+frame = 0
+
+[node name="wall3" parent="." index="2" instance=ExtResource( 8 )]
+position = Vector2( 204, 420 )
+frame = 0
+
+[node name="wall4" parent="." index="3" instance=ExtResource( 8 )]
+position = Vector2( 180, 420 )
+frame = 0
+
+[node name="is_text" parent="." index="4" instance=ExtResource( 11 )]
+position = Vector2( 156, 468 )
+frame = 1
+
+[node name="stop_text" parent="." index="5" instance=ExtResource( 15 )]
+position = Vector2( 36, 420 )
+
+[node name="win_text" parent="." index="6" instance=ExtResource( 7 )]
+position = Vector2( 84, 228 )
+
+[node name="wall_text" parent="." index="7" instance=ExtResource( 5 )]
+position = Vector2( 36, 372 )
+
+[node name="you_text" parent="." index="8" instance=ExtResource( 16 )]
+position = Vector2( 180, 468 )
+frame = 2
+
+[node name="baba_text" parent="." index="9" instance=ExtResource( 12 )]
+position = Vector2( 132, 468 )
+frame = 2
+
+[node name="baba" parent="." index="10" instance=ExtResource( 13 )]
+position = Vector2( 180, 372 )
+frame = 2
+
+[node name="is_text2" parent="." index="11" instance=ExtResource( 11 )]
+position = Vector2( 36, 396 )
+
+[node name="pillar" parent="." index="12" instance=ExtResource( 1 )]
+position = Vector2( 228, 372 )
+frame = 2
+
+[node name="push_text" parent="." index="13" instance=ExtResource( 14 )]
+position = Vector2( 180, 276 )
+
+[node name="pillar_text" parent="." index="14" instance=ExtResource( 2 )]
+position = Vector2( 132, 276 )
+frame = 0
+
+[node name="is_text3" parent="." index="15" instance=ExtResource( 11 )]
+position = Vector2( 156, 276 )
+
+[node name="wall5" parent="." index="16" instance=ExtResource( 8 )]
+position = Vector2( 132, 396 )
+
+[node name="wall6" parent="." index="17" instance=ExtResource( 8 )]
+position = Vector2( 132, 372 )
+
+[node name="wall7" parent="." index="18" instance=ExtResource( 8 )]
+position = Vector2( 132, 348 )
+
+[node name="wall8" parent="." index="19" instance=ExtResource( 8 )]
+position = Vector2( 180, 324 )
+
+[node name="wall9" parent="." index="20" instance=ExtResource( 8 )]
+position = Vector2( 156, 324 )
+
+[node name="wall10" parent="." index="21" instance=ExtResource( 8 )]
+position = Vector2( 204, 324 )
+
+[node name="wall11" parent="." index="22" instance=ExtResource( 8 )]
+position = Vector2( 132, 324 )
+
+[node name="wall12" parent="." index="23" instance=ExtResource( 8 )]
+position = Vector2( 228, 324 )
+
+[node name="wall13" parent="." index="24" instance=ExtResource( 8 )]
+position = Vector2( 228, 348 )
+
+[node name="wall14" parent="." index="25" instance=ExtResource( 8 )]
+position = Vector2( 228, 420 )
+
+[node name="wall15" parent="." index="26" instance=ExtResource( 8 )]
+position = Vector2( 228, 396 )
+
+[node name="is_text4" parent="." index="27" instance=ExtResource( 11 )]
+position = Vector2( 444, 516 )
+frame = 1
+
+[node name="star_text" parent="." index="28" instance=ExtResource( 17 )]
+position = Vector2( 420, 516 )
+frame = 0
+
+[node name="star" parent="." index="29" instance=ExtResource( 10 )]
+position = Vector2( 348, 348 )
+
+[node name="star4" parent="." index="30" instance=ExtResource( 10 )]
+position = Vector2( 348, 396 )
+frame = 0
+
+[node name="star2" parent="." index="31" instance=ExtResource( 10 )]
+position = Vector2( 348, 372 )
+
+[node name="star3" parent="." index="32" instance=ExtResource( 10 )]
+position = Vector2( 348, 324 )
+
+[node name="star5" parent="." index="33" instance=ExtResource( 10 )]
+position = Vector2( 348, 420 )
+frame = 0
+
+[node name="star6" parent="." index="34" instance=ExtResource( 10 )]
+position = Vector2( 372, 420 )
+
+[node name="star7" parent="." index="35" instance=ExtResource( 10 )]
+position = Vector2( 396, 420 )
+frame = 0
+
+[node name="star8" parent="." index="36" instance=ExtResource( 10 )]
+position = Vector2( 420, 420 )
+
+[node name="star9" parent="." index="37" instance=ExtResource( 10 )]
+position = Vector2( 444, 420 )
+
+[node name="star10" parent="." index="38" instance=ExtResource( 10 )]
+position = Vector2( 444, 396 )
+frame = 0
+
+[node name="star11" parent="." index="39" instance=ExtResource( 10 )]
+position = Vector2( 372, 324 )
+frame = 2
+
+[node name="star12" parent="." index="40" instance=ExtResource( 10 )]
+position = Vector2( 396, 324 )
+
+[node name="star13" parent="." index="41" instance=ExtResource( 10 )]
+position = Vector2( 420, 324 )
+
+[node name="star14" parent="." index="42" instance=ExtResource( 10 )]
+position = Vector2( 444, 324 )
+
+[node name="star15" parent="." index="43" instance=ExtResource( 10 )]
+position = Vector2( 444, 348 )
+frame = 0
+
+[node name="star16" parent="." index="44" instance=ExtResource( 10 )]
+position = Vector2( 444, 372 )
+frame = 2
+
+[node name="flag" parent="." index="45" instance=ExtResource( 3 )]
+position = Vector2( 396, 372 )
+
+[node name="flag_text" parent="." index="46" instance=ExtResource( 4 )]
+position = Vector2( 36, 228 )
+
+[node name="defeat_text" parent="." index="47" instance=ExtResource( 6 )]
+position = Vector2( 468, 516 )
+
+[node name="is_text5" parent="." index="48" instance=ExtResource( 11 )]
+position = Vector2( 60, 228 )
+
+[node name="pillar2" parent="." index="49" instance=ExtResource( 1 )]
+position = Vector2( 276, 444 )
+frame = 2
+
+[node name="pillar3" parent="." index="50" instance=ExtResource( 1 )]
+position = Vector2( 252, 252 )
+frame = 2
+
+[node name="pillar4" parent="." index="51" instance=ExtResource( 1 )]
+position = Vector2( 300, 276 )
+frame = 2
+
+[node name="pillar5" parent="." index="52" instance=ExtResource( 1 )]
+position = Vector2( 372, 492 )
+frame = 2
+
+[node name="pillar6" parent="." index="53" instance=ExtResource( 1 )]
+position = Vector2( 420, 252 )

@@ -8,9 +8,10 @@
 [ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=9]
 [ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/text/wall_text.tscn" type="PackedScene" id=11]
+
 
 
 [node name="lake-5 brick wall" instance=ExtResource( 9 )]
