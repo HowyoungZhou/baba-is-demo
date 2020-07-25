@@ -29,5 +29,5 @@ animations = [ {
 [node name="wall_text" instance=ExtResource( 1 )]
 modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 Text = 84
