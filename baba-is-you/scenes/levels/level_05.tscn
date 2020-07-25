@@ -5,7 +5,7 @@
 [ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/text/skull_text.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/static/rock.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/base_level.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/text/push_text.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=9]
@@ -14,6 +14,7 @@
 [ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/directional/skull.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=14]
+
 
 [node name="level_controller" instance=ExtResource( 6 )]
 
