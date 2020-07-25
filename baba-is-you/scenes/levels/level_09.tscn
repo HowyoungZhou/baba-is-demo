@@ -1,0 +1,654 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://sprites/static/jelly.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/text/water_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/text/wall_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/text/sink_text.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/static/water.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/text/flag_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/text/jelly_text.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=16]
+
+
+[node name="level_controller" instance=ExtResource( 9 )]
+
+[node name="flag_text" parent="." index="0" instance=ExtResource( 12 )]
+position = Vector2( 12, 12 )
+
+[node name="is_text" parent="." index="1" instance=ExtResource( 15 )]
+position = Vector2( 36, 12 )
+frame = 0
+
+[node name="win_text" parent="." index="2" instance=ExtResource( 16 )]
+position = Vector2( 60, 12 )
+frame = 1
+
+[node name="water" parent="." index="3" instance=ExtResource( 8 )]
+position = Vector2( 84, 12 )
+
+[node name="water2" parent="." index="4" instance=ExtResource( 8 )]
+position = Vector2( 108, 12 )
+frame = 1
+
+[node name="water3" parent="." index="5" instance=ExtResource( 8 )]
+position = Vector2( 132, 12 )
+frame = 0
+
+[node name="water4" parent="." index="6" instance=ExtResource( 8 )]
+position = Vector2( 12, 36 )
+frame = 0
+
+[node name="water5" parent="." index="7" instance=ExtResource( 8 )]
+position = Vector2( 36, 36 )
+
+[node name="water6" parent="." index="8" instance=ExtResource( 8 )]
+position = Vector2( 60, 36 )
+frame = 1
+
+[node name="water7" parent="." index="9" instance=ExtResource( 8 )]
+position = Vector2( 84, 36 )
+
+[node name="water8" parent="." index="10" instance=ExtResource( 8 )]
+position = Vector2( 12, 60 )
+
+[node name="water9" parent="." index="11" instance=ExtResource( 8 )]
+position = Vector2( 36, 60 )
+frame = 0
+
+[node name="water10" parent="." index="12" instance=ExtResource( 8 )]
+position = Vector2( 12, 84 )
+
+[node name="wall" parent="." index="13" instance=ExtResource( 14 )]
+position = Vector2( 132, 84 )
+frame = 1
+
+[node name="wall2" parent="." index="14" instance=ExtResource( 14 )]
+position = Vector2( 132, 180 )
+frame = 2
+
+[node name="wall3" parent="." index="15" instance=ExtResource( 14 )]
+position = Vector2( 228, 84 )
+frame = 1
+
+[node name="wall4" parent="." index="16" instance=ExtResource( 14 )]
+position = Vector2( 228, 180 )
+frame = 1
+
+[node name="wall5" parent="." index="17" instance=ExtResource( 14 )]
+position = Vector2( 132, 108 )
+frame = 1
+
+[node name="wall6" parent="." index="18" instance=ExtResource( 14 )]
+position = Vector2( 132, 132 )
+
+[node name="wall7" parent="." index="19" instance=ExtResource( 14 )]
+position = Vector2( 132, 156 )
+frame = 2
+
+[node name="wall8" parent="." index="20" instance=ExtResource( 14 )]
+position = Vector2( 156, 84 )
+
+[node name="wall9" parent="." index="21" instance=ExtResource( 14 )]
+position = Vector2( 180, 84 )
+
+[node name="wall10" parent="." index="22" instance=ExtResource( 14 )]
+position = Vector2( 204, 84 )
+frame = 1
+
+[node name="wall11" parent="." index="23" instance=ExtResource( 14 )]
+position = Vector2( 228, 108 )
+frame = 1
+
+[node name="wall12" parent="." index="24" instance=ExtResource( 14 )]
+position = Vector2( 228, 132 )
+
+[node name="wall13" parent="." index="25" instance=ExtResource( 14 )]
+position = Vector2( 228, 156 )
+frame = 1
+
+[node name="wall14" parent="." index="26" instance=ExtResource( 14 )]
+position = Vector2( 156, 180 )
+frame = 2
+
+[node name="wall15" parent="." index="27" instance=ExtResource( 14 )]
+position = Vector2( 204, 180 )
+frame = 1
+
+[node name="wall16" parent="." index="28" instance=ExtResource( 14 )]
+position = Vector2( 204, 252 )
+
+[node name="wall17" parent="." index="29" instance=ExtResource( 14 )]
+position = Vector2( 228, 252 )
+frame = 2
+
+[node name="wall18" parent="." index="30" instance=ExtResource( 14 )]
+position = Vector2( 252, 252 )
+frame = 2
+
+[node name="wall19" parent="." index="31" instance=ExtResource( 14 )]
+position = Vector2( 276, 252 )
+
+[node name="wall20" parent="." index="32" instance=ExtResource( 14 )]
+position = Vector2( 132, 276 )
+
+[node name="wall21" parent="." index="33" instance=ExtResource( 14 )]
+position = Vector2( 132, 300 )
+
+[node name="wall22" parent="." index="34" instance=ExtResource( 14 )]
+position = Vector2( 156, 300 )
+
+[node name="wall23" parent="." index="35" instance=ExtResource( 14 )]
+position = Vector2( 180, 300 )
+
+[node name="wall24" parent="." index="36" instance=ExtResource( 14 )]
+position = Vector2( 204, 300 )
+frame = 1
+
+[node name="wall25" parent="." index="37" instance=ExtResource( 14 )]
+position = Vector2( 228, 300 )
+frame = 2
+
+[node name="wall26" parent="." index="38" instance=ExtResource( 14 )]
+position = Vector2( 252, 300 )
+frame = 1
+
+[node name="wall27" parent="." index="39" instance=ExtResource( 14 )]
+position = Vector2( 276, 300 )
+frame = 2
+
+[node name="wall28" parent="." index="40" instance=ExtResource( 14 )]
+position = Vector2( 324, 276 )
+frame = 1
+
+[node name="baba_text" parent="." index="41" instance=ExtResource( 6 )]
+position = Vector2( 204, 276 )
+frame = 2
+
+[node name="is_text2" parent="." index="42" instance=ExtResource( 15 )]
+position = Vector2( 228, 276 )
+
+[node name="you_text" parent="." index="43" instance=ExtResource( 10 )]
+position = Vector2( 252, 276 )
+frame = 2
+
+[node name="sink_text" parent="." index="44" instance=ExtResource( 7 )]
+position = Vector2( 300, 324 )
+
+[node name="water11" parent="." index="45" instance=ExtResource( 8 )]
+position = Vector2( 108, 372 )
+
+[node name="water12" parent="." index="46" instance=ExtResource( 8 )]
+position = Vector2( 12, 324 )
+frame = 1
+
+[node name="water13" parent="." index="47" instance=ExtResource( 8 )]
+position = Vector2( 36, 348 )
+
+[node name="water14" parent="." index="48" instance=ExtResource( 8 )]
+position = Vector2( 60, 372 )
+
+[node name="water15" parent="." index="49" instance=ExtResource( 8 )]
+position = Vector2( 12, 348 )
+frame = 1
+
+[node name="water16" parent="." index="50" instance=ExtResource( 8 )]
+position = Vector2( 12, 372 )
+frame = 0
+
+[node name="water17" parent="." index="51" instance=ExtResource( 8 )]
+position = Vector2( 36, 372 )
+
+[node name="water18" parent="." index="52" instance=ExtResource( 8 )]
+position = Vector2( 84, 372 )
+
+[node name="water19" parent="." index="53" instance=ExtResource( 8 )]
+position = Vector2( 156, 372 )
+
+[node name="water20" parent="." index="54" instance=ExtResource( 8 )]
+position = Vector2( 276, 372 )
+frame = 1
+
+[node name="water21" parent="." index="55" instance=ExtResource( 8 )]
+position = Vector2( 276, 12 )
+frame = 1
+
+[node name="water22" parent="." index="56" instance=ExtResource( 8 )]
+position = Vector2( 300, 36 )
+frame = 1
+
+[node name="water23" parent="." index="57" instance=ExtResource( 8 )]
+position = Vector2( 324, 60 )
+
+[node name="water24" parent="." index="58" instance=ExtResource( 8 )]
+position = Vector2( 324, 84 )
+
+[node name="water25" parent="." index="59" instance=ExtResource( 8 )]
+position = Vector2( 348, 108 )
+frame = 1
+
+[node name="water26" parent="." index="60" instance=ExtResource( 8 )]
+position = Vector2( 348, 132 )
+frame = 1
+
+[node name="water27" parent="." index="61" instance=ExtResource( 8 )]
+position = Vector2( 348, 156 )
+frame = 0
+
+[node name="water28" parent="." index="62" instance=ExtResource( 8 )]
+position = Vector2( 372, 180 )
+frame = 0
+
+[node name="water29" parent="." index="63" instance=ExtResource( 8 )]
+position = Vector2( 372, 204 )
+frame = 0
+
+[node name="water30" parent="." index="64" instance=ExtResource( 8 )]
+position = Vector2( 372, 228 )
+frame = 0
+
+[node name="water31" parent="." index="65" instance=ExtResource( 8 )]
+position = Vector2( 396, 252 )
+frame = 0
+
+[node name="water32" parent="." index="66" instance=ExtResource( 8 )]
+position = Vector2( 420, 276 )
+frame = 0
+
+[node name="water33" parent="." index="67" instance=ExtResource( 8 )]
+position = Vector2( 444, 300 )
+frame = 0
+
+[node name="water34" parent="." index="68" instance=ExtResource( 8 )]
+position = Vector2( 468, 324 )
+frame = 0
+
+[node name="water35" parent="." index="69" instance=ExtResource( 8 )]
+position = Vector2( 492, 348 )
+frame = 0
+
+[node name="water36" parent="." index="70" instance=ExtResource( 8 )]
+position = Vector2( 516, 372 )
+frame = 1
+
+[node name="water37" parent="." index="71" instance=ExtResource( 8 )]
+position = Vector2( 324, 12 )
+
+[node name="water38" parent="." index="72" instance=ExtResource( 8 )]
+position = Vector2( 420, 12 )
+frame = 0
+
+[node name="water39" parent="." index="73" instance=ExtResource( 8 )]
+position = Vector2( 396, 12 )
+
+[node name="water40" parent="." index="74" instance=ExtResource( 8 )]
+position = Vector2( 300, 12 )
+
+[node name="water41" parent="." index="75" instance=ExtResource( 8 )]
+position = Vector2( 324, 36 )
+frame = 1
+
+[node name="water42" parent="." index="76" instance=ExtResource( 8 )]
+position = Vector2( 348, 36 )
+frame = 1
+
+[node name="water43" parent="." index="77" instance=ExtResource( 8 )]
+position = Vector2( 372, 36 )
+
+[node name="water44" parent="." index="78" instance=ExtResource( 8 )]
+position = Vector2( 444, 36 )
+frame = 0
+
+[node name="water45" parent="." index="79" instance=ExtResource( 8 )]
+position = Vector2( 396, 36 )
+
+[node name="water46" parent="." index="80" instance=ExtResource( 8 )]
+position = Vector2( 468, 60 )
+
+[node name="water47" parent="." index="81" instance=ExtResource( 8 )]
+position = Vector2( 396, 60 )
+
+[node name="water48" parent="." index="82" instance=ExtResource( 8 )]
+position = Vector2( 396, 84 )
+frame = 1
+
+[node name="water49" parent="." index="83" instance=ExtResource( 8 )]
+position = Vector2( 420, 84 )
+frame = 1
+
+[node name="water50" parent="." index="84" instance=ExtResource( 8 )]
+position = Vector2( 444, 84 )
+frame = 1
+
+[node name="water51" parent="." index="85" instance=ExtResource( 8 )]
+position = Vector2( 468, 84 )
+frame = 0
+
+[node name="water52" parent="." index="86" instance=ExtResource( 8 )]
+position = Vector2( 492, 84 )
+frame = 1
+
+[node name="water53" parent="." index="87" instance=ExtResource( 8 )]
+position = Vector2( 492, 108 )
+
+[node name="water54" parent="." index="88" instance=ExtResource( 8 )]
+position = Vector2( 516, 132 )
+frame = 1
+
+[node name="water55" parent="." index="89" instance=ExtResource( 8 )]
+position = Vector2( 516, 156 )
+
+[node name="water56" parent="." index="90" instance=ExtResource( 8 )]
+position = Vector2( 540, 180 )
+frame = 0
+
+[node name="water57" parent="." index="91" instance=ExtResource( 8 )]
+position = Vector2( 564, 204 )
+frame = 0
+
+[node name="water58" parent="." index="92" instance=ExtResource( 8 )]
+position = Vector2( 564, 228 )
+frame = 1
+
+[node name="water59" parent="." index="93" instance=ExtResource( 8 )]
+position = Vector2( 540, 252 )
+
+[node name="water60" parent="." index="94" instance=ExtResource( 8 )]
+position = Vector2( 540, 276 )
+frame = 1
+
+[node name="water61" parent="." index="95" instance=ExtResource( 8 )]
+position = Vector2( 564, 300 )
+frame = 0
+
+[node name="water62" parent="." index="96" instance=ExtResource( 8 )]
+position = Vector2( 588, 324 )
+
+[node name="water63" parent="." index="97" instance=ExtResource( 8 )]
+position = Vector2( 612, 324 )
+frame = 0
+
+[node name="water64" parent="." index="98" instance=ExtResource( 8 )]
+position = Vector2( 636, 348 )
+frame = 0
+
+[node name="water65" parent="." index="99" instance=ExtResource( 8 )]
+position = Vector2( 588, 372 )
+frame = 1
+
+[node name="water66" parent="." index="100" instance=ExtResource( 8 )]
+position = Vector2( 612, 348 )
+frame = 1
+
+[node name="water67" parent="." index="101" instance=ExtResource( 8 )]
+position = Vector2( 540, 372 )
+frame = 0
+
+[node name="water68" parent="." index="102" instance=ExtResource( 8 )]
+position = Vector2( 564, 372 )
+
+[node name="water69" parent="." index="103" instance=ExtResource( 8 )]
+position = Vector2( 588, 348 )
+
+[node name="wall_text" parent="." index="104" instance=ExtResource( 4 )]
+position = Vector2( 612, 372 )
+frame = 2
+
+[node name="is_text3" parent="." index="105" instance=ExtResource( 15 )]
+position = Vector2( 636, 372 )
+
+[node name="stop_text" parent="." index="106" instance=ExtResource( 3 )]
+position = Vector2( 660, 372 )
+
+[node name="water70" parent="." index="107" instance=ExtResource( 8 )]
+position = Vector2( 588, 252 )
+frame = 1
+
+[node name="water71" parent="." index="108" instance=ExtResource( 8 )]
+position = Vector2( 588, 276 )
+frame = 0
+
+[node name="water72" parent="." index="109" instance=ExtResource( 8 )]
+position = Vector2( 612, 276 )
+
+[node name="water73" parent="." index="110" instance=ExtResource( 8 )]
+position = Vector2( 372, 156 )
+
+[node name="water74" parent="." index="111" instance=ExtResource( 8 )]
+position = Vector2( 396, 132 )
+frame = 0
+
+[node name="water75" parent="." index="112" instance=ExtResource( 8 )]
+position = Vector2( 420, 108 )
+frame = 1
+
+[node name="water76" parent="." index="113" instance=ExtResource( 8 )]
+position = Vector2( 444, 108 )
+frame = 0
+
+[node name="water77" parent="." index="114" instance=ExtResource( 8 )]
+position = Vector2( 468, 108 )
+
+[node name="water78" parent="." index="115" instance=ExtResource( 8 )]
+position = Vector2( 492, 132 )
+
+[node name="water79" parent="." index="116" instance=ExtResource( 8 )]
+position = Vector2( 516, 180 )
+frame = 1
+
+[node name="water80" parent="." index="117" instance=ExtResource( 8 )]
+position = Vector2( 516, 204 )
+frame = 1
+
+[node name="water81" parent="." index="118" instance=ExtResource( 8 )]
+position = Vector2( 492, 228 )
+frame = 0
+
+[node name="water82" parent="." index="119" instance=ExtResource( 8 )]
+position = Vector2( 468, 252 )
+
+[node name="water83" parent="." index="120" instance=ExtResource( 8 )]
+position = Vector2( 420, 252 )
+
+[node name="water84" parent="." index="121" instance=ExtResource( 8 )]
+position = Vector2( 444, 252 )
+frame = 1
+
+[node name="water85" parent="." index="122" instance=ExtResource( 8 )]
+position = Vector2( 396, 228 )
+
+[node name="water86" parent="." index="123" instance=ExtResource( 8 )]
+position = Vector2( 348, 60 )
+frame = 1
+
+[node name="water87" parent="." index="124" instance=ExtResource( 8 )]
+position = Vector2( 372, 84 )
+frame = 1
+
+[node name="water88" parent="." index="125" instance=ExtResource( 8 )]
+position = Vector2( 348, 84 )
+frame = 1
+
+[node name="water89" parent="." index="126" instance=ExtResource( 8 )]
+position = Vector2( 372, 60 )
+frame = 1
+
+[node name="water90" parent="." index="127" instance=ExtResource( 8 )]
+position = Vector2( 372, 108 )
+frame = 1
+
+[node name="water91" parent="." index="128" instance=ExtResource( 8 )]
+position = Vector2( 372, 132 )
+frame = 0
+
+[node name="water92" parent="." index="129" instance=ExtResource( 8 )]
+position = Vector2( 396, 108 )
+frame = 0
+
+[node name="wall_text2" parent="." index="130" instance=ExtResource( 4 )]
+position = Vector2( 444, 180 )
+frame = 2
+
+[node name="water93" parent="." index="131" instance=ExtResource( 8 )]
+position = Vector2( 540, 204 )
+frame = 0
+
+[node name="water94" parent="." index="132" instance=ExtResource( 8 )]
+position = Vector2( 540, 228 )
+
+[node name="water95" parent="." index="133" instance=ExtResource( 8 )]
+position = Vector2( 516, 228 )
+
+[node name="water96" parent="." index="134" instance=ExtResource( 8 )]
+position = Vector2( 492, 252 )
+frame = 1
+
+[node name="water97" parent="." index="135" instance=ExtResource( 8 )]
+position = Vector2( 444, 276 )
+frame = 0
+
+[node name="water98" parent="." index="136" instance=ExtResource( 8 )]
+position = Vector2( 468, 300 )
+frame = 1
+
+[node name="water99" parent="." index="137" instance=ExtResource( 8 )]
+position = Vector2( 492, 324 )
+frame = 0
+
+[node name="water100" parent="." index="138" instance=ExtResource( 8 )]
+position = Vector2( 516, 348 )
+frame = 1
+
+[node name="water101" parent="." index="139" instance=ExtResource( 8 )]
+position = Vector2( 516, 276 )
+
+[node name="water102" parent="." index="140" instance=ExtResource( 8 )]
+position = Vector2( 516, 252 )
+frame = 0
+
+[node name="water103" parent="." index="141" instance=ExtResource( 8 )]
+position = Vector2( 468, 276 )
+frame = 0
+
+[node name="water104" parent="." index="142" instance=ExtResource( 8 )]
+position = Vector2( 492, 276 )
+
+[node name="water105" parent="." index="143" instance=ExtResource( 8 )]
+position = Vector2( 492, 300 )
+
+[node name="water106" parent="." index="144" instance=ExtResource( 8 )]
+position = Vector2( 516, 300 )
+
+[node name="water107" parent="." index="145" instance=ExtResource( 8 )]
+position = Vector2( 540, 300 )
+
+[node name="water108" parent="." index="146" instance=ExtResource( 8 )]
+position = Vector2( 516, 324 )
+frame = 0
+
+[node name="water109" parent="." index="147" instance=ExtResource( 8 )]
+position = Vector2( 540, 324 )
+
+[node name="water110" parent="." index="148" instance=ExtResource( 8 )]
+position = Vector2( 564, 324 )
+
+[node name="water111" parent="." index="149" instance=ExtResource( 8 )]
+position = Vector2( 540, 348 )
+
+[node name="water112" parent="." index="150" instance=ExtResource( 8 )]
+position = Vector2( 564, 348 )
+frame = 0
+
+[node name="jelly" parent="." index="151" instance=ExtResource( 1 )]
+position = Vector2( 540, 132 )
+frame = 0
+
+[node name="jelly2" parent="." index="152" instance=ExtResource( 1 )]
+position = Vector2( 540, 108 )
+frame = 0
+
+[node name="jelly3" parent="." index="153" instance=ExtResource( 1 )]
+position = Vector2( 540, 84 )
+
+[node name="jelly4" parent="." index="154" instance=ExtResource( 1 )]
+position = Vector2( 564, 84 )
+frame = 0
+
+[node name="jelly5" parent="." index="155" instance=ExtResource( 1 )]
+position = Vector2( 564, 132 )
+frame = 1
+
+[node name="jelly6" parent="." index="156" instance=ExtResource( 1 )]
+position = Vector2( 564, 60 )
+
+[node name="jelly7" parent="." index="157" instance=ExtResource( 1 )]
+position = Vector2( 588, 60 )
+
+[node name="jelly8" parent="." index="158" instance=ExtResource( 1 )]
+position = Vector2( 612, 60 )
+frame = 0
+
+[node name="jelly9" parent="." index="159" instance=ExtResource( 1 )]
+position = Vector2( 612, 84 )
+frame = 0
+
+[node name="jelly10" parent="." index="160" instance=ExtResource( 1 )]
+position = Vector2( 636, 84 )
+frame = 1
+
+[node name="jelly11" parent="." index="161" instance=ExtResource( 1 )]
+position = Vector2( 612, 132 )
+frame = 1
+
+[node name="jelly12" parent="." index="162" instance=ExtResource( 1 )]
+position = Vector2( 636, 108 )
+frame = 0
+
+[node name="jelly13" parent="." index="163" instance=ExtResource( 1 )]
+position = Vector2( 636, 132 )
+frame = 1
+
+[node name="jelly14" parent="." index="164" instance=ExtResource( 1 )]
+position = Vector2( 588, 156 )
+frame = 1
+
+[node name="jelly15" parent="." index="165" instance=ExtResource( 1 )]
+position = Vector2( 612, 156 )
+frame = 1
+
+[node name="jelly16" parent="." index="166" instance=ExtResource( 1 )]
+position = Vector2( 564, 156 )
+frame = 1
+
+[node name="flag" parent="." index="167" instance=ExtResource( 5 )]
+position = Vector2( 588, 108 )
+frame = 1
+
+[node name="jelly_text" parent="." index="168" instance=ExtResource( 13 )]
+position = Vector2( 612, 12 )
+frame = 2
+
+[node name="is_text4" parent="." index="169" instance=ExtResource( 15 )]
+position = Vector2( 636, 12 )
+
+[node name="sink_text2" parent="." index="170" instance=ExtResource( 7 )]
+position = Vector2( 660, 12 )
+frame = 1
+
+[node name="baba" parent="." index="171" instance=ExtResource( 11 )]
+position = Vector2( 180, 132 )
+frame = 0
+
+[node name="water_text" parent="." index="172" instance=ExtResource( 2 )]
+position = Vector2( 300, 276 )
+
+[node name="is_text5" parent="." index="173" instance=ExtResource( 15 )]
+position = Vector2( 300, 300 )
+frame = 1

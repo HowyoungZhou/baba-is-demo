@@ -55,6 +55,10 @@ public:
 
     void _exit_tree() {
         unregister_entity();
+        LevelController::instance->controlled_entities.erase(this);
+        if (LevelController::instance->controlled_entities.empty()) {
+            LevelController::instance->show_lose_screen();
+        }
     }
 
     void set_position(const godot::Vector2 value) {

@@ -1,0 +1,739 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sprites/text/wall_text.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/text/lava_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/text/stop_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/text/hot_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/static/flag.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/static/rock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/levels/base_level.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/text/push_text.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/character/baba.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/text/flag_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/text/rock_text.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/static/wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/text/is_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/static/lava.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sprites/text/win_text.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sprites/text/melt_text.tscn" type="PackedScene" id=18]
+
+
+[node name="level_controller" instance=ExtResource( 8 )]
+
+[node name="wall" parent="." index="0" instance=ExtResource( 14 )]
+position = Vector2( 156, 12 )
+
+[node name="lava" parent="." index="1" instance=ExtResource( 16 )]
+position = Vector2( 84, 36 )
+
+[node name="lava2" parent="." index="2" instance=ExtResource( 16 )]
+position = Vector2( 84, 12 )
+frame = 1
+
+[node name="lava3" parent="." index="3" instance=ExtResource( 16 )]
+position = Vector2( 12, 36 )
+
+[node name="lava4" parent="." index="4" instance=ExtResource( 16 )]
+position = Vector2( 36, 36 )
+frame = 1
+
+[node name="lava5" parent="." index="5" instance=ExtResource( 16 )]
+position = Vector2( 60, 36 )
+
+[node name="lava6" parent="." index="6" instance=ExtResource( 16 )]
+position = Vector2( 108, 12 )
+frame = 2
+
+[node name="lava7" parent="." index="7" instance=ExtResource( 16 )]
+position = Vector2( 12, 60 )
+frame = 2
+
+[node name="lava8" parent="." index="8" instance=ExtResource( 16 )]
+position = Vector2( 12, 84 )
+frame = 1
+
+[node name="lava9" parent="." index="9" instance=ExtResource( 16 )]
+position = Vector2( 36, 60 )
+frame = 2
+
+[node name="wall_text" parent="." index="10" instance=ExtResource( 1 )]
+position = Vector2( 12, 12 )
+
+[node name="is_text" parent="." index="11" instance=ExtResource( 15 )]
+position = Vector2( 36, 12 )
+
+[node name="stop_text" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 60, 12 )
+frame = 1
+
+[node name="wall2" parent="." index="13" instance=ExtResource( 14 )]
+position = Vector2( 156, 60 )
+frame = 2
+
+[node name="wall3" parent="." index="14" instance=ExtResource( 14 )]
+position = Vector2( 156, 108 )
+frame = 2
+
+[node name="wall4" parent="." index="15" instance=ExtResource( 14 )]
+position = Vector2( 156, 84 )
+frame = 1
+
+[node name="wall5" parent="." index="16" instance=ExtResource( 14 )]
+position = Vector2( 156, 36 )
+frame = 2
+
+[node name="wall6" parent="." index="17" instance=ExtResource( 14 )]
+position = Vector2( 180, 108 )
+frame = 1
+
+[node name="wall7" parent="." index="18" instance=ExtResource( 14 )]
+position = Vector2( 156, 132 )
+frame = 1
+
+[node name="wall8" parent="." index="19" instance=ExtResource( 14 )]
+position = Vector2( 156, 156 )
+frame = 1
+
+[node name="wall9" parent="." index="20" instance=ExtResource( 14 )]
+position = Vector2( 156, 180 )
+frame = 1
+
+[node name="wall10" parent="." index="21" instance=ExtResource( 14 )]
+position = Vector2( 180, 156 )
+frame = 2
+
+[node name="wall11" parent="." index="22" instance=ExtResource( 14 )]
+position = Vector2( 204, 156 )
+frame = 2
+
+[node name="wall12" parent="." index="23" instance=ExtResource( 14 )]
+position = Vector2( 204, 180 )
+frame = 1
+
+[node name="wall13" parent="." index="24" instance=ExtResource( 14 )]
+position = Vector2( 228, 156 )
+
+[node name="wall14" parent="." index="25" instance=ExtResource( 14 )]
+position = Vector2( 252, 156 )
+frame = 1
+
+[node name="wall15" parent="." index="26" instance=ExtResource( 14 )]
+position = Vector2( 276, 156 )
+frame = 2
+
+[node name="wall16" parent="." index="27" instance=ExtResource( 14 )]
+position = Vector2( 276, 108 )
+frame = 2
+
+[node name="wall17" parent="." index="28" instance=ExtResource( 14 )]
+position = Vector2( 300, 108 )
+frame = 2
+
+[node name="wall18" parent="." index="29" instance=ExtResource( 14 )]
+position = Vector2( 300, 156 )
+frame = 1
+
+[node name="wall19" parent="." index="30" instance=ExtResource( 14 )]
+position = Vector2( 300, 84 )
+frame = 2
+
+[node name="wall20" parent="." index="31" instance=ExtResource( 14 )]
+position = Vector2( 300, 12 )
+frame = 1
+
+[node name="wall21" parent="." index="32" instance=ExtResource( 14 )]
+position = Vector2( 300, 60 )
+frame = 1
+
+[node name="wall22" parent="." index="33" instance=ExtResource( 14 )]
+position = Vector2( 324, 84 )
+frame = 2
+
+[node name="wall23" parent="." index="34" instance=ExtResource( 14 )]
+position = Vector2( 348, 84 )
+frame = 1
+
+[node name="wall24" parent="." index="35" instance=ExtResource( 14 )]
+position = Vector2( 372, 84 )
+frame = 2
+
+[node name="wall25" parent="." index="36" instance=ExtResource( 14 )]
+position = Vector2( 396, 84 )
+frame = 2
+
+[node name="wall26" parent="." index="37" instance=ExtResource( 14 )]
+position = Vector2( 396, 60 )
+frame = 2
+
+[node name="wall27" parent="." index="38" instance=ExtResource( 14 )]
+position = Vector2( 396, 36 )
+frame = 2
+
+[node name="wall28" parent="." index="39" instance=ExtResource( 14 )]
+position = Vector2( 396, 12 )
+frame = 2
+
+[node name="rock" parent="." index="40" instance=ExtResource( 7 )]
+position = Vector2( 300, 132 )
+frame = 0
+
+[node name="rock_text" parent="." index="41" instance=ExtResource( 13 )]
+position = Vector2( 180, 180 )
+frame = 1
+
+[node name="is_text2" parent="." index="42" instance=ExtResource( 15 )]
+position = Vector2( 180, 204 )
+frame = 1
+
+[node name="push_text" parent="." index="43" instance=ExtResource( 10 )]
+position = Vector2( 180, 228 )
+
+[node name="wall29" parent="." index="44" instance=ExtResource( 14 )]
+position = Vector2( 180, 300 )
+
+[node name="wall30" parent="." index="45" instance=ExtResource( 14 )]
+position = Vector2( 180, 324 )
+frame = 1
+
+[node name="wall31" parent="." index="46" instance=ExtResource( 14 )]
+position = Vector2( 180, 372 )
+frame = 2
+
+[node name="wall32" parent="." index="47" instance=ExtResource( 14 )]
+position = Vector2( 180, 348 )
+frame = 1
+
+[node name="wall33" parent="." index="48" instance=ExtResource( 14 )]
+position = Vector2( 276, 324 )
+frame = 2
+
+[node name="wall34" parent="." index="49" instance=ExtResource( 14 )]
+position = Vector2( 276, 372 )
+
+[node name="wall35" parent="." index="50" instance=ExtResource( 14 )]
+position = Vector2( 276, 300 )
+
+[node name="wall36" parent="." index="51" instance=ExtResource( 14 )]
+position = Vector2( 276, 348 )
+frame = 1
+
+[node name="wall37" parent="." index="52" instance=ExtResource( 14 )]
+position = Vector2( 204, 372 )
+frame = 2
+
+[node name="wall38" parent="." index="53" instance=ExtResource( 14 )]
+position = Vector2( 228, 372 )
+
+[node name="wall39" parent="." index="54" instance=ExtResource( 14 )]
+position = Vector2( 252, 372 )
+frame = 1
+
+[node name="wall40" parent="." index="55" instance=ExtResource( 14 )]
+position = Vector2( 204, 324 )
+
+[node name="wall41" parent="." index="56" instance=ExtResource( 14 )]
+position = Vector2( 228, 324 )
+
+[node name="wall42" parent="." index="57" instance=ExtResource( 14 )]
+position = Vector2( 252, 324 )
+frame = 1
+
+[node name="baba_text" parent="." index="58" instance=ExtResource( 6 )]
+position = Vector2( 204, 300 )
+frame = 1
+
+[node name="is_text3" parent="." index="59" instance=ExtResource( 15 )]
+position = Vector2( 228, 300 )
+frame = 1
+
+[node name="melt_text" parent="." index="60" instance=ExtResource( 18 )]
+position = Vector2( 252, 300 )
+
+[node name="lava_text" parent="." index="61" instance=ExtResource( 2 )]
+position = Vector2( 204, 348 )
+
+[node name="is_text4" parent="." index="62" instance=ExtResource( 15 )]
+position = Vector2( 228, 348 )
+frame = 1
+
+[node name="hot_text" parent="." index="63" instance=ExtResource( 4 )]
+position = Vector2( 252, 348 )
+frame = 0
+
+[node name="lava10" parent="." index="64" instance=ExtResource( 16 )]
+position = Vector2( 444, 84 )
+frame = 2
+
+[node name="lava11" parent="." index="65" instance=ExtResource( 16 )]
+position = Vector2( 468, 36 )
+frame = 1
+
+[node name="lava12" parent="." index="66" instance=ExtResource( 16 )]
+position = Vector2( 492, 12 )
+
+[node name="lava13" parent="." index="67" instance=ExtResource( 16 )]
+position = Vector2( 468, 60 )
+
+[node name="lava14" parent="." index="68" instance=ExtResource( 16 )]
+position = Vector2( 444, 132 )
+
+[node name="lava15" parent="." index="69" instance=ExtResource( 16 )]
+position = Vector2( 444, 108 )
+frame = 2
+
+[node name="lava16" parent="." index="70" instance=ExtResource( 16 )]
+position = Vector2( 420, 180 )
+frame = 2
+
+[node name="lava17" parent="." index="71" instance=ExtResource( 16 )]
+position = Vector2( 420, 156 )
+
+[node name="lava18" parent="." index="72" instance=ExtResource( 16 )]
+position = Vector2( 420, 204 )
+frame = 1
+
+[node name="lava19" parent="." index="73" instance=ExtResource( 16 )]
+position = Vector2( 396, 228 )
+frame = 2
+
+[node name="lava20" parent="." index="74" instance=ExtResource( 16 )]
+position = Vector2( 396, 252 )
+frame = 1
+
+[node name="lava21" parent="." index="75" instance=ExtResource( 16 )]
+position = Vector2( 372, 276 )
+frame = 2
+
+[node name="lava22" parent="." index="76" instance=ExtResource( 16 )]
+position = Vector2( 372, 300 )
+frame = 1
+
+[node name="lava23" parent="." index="77" instance=ExtResource( 16 )]
+position = Vector2( 348, 348 )
+frame = 2
+
+[node name="lava24" parent="." index="78" instance=ExtResource( 16 )]
+position = Vector2( 348, 324 )
+frame = 1
+
+[node name="lava25" parent="." index="79" instance=ExtResource( 16 )]
+position = Vector2( 324, 372 )
+
+[node name="lava26" parent="." index="80" instance=ExtResource( 16 )]
+position = Vector2( 300, 396 )
+frame = 1
+
+[node name="lava27" parent="." index="81" instance=ExtResource( 16 )]
+position = Vector2( 276, 420 )
+frame = 2
+
+[node name="lava28" parent="." index="82" instance=ExtResource( 16 )]
+position = Vector2( 492, 36 )
+frame = 2
+
+[node name="lava29" parent="." index="83" instance=ExtResource( 16 )]
+position = Vector2( 516, 36 )
+frame = 1
+
+[node name="lava30" parent="." index="84" instance=ExtResource( 16 )]
+position = Vector2( 540, 36 )
+frame = 2
+
+[node name="lava31" parent="." index="85" instance=ExtResource( 16 )]
+position = Vector2( 564, 36 )
+frame = 2
+
+[node name="lava32" parent="." index="86" instance=ExtResource( 16 )]
+position = Vector2( 588, 36 )
+frame = 2
+
+[node name="lava33" parent="." index="87" instance=ExtResource( 16 )]
+position = Vector2( 612, 36 )
+
+[node name="lava34" parent="." index="88" instance=ExtResource( 16 )]
+position = Vector2( 636, 12 )
+frame = 1
+
+[node name="lava35" parent="." index="89" instance=ExtResource( 16 )]
+position = Vector2( 588, 60 )
+
+[node name="lava36" parent="." index="90" instance=ExtResource( 16 )]
+position = Vector2( 588, 84 )
+frame = 1
+
+[node name="lava37" parent="." index="91" instance=ExtResource( 16 )]
+position = Vector2( 564, 108 )
+frame = 2
+
+[node name="lava38" parent="." index="92" instance=ExtResource( 16 )]
+position = Vector2( 564, 156 )
+frame = 2
+
+[node name="lava39" parent="." index="93" instance=ExtResource( 16 )]
+position = Vector2( 564, 132 )
+
+[node name="lava40" parent="." index="94" instance=ExtResource( 16 )]
+position = Vector2( 540, 204 )
+frame = 1
+
+[node name="lava41" parent="." index="95" instance=ExtResource( 16 )]
+position = Vector2( 540, 180 )
+frame = 1
+
+[node name="lava42" parent="." index="96" instance=ExtResource( 16 )]
+position = Vector2( 540, 228 )
+frame = 2
+
+[node name="lava43" parent="." index="97" instance=ExtResource( 16 )]
+position = Vector2( 516, 252 )
+frame = 1
+
+[node name="lava44" parent="." index="98" instance=ExtResource( 16 )]
+position = Vector2( 492, 300 )
+frame = 2
+
+[node name="lava45" parent="." index="99" instance=ExtResource( 16 )]
+position = Vector2( 492, 276 )
+
+[node name="lava46" parent="." index="100" instance=ExtResource( 16 )]
+position = Vector2( 468, 324 )
+frame = 2
+
+[node name="lava47" parent="." index="101" instance=ExtResource( 16 )]
+position = Vector2( 444, 372 )
+
+[node name="lava48" parent="." index="102" instance=ExtResource( 16 )]
+position = Vector2( 420, 420 )
+frame = 2
+
+[node name="lava49" parent="." index="103" instance=ExtResource( 16 )]
+position = Vector2( 420, 396 )
+
+[node name="lava50" parent="." index="104" instance=ExtResource( 16 )]
+position = Vector2( 444, 348 )
+
+[node name="flag" parent="." index="105" instance=ExtResource( 5 )]
+position = Vector2( 636, 300 )
+frame = 1
+
+[node name="flag_text" parent="." index="106" instance=ExtResource( 12 )]
+position = Vector2( 612, 348 )
+frame = 2
+
+[node name="is_text5" parent="." index="107" instance=ExtResource( 15 )]
+position = Vector2( 636, 348 )
+frame = 1
+
+[node name="win_text" parent="." index="108" instance=ExtResource( 17 )]
+position = Vector2( 660, 348 )
+frame = 1
+
+[node name="lava51" parent="." index="109" instance=ExtResource( 16 )]
+position = Vector2( 732, 420 )
+frame = 1
+
+[node name="lava52" parent="." index="110" instance=ExtResource( 16 )]
+position = Vector2( 756, 396 )
+
+[node name="lava53" parent="." index="111" instance=ExtResource( 16 )]
+position = Vector2( 780, 372 )
+frame = 2
+
+[node name="lava54" parent="." index="112" instance=ExtResource( 16 )]
+position = Vector2( 780, 420 )
+frame = 1
+
+[node name="lava55" parent="." index="113" instance=ExtResource( 16 )]
+position = Vector2( 756, 420 )
+
+[node name="lava56" parent="." index="114" instance=ExtResource( 16 )]
+position = Vector2( 780, 396 )
+frame = 1
+
+[node name="lava57" parent="." index="115" instance=ExtResource( 16 )]
+position = Vector2( 516, 12 )
+frame = 2
+
+[node name="lava58" parent="." index="116" instance=ExtResource( 16 )]
+position = Vector2( 540, 12 )
+
+[node name="lava59" parent="." index="117" instance=ExtResource( 16 )]
+position = Vector2( 564, 12 )
+frame = 1
+
+[node name="lava60" parent="." index="118" instance=ExtResource( 16 )]
+position = Vector2( 588, 12 )
+frame = 1
+
+[node name="lava61" parent="." index="119" instance=ExtResource( 16 )]
+position = Vector2( 612, 12 )
+frame = 2
+
+[node name="lava62" parent="." index="120" instance=ExtResource( 16 )]
+position = Vector2( 492, 60 )
+frame = 2
+
+[node name="lava63" parent="." index="121" instance=ExtResource( 16 )]
+position = Vector2( 516, 60 )
+
+[node name="lava64" parent="." index="122" instance=ExtResource( 16 )]
+position = Vector2( 540, 60 )
+frame = 1
+
+[node name="lava65" parent="." index="123" instance=ExtResource( 16 )]
+position = Vector2( 564, 84 )
+frame = 1
+
+[node name="lava66" parent="." index="124" instance=ExtResource( 16 )]
+position = Vector2( 564, 60 )
+
+[node name="lava67" parent="." index="125" instance=ExtResource( 16 )]
+position = Vector2( 492, 108 )
+frame = 1
+
+[node name="lava68" parent="." index="126" instance=ExtResource( 16 )]
+position = Vector2( 492, 156 )
+
+[node name="lava69" parent="." index="127" instance=ExtResource( 16 )]
+position = Vector2( 492, 84 )
+
+[node name="lava70" parent="." index="128" instance=ExtResource( 16 )]
+position = Vector2( 468, 84 )
+frame = 1
+
+[node name="lava71" parent="." index="129" instance=ExtResource( 16 )]
+position = Vector2( 516, 84 )
+frame = 1
+
+[node name="lava72" parent="." index="130" instance=ExtResource( 16 )]
+position = Vector2( 540, 84 )
+frame = 1
+
+[node name="lava73" parent="." index="131" instance=ExtResource( 16 )]
+position = Vector2( 468, 108 )
+frame = 2
+
+[node name="lava74" parent="." index="132" instance=ExtResource( 16 )]
+position = Vector2( 516, 132 )
+frame = 2
+
+[node name="lava75" parent="." index="133" instance=ExtResource( 16 )]
+position = Vector2( 516, 108 )
+frame = 2
+
+[node name="lava76" parent="." index="134" instance=ExtResource( 16 )]
+position = Vector2( 540, 108 )
+frame = 2
+
+[node name="lava77" parent="." index="135" instance=ExtResource( 16 )]
+position = Vector2( 468, 132 )
+frame = 2
+
+[node name="lava78" parent="." index="136" instance=ExtResource( 16 )]
+position = Vector2( 492, 132 )
+frame = 2
+
+[node name="lava79" parent="." index="137" instance=ExtResource( 16 )]
+position = Vector2( 540, 132 )
+
+[node name="lava80" parent="." index="138" instance=ExtResource( 16 )]
+position = Vector2( 444, 156 )
+
+[node name="lava81" parent="." index="139" instance=ExtResource( 16 )]
+position = Vector2( 468, 156 )
+frame = 2
+
+[node name="lava82" parent="." index="140" instance=ExtResource( 16 )]
+position = Vector2( 516, 180 )
+
+[node name="lava83" parent="." index="141" instance=ExtResource( 16 )]
+position = Vector2( 516, 156 )
+frame = 1
+
+[node name="lava84" parent="." index="142" instance=ExtResource( 16 )]
+position = Vector2( 540, 156 )
+frame = 1
+
+[node name="lava85" parent="." index="143" instance=ExtResource( 16 )]
+position = Vector2( 444, 204 )
+
+[node name="lava86" parent="." index="144" instance=ExtResource( 16 )]
+position = Vector2( 444, 180 )
+frame = 2
+
+[node name="lava87" parent="." index="145" instance=ExtResource( 16 )]
+position = Vector2( 468, 204 )
+frame = 1
+
+[node name="lava88" parent="." index="146" instance=ExtResource( 16 )]
+position = Vector2( 468, 180 )
+frame = 2
+
+[node name="lava89" parent="." index="147" instance=ExtResource( 16 )]
+position = Vector2( 492, 204 )
+frame = 2
+
+[node name="lava90" parent="." index="148" instance=ExtResource( 16 )]
+position = Vector2( 492, 180 )
+
+[node name="lava91" parent="." index="149" instance=ExtResource( 16 )]
+position = Vector2( 516, 228 )
+frame = 1
+
+[node name="lava92" parent="." index="150" instance=ExtResource( 16 )]
+position = Vector2( 516, 204 )
+
+[node name="lava93" parent="." index="151" instance=ExtResource( 16 )]
+position = Vector2( 444, 228 )
+
+[node name="lava94" parent="." index="152" instance=ExtResource( 16 )]
+position = Vector2( 420, 228 )
+frame = 1
+
+[node name="lava95" parent="." index="153" instance=ExtResource( 16 )]
+position = Vector2( 468, 252 )
+frame = 1
+
+[node name="lava96" parent="." index="154" instance=ExtResource( 16 )]
+position = Vector2( 468, 228 )
+
+[node name="lava97" parent="." index="155" instance=ExtResource( 16 )]
+position = Vector2( 492, 228 )
+frame = 1
+
+[node name="lava98" parent="." index="156" instance=ExtResource( 16 )]
+position = Vector2( 420, 252 )
+frame = 1
+
+[node name="lava99" parent="." index="157" instance=ExtResource( 16 )]
+position = Vector2( 444, 252 )
+frame = 2
+
+[node name="lava100" parent="." index="158" instance=ExtResource( 16 )]
+position = Vector2( 492, 252 )
+frame = 1
+
+[node name="lava101" parent="." index="159" instance=ExtResource( 16 )]
+position = Vector2( 396, 276 )
+frame = 1
+
+[node name="lava102" parent="." index="160" instance=ExtResource( 16 )]
+position = Vector2( 420, 276 )
+frame = 2
+
+[node name="lava103" parent="." index="161" instance=ExtResource( 16 )]
+position = Vector2( 444, 276 )
+frame = 2
+
+[node name="lava104" parent="." index="162" instance=ExtResource( 16 )]
+position = Vector2( 468, 276 )
+frame = 2
+
+[node name="lava105" parent="." index="163" instance=ExtResource( 16 )]
+position = Vector2( 396, 300 )
+frame = 1
+
+[node name="lava106" parent="." index="164" instance=ExtResource( 16 )]
+position = Vector2( 420, 300 )
+frame = 2
+
+[node name="lava107" parent="." index="165" instance=ExtResource( 16 )]
+position = Vector2( 444, 300 )
+frame = 2
+
+[node name="lava108" parent="." index="166" instance=ExtResource( 16 )]
+position = Vector2( 468, 300 )
+
+[node name="lava109" parent="." index="167" instance=ExtResource( 16 )]
+position = Vector2( 396, 348 )
+
+[node name="lava110" parent="." index="168" instance=ExtResource( 16 )]
+position = Vector2( 372, 324 )
+frame = 1
+
+[node name="lava111" parent="." index="169" instance=ExtResource( 16 )]
+position = Vector2( 396, 324 )
+frame = 2
+
+[node name="lava112" parent="." index="170" instance=ExtResource( 16 )]
+position = Vector2( 420, 324 )
+frame = 1
+
+[node name="lava113" parent="." index="171" instance=ExtResource( 16 )]
+position = Vector2( 444, 324 )
+frame = 2
+
+[node name="lava114" parent="." index="172" instance=ExtResource( 16 )]
+position = Vector2( 372, 348 )
+frame = 2
+
+[node name="lava115" parent="." index="173" instance=ExtResource( 16 )]
+position = Vector2( 420, 348 )
+frame = 2
+
+[node name="lava116" parent="." index="174" instance=ExtResource( 16 )]
+position = Vector2( 348, 372 )
+frame = 2
+
+[node name="lava117" parent="." index="175" instance=ExtResource( 16 )]
+position = Vector2( 372, 372 )
+frame = 1
+
+[node name="lava118" parent="." index="176" instance=ExtResource( 16 )]
+position = Vector2( 396, 372 )
+
+[node name="lava119" parent="." index="177" instance=ExtResource( 16 )]
+position = Vector2( 420, 372 )
+frame = 2
+
+[node name="lava120" parent="." index="178" instance=ExtResource( 16 )]
+position = Vector2( 324, 396 )
+
+[node name="lava121" parent="." index="179" instance=ExtResource( 16 )]
+position = Vector2( 348, 396 )
+
+[node name="lava122" parent="." index="180" instance=ExtResource( 16 )]
+position = Vector2( 372, 396 )
+frame = 1
+
+[node name="lava123" parent="." index="181" instance=ExtResource( 16 )]
+position = Vector2( 396, 396 )
+
+[node name="lava124" parent="." index="182" instance=ExtResource( 16 )]
+position = Vector2( 300, 420 )
+frame = 2
+
+[node name="lava125" parent="." index="183" instance=ExtResource( 16 )]
+position = Vector2( 324, 420 )
+frame = 1
+
+[node name="lava126" parent="." index="184" instance=ExtResource( 16 )]
+position = Vector2( 348, 420 )
+
+[node name="lava127" parent="." index="185" instance=ExtResource( 16 )]
+position = Vector2( 372, 420 )
+
+[node name="lava128" parent="." index="186" instance=ExtResource( 16 )]
+position = Vector2( 396, 420 )
+frame = 2
+
+[node name="baba_text2" parent="." index="187" instance=ExtResource( 6 )]
+position = Vector2( 204, 84 )
+frame = 1
+
+[node name="is_text6" parent="." index="188" instance=ExtResource( 15 )]
+position = Vector2( 228, 84 )
+
+[node name="you_text" parent="." index="189" instance=ExtResource( 9 )]
+position = Vector2( 252, 84 )
+frame = 1
+
+[node name="baba" parent="." index="190" instance=ExtResource( 11 )]
+position = Vector2( 348, 36 )
+frame = 0
+
+[node name="lava_text2" parent="." index="191" instance=ExtResource( 2 )]
+position = Vector2( 300, 252 )
+frame = 0

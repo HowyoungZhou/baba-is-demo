@@ -20,12 +20,22 @@ bool PushProperty::on_collision(Entity *source, Entity *target, TilePosition mov
 }
 
 bool DefeatProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+	if (source->properties.has_property(Properties::SINK)) {
+		target->destroy();
+		source->destroy();
+		return true;
+	}
     if (source->properties.has_property(Properties::YOU)) source->destroy();
     return true;
 }
 
 // added by zdz 20.07.16
 bool SinkProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+	if (target->properties.has_property(Properties::PUSH)) {
+		if (!Property::on_collision(source, target, movement)) return false;
+		target->set_tile_pos(target->get_tile_pos() + movement);
+		return true;
+	}
     // target destroyed
     target->destroy();
     source->destroy();
@@ -33,12 +43,19 @@ bool SinkProperty::on_collision(Entity *source, Entity *target, TilePosition mov
 }
 
 bool HotProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
+	if (target->properties.has_property(Properties::PUSH)) {
+		if (!Property::on_collision(source, target, movement)) return false;
+		target->set_tile_pos(target->get_tile_pos() + movement);
+		return true;
+	}
     if (source->properties.has_property(Properties::MELT)) source->destroy();
     return true;
 }
 
 bool WinProperty::on_collision(Entity *source, Entity *target, TilePosition movement) const {
-    // TODO: stage win: change scene, need operate outside
+    if (source->properties.has_property(Properties::YOU)) {
+        LevelController::instance->show_win_screen();
+    }
     return true;
 }
 

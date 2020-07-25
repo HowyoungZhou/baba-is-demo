@@ -7,6 +7,7 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <InputEvent.hpp>
+#include <Control.hpp>
 
 #include <unordered_set>
 #include <map>
@@ -66,6 +67,14 @@ public:
     }
 
     void add_controlled_entity(Entity *entity) { controlled_entities.insert(entity); }
+
+    void show_win_screen() {
+        cast_to<godot::Control>(get_node("WinScreen"))->set_visible(true);
+    }
+
+    void show_lose_screen() {
+        cast_to<godot::Control>(get_node("LoseScreen"))->set_visible(true);
+    }
 
 private:
     real_t tileSize = 24.f;

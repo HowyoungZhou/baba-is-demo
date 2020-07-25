@@ -50,4 +50,8 @@ void TextEntity::rule_check() {
 
     for (auto pair : positive) pair.second->apply_all();
     for (auto pair : negative) pair.second->revert_all();
+
+    if (LevelController::instance->controlled_entities.empty()) {
+        LevelController::instance->show_lose_screen();
+    }
 }
