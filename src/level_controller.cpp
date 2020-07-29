@@ -4,9 +4,15 @@
 #include "directional_entity.h"
 #include "character_entity.h"
 
+#include <SceneTree.hpp>
+#include <Viewport.hpp>
+
 LevelController *LevelController::instance = nullptr;
 
 void LevelController::_ready() {
+    get_tree()->get_root()->connect("size_changed", this, "_on_viewport_size_changed");
+
+    _on_viewport_size_changed();
     TextEntity::rule_check();
 }
 

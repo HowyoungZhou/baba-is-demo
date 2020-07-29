@@ -19,8 +19,9 @@
 [ext_resource path="res://sprites/text/baba_text.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sprites/text/you_text.tscn" type="PackedScene" id=18]
 
-
 [node name="level_controller" instance=ExtResource( 9 )]
+sceneWidth = 22
+sceneHeight = 15
 
 [node name="wall" parent="." index="0" instance=ExtResource( 14 )]
 position = Vector2( 60, 36 )
@@ -368,7 +369,6 @@ frame = 2
 
 [node name="wall_text" parent="." index="93" instance=ExtResource( 12 )]
 position = Vector2( 36, 12 )
-frame = 2
 
 [node name="is_text5" parent="." index="94" instance=ExtResource( 6 )]
 position = Vector2( 36, 36 )

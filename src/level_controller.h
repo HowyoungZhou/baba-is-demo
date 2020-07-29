@@ -25,9 +25,14 @@ public:
         godot::register_method("_exit_tree", &LevelController::_exit_tree);
         godot::register_method("_unhandled_input", &LevelController::_unhandled_input);
         godot::register_method("_ready", &LevelController::_ready);
+        godot::register_method("_on_viewport_size_changed", &LevelController::_on_viewport_size_changed);
 
         godot::register_property<LevelController, real_t>("tileSize", &LevelController::set_tile_size,
                                                           &LevelController::get_tile_size, 24.f);
+        godot::register_property<LevelController, int>("sceneWidth", &LevelController::set_scene_width,
+                                                        &LevelController::get_scene_width, 20);
+        godot::register_property<LevelController, int>("sceneHeight", &LevelController::set_scene_height,
+                                                        &LevelController::get_scene_height, 18);
     }
 
     void _init() {}
@@ -47,6 +52,10 @@ public:
         else if (event->is_action_pressed("ui_down")) move_entities(Vector2<long>(0, 1), Directions::DOWN);
         else if (event->is_action_pressed("ui_left")) move_entities(Vector2<long>(-1, 0), Directions::LEFT);
         else if (event->is_action_pressed("ui_right")) move_entities(Vector2<long>(1, 0), Directions::RIGHT);
+    }
+
+    void _on_viewport_size_changed() {
+        set_position(get_viewport_rect().get_size() / 2 - tileSize * static_cast<godot::Vector2>(scene_size) / 2);
     }
 
     real_t get_tile_size() const {
@@ -69,15 +78,32 @@ public:
     void add_controlled_entity(Entity *entity) { controlled_entities.insert(entity); }
 
     void show_win_screen() {
-        cast_to<godot::Control>(get_node("WinScreen"))->set_visible(true);
+        cast_to<godot::Control>(get_node("UI/WinScreen"))->set_visible(true);
     }
 
     void show_lose_screen() {
-        cast_to<godot::Control>(get_node("LoseScreen"))->set_visible(true);
+        cast_to<godot::Control>(get_node("UI/LoseScreen"))->set_visible(true);
+    }
+
+    void set_scene_width(int value) {
+        scene_size.x = value;
+    }
+
+    int get_scene_width() const {
+        return scene_size.x;
+    }
+
+    void set_scene_height(int value) {
+        scene_size.y = value;
+    }
+
+    int get_scene_height() const {
+        return scene_size.y;
     }
 
 private:
     real_t tileSize = 24.f;
+    Vector2<long> scene_size{20, 18};
 
     void move_entities(Vector2<long> movement, Directions direction);
 };
