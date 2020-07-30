@@ -65,15 +65,15 @@ public:
      * Center the scene when the window size changed.
      */
     void _on_viewport_size_changed() {
-        set_position(get_viewport_rect().get_size() / 2 - tileSize * static_cast<godot::Vector2>(scene_size) / 2);
+        set_position(get_viewport_rect().get_size() / 2 - _tile_size * static_cast<godot::Vector2>(_scene_size) / 2);
     }
 
     real_t get_tile_size() const {
-        return tileSize;
+        return _tile_size;
     }
 
     void set_tile_size(real_t value) {
-        tileSize = value;
+        _tile_size = value;
     }
 
     /**
@@ -81,7 +81,7 @@ public:
      * @return Dimension of the tiles.
      */
     Vector2<long> get_tile_dim() {
-        auto size = get_viewport_rect().get_size() / tileSize;
+        auto size = get_viewport_rect().get_size() / _tile_size;
         return Vector2<long>(std::ceil(size.x), std::ceil(size.y));
     }
 
@@ -104,24 +104,24 @@ public:
     }
 
     void set_scene_width(int value) {
-        scene_size.x = value;
+        _scene_size.x = value;
     }
 
     int get_scene_width() const {
-        return scene_size.x;
+        return _scene_size.x;
     }
 
     void set_scene_height(int value) {
-        scene_size.y = value;
+        _scene_size.y = value;
     }
 
     int get_scene_height() const {
-        return scene_size.y;
+        return _scene_size.y;
     }
 
 private:
-    real_t tileSize = 24.f;
-    Vector2<long> scene_size{20, 18};
+    real_t _tile_size = 24.f;
+    Vector2<long> _scene_size{20, 18};
 
     void move_entities(Vector2<long> movement, Directions direction);
 };

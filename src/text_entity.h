@@ -9,10 +9,10 @@ class TextEntity : public Entity {
 GODOT_SUBCLASS(TextEntity, Entity)
 public:
     static void _register_methods() {
-        godot::register_property<TextEntity, size_t>("Text", &TextEntity::word_, 0,
+        godot::register_property<TextEntity, size_t>("Text", &TextEntity::_word, 0,
                                                      GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
                                                      GODOT_PROPERTY_HINT_ENUM, kWordsHintString);
-        godot::register_property<TextEntity, size_t>("Noun", &TextEntity::noun, 76,
+        godot::register_property<TextEntity, size_t>("Noun", &TextEntity::_noun, 76,
                                                  GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
@@ -23,11 +23,11 @@ public:
     }
 
     void set_word(Words value) {
-        word_ = static_cast<size_t>(value) - static_cast<size_t>(Words::ALGAE);
+        _word = static_cast<size_t>(value) - static_cast<size_t>(Words::ALGAE);
     }
 
     Words get_word() const {
-        return static_cast<Words>(word_ + static_cast<size_t>(Words::ALGAE));
+        return static_cast<Words>(_word + static_cast<size_t>(Words::ALGAE));
     }
 
     void set_tile_pos(TilePosition newPos) override {
@@ -38,7 +38,7 @@ public:
     static void rule_check();
 
 protected:
-    size_t word_ = 0;
+    size_t _word = 0;
 
     template<class OutIter>
     static void scan_line(long index, long length, bool x_axis, OutIter output) {

@@ -27,7 +27,7 @@ public:
         godot::register_method("_enter_tree", &Entity::_enter_tree);
         godot::register_method("_exit_tree", &Entity::_exit_tree);
 
-        godot::register_property<Entity, size_t>("Noun", &Entity::noun, 0,
+        godot::register_property<Entity, size_t>("Noun", &Entity::_noun, 0,
                                                  GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT,
                                                  GODOT_PROPERTY_HINT_ENUM, kNounsHintString);
     }
@@ -38,8 +38,8 @@ public:
      * Add a Tween node for moving animation.
      */
     void _ready() {
-        tween = godot::Tween::_new();
-        add_child(tween);
+        _tween = godot::Tween::_new();
+        add_child(_tween);
     }
 
     /**
@@ -47,7 +47,7 @@ public:
      * @return Noun value.
      */
     Nouns get_noun() const {
-        return static_cast<Nouns>(noun + static_cast<size_t>(Nouns::ALGAE));
+        return static_cast<Nouns>(_noun + static_cast<size_t>(Nouns::ALGAE));
     }
 
     /**
@@ -55,7 +55,7 @@ public:
      * @param value Noun value.
      */
     void set_noun(Nouns value) {
-        noun = static_cast<size_t>(value) - static_cast<size_t>(Nouns::ALGAE);
+        _noun = static_cast<size_t>(value) - static_cast<size_t>(Nouns::ALGAE);
     }
 
     /**
@@ -63,7 +63,7 @@ public:
      * @return Tile position.
      */
     TilePosition get_tile_pos() const {
-        return tile_pos_;
+        return _tile_pos;
     }
 
     /**
@@ -98,32 +98,32 @@ public:
      * Register the entity. Add to the position map and noun map.
      */
     void register_entity() {
-        nounEntityMap.insert({get_noun(), this});
-        posEntityMap.insert({get_tile_pos(), this});
+        _noun_entity_map.insert({get_noun(), this});
+        _pos_entity_map.insert({get_tile_pos(), this});
     }
 
     /**
      * Unregister the entity. Remove the position map and noun map.
      */
     void unregister_entity() {
-        erase_pair(nounEntityMap, get_noun(), this);
-        erase_pair(posEntityMap, get_tile_pos(), this);
+        erase_pair(_noun_entity_map, get_noun(), this);
+        erase_pair(_pos_entity_map, get_tile_pos(), this);
     }
 
     /**
      * Set the tile position of the entity.
-     * @param newPos New tile position.
+     * @param new_pos New tile position.
      */
-    virtual void set_tile_pos(TilePosition newPos) {
+    virtual void set_tile_pos(TilePosition new_pos) {
         unregister_entity();
-        tile_pos_ = newPos;
+        _tile_pos = new_pos;
         register_entity();
 
         auto tileSize = get_tile_size();
-        auto pos = static_cast<godot::Vector2>(newPos) * tileSize + 0.5f * godot::Vector2(tileSize, tileSize);
-        tween->interpolate_property(this, "position", get_position(), pos, 1.0 / speed, godot::Tween::TRANS_QUAD,
+        auto pos = static_cast<godot::Vector2>(new_pos) * tileSize + 0.5f * godot::Vector2(tileSize, tileSize);
+        _tween->interpolate_property(this, "position", get_position(), pos, 1.0 / speed, godot::Tween::TRANS_QUAD,
                                     godot::Tween::EASE_IN_OUT);
-        tween->start();
+        _tween->start();
     }
 
     /**
@@ -132,7 +132,7 @@ public:
      * @return Iterator range of entities.
      */
     static auto get_entities_at_pos(TilePosition pos) {
-        return posEntityMap.equal_range(pos);
+        return _pos_entity_map.equal_range(pos);
     }
 
     /**
@@ -141,7 +141,7 @@ public:
      * @return Iterator range of entities.
      */
     static auto find_entities_of_noun(Nouns noun) {
-        return nounEntityMap.equal_range(noun);
+        return _noun_entity_map.equal_range(noun);
     }
 
     /**
@@ -155,12 +155,12 @@ public:
 protected:
     const real_t speed = 4;
 
-    size_t noun = 0;
-    TilePosition tile_pos_;
-    godot::Tween *tween;
+    size_t _noun = 0;
+    TilePosition _tile_pos;
+    godot::Tween *_tween;
 
-    static std::unordered_multimap<Nouns, Entity *> nounEntityMap;
-    static std::unordered_multimap<TilePosition, Entity *> posEntityMap;
+    static std::unordered_multimap<Nouns, Entity *> _noun_entity_map;
+    static std::unordered_multimap<TilePosition, Entity *> _pos_entity_map;
 
     static real_t get_tile_size() {
         return LevelController::instance->get_tile_size();
@@ -178,7 +178,7 @@ protected:
     virtual void update_tile_pos() {
         auto tileSize = get_tile_size();
         auto tilePos = (get_position() - 0.5f * godot::Vector2(tileSize, tileSize)) / tileSize;
-        tile_pos_ = TilePosition(std::lround(tilePos.x), std::lround(tilePos.y));
+        _tile_pos = TilePosition(std::lround(tilePos.x), std::lround(tilePos.y));
     }
 };
 
