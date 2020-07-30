@@ -25,10 +25,25 @@ public:
 
     virtual int get_priority() const { return 0; }
 
+    /**
+     * Collision signal handler.
+     * @param source Collider.
+     * @param target Collided entity.
+     * @param movement Movement vector.
+     * @return false if the collision should be cancelled.
+     */
     virtual bool on_collision(Entity *source, Entity *target, TilePosition movement) const;
 
+    /**
+     * Property registered signal handler.
+     * @param entity Owner entity.
+     */
     virtual void on_registered(Entity *entity) const {}
 
+    /**
+     * Entity destroyed signal handler.
+     * @param entity Owner entity.
+     */
     virtual void on_destroyed(Entity *entity) const {}
 };
 

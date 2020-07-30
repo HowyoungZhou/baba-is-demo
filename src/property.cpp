@@ -6,6 +6,7 @@ bool Property::on_collision(Entity *source, Entity *target, TilePosition movemen
     std::vector<Entity *> next_entities;
     for (auto iter = range.first; iter != range.second; ++iter) next_entities.push_back(iter->second);
 
+    // signal the enabled properties with the highest priority
     auto res = true;
     for (auto entity : next_entities) {
         if (!entity->properties.on_collision(target, entity, movement)) res = false;

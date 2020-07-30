@@ -20,6 +20,9 @@ public:
     static LevelController *instance;
     std::unordered_set<Entity*> controlled_entities;
 
+    /**
+    * Register methods for Godot.
+    */
     static void _register_methods() {
         godot::register_method("_enter_tree", &LevelController::_enter_tree);
         godot::register_method("_exit_tree", &LevelController::_exit_tree);
@@ -47,6 +50,10 @@ public:
         instance = nullptr;
     }
 
+    /**
+     * Handle the user input.
+     * @param event Input event.
+     */
     void _unhandled_input(const godot::Ref<godot::InputEvent> event) {
         if (event->is_action_pressed("ui_up")) move_entities(Vector2<long>(0, -1), Directions::UP);
         else if (event->is_action_pressed("ui_down")) move_entities(Vector2<long>(0, 1), Directions::DOWN);
@@ -54,6 +61,9 @@ public:
         else if (event->is_action_pressed("ui_right")) move_entities(Vector2<long>(1, 0), Directions::RIGHT);
     }
 
+    /**
+     * Center the scene when the window size changed.
+     */
     void _on_viewport_size_changed() {
         set_position(get_viewport_rect().get_size() / 2 - tileSize * static_cast<godot::Vector2>(scene_size) / 2);
     }
@@ -66,11 +76,19 @@ public:
         tileSize = value;
     }
 
+    /**
+     * Get the dimension of the tiles.
+     * @return Dimension of the tiles.
+     */
     Vector2<long> get_tile_dim() {
         auto size = get_viewport_rect().get_size() / tileSize;
         return Vector2<long>(std::ceil(size.x), std::ceil(size.y));
     }
 
+    /**
+     * Set the dimension of the tiles.
+     * @param dim New dimention.
+     */
     void set_tile_dim(Vector2<long> dim) {
         get_viewport_rect().set_size(static_cast<godot::Vector2>(dim * get_tile_size()));
     }

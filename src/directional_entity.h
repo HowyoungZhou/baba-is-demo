@@ -6,6 +6,9 @@
 class DirectionalEntity : public Entity {
 GODOT_SUBCLASS(DirectionalEntity, Entity)
 public:
+    /**
+     * Register methods for Godot.
+     */
     static void _register_methods() {
         godot::register_method("_enter_tree", &DirectionalEntity::_enter_tree);
 
@@ -15,15 +18,26 @@ public:
                                                             GODOT_PROPERTY_HINT_ENUM, kDirectionsHintString);
     }
 
+    /**
+     * Initialize the animation when entered the tree.
+     */
     void _enter_tree() {
         update_animation();
     }
 
+    /**
+     * Change the direction of the entity.
+     * @param value New direction.
+     */
     void set_direction(Directions value) {
         direction_ = static_cast<size_t>(value) - static_cast<size_t>(Directions::UP);
         update_animation();
     }
 
+    /**
+     * Get the current direction of the entity.
+     * @return Current direction.
+     */
     Directions get_direction() const {
         return static_cast<Directions>(direction_ + static_cast<size_t>(Directions::UP));
     }

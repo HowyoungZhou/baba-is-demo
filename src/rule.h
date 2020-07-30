@@ -36,6 +36,11 @@ public:
 
     virtual ~Rule() = default;
 
+    /**
+     * Check if two rules are complementary.
+     * @param other Other rule.
+     * @return true if two rules are complementary.
+     */
     virtual bool complementary(const Rule &other) const {
         return typeid(*this) == typeid(other) && noun == other.noun && inverted != other.inverted;
     }

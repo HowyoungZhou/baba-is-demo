@@ -168,6 +168,14 @@ class RuleParser {
 public:
     RuleParser() = delete;
 
+    /**
+     * Parse rules from a Nouns sequence.
+     * @tparam InIter Input iterator type.
+     * @tparam OutIter Output inserter iterator type.
+     * @param begin Input begin iterator.
+     * @param end Input end iterator.
+     * @param output Output inserter iterator.
+     */
     template<class InIter, class OutIter>
     static void parseRule(InIter begin, InIter end, OutIter output) {
         std::vector<std::unique_ptr<antlr4::Token>> tokens;
@@ -179,6 +187,12 @@ public:
         parseRule(&tokenSource, output);
     }
 
+    /**
+     * Parse rules from a string.
+     * @tparam OutIter Output inserter iterator type.
+     * @param text Rule string.
+     * @param output Output inserter iterator.
+     */
     template<class OutIter>
     static void parseRule(const std::string &text, OutIter output) {
         antlr4::ANTLRInputStream inStream(text);

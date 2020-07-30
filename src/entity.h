@@ -19,6 +19,9 @@ GODOT_CLASS(Entity, AnimatedSprite)
 public:
     PropertyList properties;
 
+    /**
+     * Register methods for Godot.
+     */
     static void _register_methods() {
         godot::register_method("_ready", &Entity::_ready);
         godot::register_method("_enter_tree", &Entity::_enter_tree);
@@ -31,28 +34,49 @@ public:
 
     void _init() {}
 
+    /**
+     * Add a Tween node for moving animation.
+     */
     void _ready() {
         tween = godot::Tween::_new();
         add_child(tween);
     }
 
+    /**
+     * Get the noun of the entity.
+     * @return Noun value.
+     */
     Nouns get_noun() const {
         return static_cast<Nouns>(noun + static_cast<size_t>(Nouns::ALGAE));
     }
 
+    /**
+     * Set the noun of the entity.
+     * @param value Noun value.
+     */
     void set_noun(Nouns value) {
         noun = static_cast<size_t>(value) - static_cast<size_t>(Nouns::ALGAE);
     }
 
+    /**
+     * Get the tile position of the entity.
+     * @return Tile position.
+     */
     TilePosition get_tile_pos() const {
         return tile_pos_;
     }
 
+    /**
+     * Update the tile position and register the entity.
+     */
     void _enter_tree() {
         update_tile_pos();
         register_entity();
     }
 
+    /**
+     * Unregister the entity.
+     */
     void _exit_tree() {
         unregister_entity();
         LevelController::instance->controlled_entities.erase(this);
@@ -61,21 +85,35 @@ public:
         }
     }
 
+    /**
+     * Set the position of the entity.
+     * @param value New position.
+     */
     void set_position(const godot::Vector2 value) {
         godot::Node2D::set_position(value);
         update_tile_pos();
     }
 
+    /**
+     * Register the entity. Add to the position map and noun map.
+     */
     void register_entity() {
         nounEntityMap.insert({get_noun(), this});
         posEntityMap.insert({get_tile_pos(), this});
     }
 
+    /**
+     * Unregister the entity. Remove the position map and noun map.
+     */
     void unregister_entity() {
         erase_pair(nounEntityMap, get_noun(), this);
         erase_pair(posEntityMap, get_tile_pos(), this);
     }
 
+    /**
+     * Set the tile position of the entity.
+     * @param newPos New tile position.
+     */
     virtual void set_tile_pos(TilePosition newPos) {
         unregister_entity();
         tile_pos_ = newPos;
@@ -88,14 +126,27 @@ public:
         tween->start();
     }
 
+    /**
+     * Search entities at a specific location.
+     * @param pos Tile position.
+     * @return Iterator range of entities.
+     */
     static auto get_entities_at_pos(TilePosition pos) {
         return posEntityMap.equal_range(pos);
     }
 
+    /**
+     * Search entities of a specific noun.
+     * @param noun Noun.
+     * @return Iterator range of entities.
+     */
     static auto find_entities_of_noun(Nouns noun) {
         return nounEntityMap.equal_range(noun);
     }
 
+    /**
+     * Remove the entity from the scene.
+     */
     void destroy() {
         queue_free();
         properties.on_destroyed(this);

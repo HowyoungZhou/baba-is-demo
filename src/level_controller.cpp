@@ -35,6 +35,7 @@ void LevelController::move_entities(Vector2<long> movement, Directions direction
     // move the front entities in the direction of the movement first
     std::sort(sortedEntities.begin(), sortedEntities.end(), comp);
 
+    // switch to the next animation of the move entities
     for (auto entity : sortedEntities) {
         PushProperty().on_collision(nullptr, entity, movement);
         if (auto directional_entity = dynamic_cast<DirectionalEntity *>(entity))

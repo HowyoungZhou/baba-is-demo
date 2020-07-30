@@ -8,11 +8,17 @@
 class CharacterEntity : public DirectionalEntity {
 GODOT_SUBCLASS(CharacterEntity, DirectionalEntity)
 public:
+    /**
+     * Register methods for Godot.
+     */
     static void _register_methods() {
         godot::register_property<CharacterEntity, int>("Animation Index", &CharacterEntity::animation_index_, 0);
         godot::register_property<CharacterEntity, int>("Animation Count", &CharacterEntity::animation_count_, 4);
     }
 
+    /**
+     * Switch to the next animation.
+     */
     void next_animation() {
         animation_index_++;
         animation_index_ %= animation_count_;

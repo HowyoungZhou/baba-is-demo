@@ -18,6 +18,11 @@ public:
         return inverted == other.inverted && objects == other.objects;
     }
 
+    /**
+     * Check if the condition satisfies.
+     * @param entity Owner entity.
+     * @return true if the condition satisfies else false.
+     */
     virtual bool eval(const Entity *entity) = 0;
 };
 
