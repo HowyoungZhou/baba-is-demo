@@ -58,3 +58,4 @@ CMakeSettings.json
 
 # ANTLR
 gen
+.antlr
