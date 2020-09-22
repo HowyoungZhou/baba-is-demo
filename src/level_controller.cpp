@@ -43,4 +43,5 @@ void LevelController::move_entities(Vector2<long> movement, Directions direction
         if (auto character = dynamic_cast<CharacterEntity *>(entity))
             character->next_animation();
     }
+    TextEntity::rule_check();
 }

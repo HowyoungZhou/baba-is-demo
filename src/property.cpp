@@ -2,7 +2,11 @@
 #include "entity.h"
 
 bool Property::on_collision(Entity *source, Entity *target, TilePosition movement) const {
-    auto range = Entity::get_entities_at_pos(target->get_tile_pos() + movement);
+    auto next_pos=target->get_tile_pos() + movement;
+    if(next_pos.x>LevelController::instance->get_scene_width()||next_pos.x<0||
+        next_pos.y>LevelController::instance->get_scene_height()||next_pos.y<0)
+        return false;
+    auto range = Entity::get_entities_at_pos(next_pos);
     std::vector<Entity *> next_entities;
     for (auto iter = range.first; iter != range.second; ++iter) next_entities.push_back(iter->second);
 

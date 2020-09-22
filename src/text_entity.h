@@ -30,11 +30,6 @@ public:
         return static_cast<Words>(_word + static_cast<size_t>(Words::ALGAE));
     }
 
-    void set_tile_pos(TilePosition newPos) override {
-        Entity::set_tile_pos(newPos);
-        rule_check();
-    }
-
     static void rule_check();
 
 protected:
