@@ -19,4 +19,3 @@ visible = false
 [node name="EntitySpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
 [connection signal="spawn_signals" from="." to="EntitySpawner" method="_on_LevelController_spawn_signals"]
-[connection signal="spawn_signals" from="." to="." method="_on_LevelController_spawn_signals"]
