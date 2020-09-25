@@ -49,7 +49,11 @@ public:
         switch (noun.noun) {
             default:
                 auto range = Entity::find_entities_of_noun(noun.noun);
-                for (auto iter = range.first; iter != range.second; ++iter) apply(iter->second);
+                std::vector<Entity*> entities;
+                for (auto iter = range.first; iter != range.second; ++iter) 
+                    entities.push_back(iter->second);
+                for(auto entity:entities)
+                    apply(entity);
                 break;
         }
     }
@@ -130,7 +134,21 @@ class TransformRule : public NounRule {
 public:
     TransformRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, noun, object) {}
 
-    void apply(Entity *entity) override {}
+    void apply(Entity *entity) override {
+        LevelController::instance->spawn(Entity::get_sprite_type(object.noun),Entity::get_eneity_name(object.noun), entity->get_tile_pos());
+        entity->_exit_tree();
+        entity->queue_free();
+        auto range = Entity::find_entities_of_noun(object.noun);
+        std::vector<Entity*> entities;
+        for (auto iter = range.first; iter != range.second; ++iter)
+            entities.push_back(iter->second);
+        for (auto new_entity : entities)
+        {
+            new_entity->unregister_entity();
+            new_entity->update_tile_pos();
+            new_entity->register_entity();
+        }
+    }
 };
 
 class HasRule : public NounRule {

@@ -45,3 +45,7 @@ void LevelController::move_entities(Vector2<long> movement, Directions direction
     }
     TextEntity::rule_check();
 }
+
+void LevelController::spawn(const char *sprite_type, const char *entity_name, TilePosition position){
+    emit_signal("spawn_signals", sprite_type, entity_name, position.x, position.y);
+}

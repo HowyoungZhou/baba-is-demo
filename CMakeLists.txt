@@ -54,7 +54,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/antlr4/runtime/Cpp/runtime/
 file(GLOB_RECURSE SOURCES src/*.c**)
 file(GLOB_RECURSE HEADERS src/*.h**)
 
-add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS} ${ANTLR_BabaIsYouLexer_CXX_OUTPUTS} ${ANTLR_BabaIsYouParser_CXX_OUTPUTS})
+add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS} ${ANTLR_BabaIsYouLexer_CXX_OUTPUTS} ${ANTLR_BabaIsYouParser_CXX_OUTPUTS} "src/entity_name_and_type.hpp")
 
 # Use the dynamic MSVC runtime
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
