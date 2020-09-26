@@ -46,6 +46,28 @@ void LevelController::move_entities(Vector2<long> movement, Directions direction
     TextEntity::rule_check();
 }
 
-void LevelController::spawn(const char *sprite_type, const char *entity_name, TilePosition position){
-    emit_signal("spawn_signals", sprite_type, entity_name, position.x, position.y);
+void LevelController::spawn(Nouns object, TilePosition position) {
+    emit_signal("spawn_signals", Entity::get_sprite_type(object), Entity::get_eneity_name(object), position.x, position.y);
+    auto range = Entity::find_entities_of_noun(object);
+    std::vector<Entity*> entities;
+    for (auto iter = range.first; iter != range.second; ++iter)
+        entities.push_back(iter->second);
+    for (auto new_entity : entities)
+    {
+        new_entity->unregister_entity();
+        new_entity->update_tile_pos();
+        new_entity->register_entity();
+    }
+}
+
+bool LevelController::is_win()
+{
+    for (auto entity : controlled_entities)
+    {
+        auto range = Entity::get_entities_at_pos(entity->get_tile_pos());
+        for (auto iter = range.first; iter != range.second; ++iter)
+            if (iter->second->properties.has_property(Properties::WIN))
+                return true;
+    }
+    return false;
 }

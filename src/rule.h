@@ -135,19 +135,9 @@ public:
     TransformRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, noun, object) {}
 
     void apply(Entity *entity) override {
-        LevelController::instance->spawn(Entity::get_sprite_type(object.noun),Entity::get_eneity_name(object.noun), entity->get_tile_pos());
+        LevelController::instance->spawn(object.noun, entity->get_tile_pos());
         entity->_exit_tree();
         entity->queue_free();
-        auto range = Entity::find_entities_of_noun(object.noun);
-        std::vector<Entity*> entities;
-        for (auto iter = range.first; iter != range.second; ++iter)
-            entities.push_back(iter->second);
-        for (auto new_entity : entities)
-        {
-            new_entity->unregister_entity();
-            new_entity->update_tile_pos();
-            new_entity->register_entity();
-        }
     }
 };
 
@@ -162,7 +152,9 @@ class MakeRule : public NounRule {
 public:
     MakeRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, std::move(noun), std::move(object)) {}
 
-    void apply(Entity *entity) override {}
+    void apply(Entity *entity) override {
+        LevelController::instance->spawn(object.noun, entity->get_tile_pos());
+    }
 };
 
 #endif //BABA_IS_YOU_RULE_H

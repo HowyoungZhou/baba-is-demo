@@ -123,7 +123,9 @@ public:
         return _scene_size.y;
     }
 
-    void spawn(const char* sprite_type, const char* entity_name, TilePosition position) ;
+    void spawn(Nouns object, TilePosition position);
+
+    bool is_win();
 
 private:
     real_t _tile_size = 24.f;
