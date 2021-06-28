@@ -22,281 +22,283 @@
 
 [node name="lake-10 tuo doors" instance=ExtResource( 1 )]
 sceneWidth = 18
-sceneHeight = 13
+sceneHeight = 16
 
 [node name="hedge" parent="." index="0" instance=ExtResource( 4 )]
-position = Vector2( 12, 36 )
-frame = 2
+position = Vector2( 60, 84 )
+frame = 0
 
 [node name="hedge7" parent="." index="1" instance=ExtResource( 4 )]
-position = Vector2( 36, 36 )
+position = Vector2( 84, 84 )
+frame = 2
 
 [node name="hedge8" parent="." index="2" instance=ExtResource( 4 )]
-position = Vector2( 60, 36 )
+position = Vector2( 108, 84 )
+frame = 2
 
 [node name="hedge2" parent="." index="3" instance=ExtResource( 4 )]
-position = Vector2( 12, 60 )
-frame = 2
+position = Vector2( 60, 108 )
+frame = 0
 
 [node name="hedge3" parent="." index="4" instance=ExtResource( 4 )]
-position = Vector2( 12, 84 )
+position = Vector2( 60, 132 )
+frame = 2
 
 [node name="hedge9" parent="." index="5" instance=ExtResource( 4 )]
-position = Vector2( 84, 84 )
+position = Vector2( 132, 132 )
+frame = 2
 
 [node name="hedge31" parent="." index="6" instance=ExtResource( 4 )]
-position = Vector2( 300, 36 )
-frame = 0
+position = Vector2( 348, 84 )
 
 [node name="hedge32" parent="." index="7" instance=ExtResource( 4 )]
-position = Vector2( 324, 36 )
-frame = 0
+position = Vector2( 372, 84 )
 
 [node name="hedge33" parent="." index="8" instance=ExtResource( 4 )]
-position = Vector2( 348, 36 )
-frame = 0
+position = Vector2( 396, 84 )
 
 [node name="hedge34" parent="." index="9" instance=ExtResource( 4 )]
-position = Vector2( 372, 36 )
-frame = 2
-
-[node name="hedge35" parent="." index="10" instance=ExtResource( 4 )]
-position = Vector2( 396, 36 )
-frame = 2
-
-[node name="hedge36" parent="." index="11" instance=ExtResource( 4 )]
-position = Vector2( 420, 36 )
-
-[node name="hedge45" parent="." index="12" instance=ExtResource( 4 )]
-position = Vector2( 420, 60 )
-frame = 0
-
-[node name="hedge46" parent="." index="13" instance=ExtResource( 4 )]
 position = Vector2( 420, 84 )
 frame = 0
 
-[node name="hedge47" parent="." index="14" instance=ExtResource( 4 )]
-position = Vector2( 420, 108 )
+[node name="hedge35" parent="." index="10" instance=ExtResource( 4 )]
+position = Vector2( 444, 84 )
 frame = 0
+
+[node name="hedge36" parent="." index="11" instance=ExtResource( 4 )]
+position = Vector2( 468, 84 )
+frame = 2
+
+[node name="hedge45" parent="." index="12" instance=ExtResource( 4 )]
+position = Vector2( 468, 108 )
+
+[node name="hedge46" parent="." index="13" instance=ExtResource( 4 )]
+position = Vector2( 468, 132 )
+
+[node name="hedge47" parent="." index="14" instance=ExtResource( 4 )]
+position = Vector2( 468, 156 )
 
 [node name="hedge48" parent="." index="15" instance=ExtResource( 4 )]
-position = Vector2( 420, 132 )
-frame = 2
+position = Vector2( 468, 180 )
+frame = 0
 
 [node name="hedge49" parent="." index="16" instance=ExtResource( 4 )]
-position = Vector2( 420, 156 )
-frame = 2
+position = Vector2( 468, 204 )
+frame = 0
 
 [node name="hedge50" parent="." index="17" instance=ExtResource( 4 )]
-position = Vector2( 276, 60 )
-frame = 0
+position = Vector2( 324, 108 )
 
 [node name="hedge51" parent="." index="18" instance=ExtResource( 4 )]
-position = Vector2( 276, 84 )
-frame = 0
+position = Vector2( 324, 132 )
 
 [node name="hedge53" parent="." index="19" instance=ExtResource( 4 )]
-position = Vector2( 276, 132 )
-frame = 2
+position = Vector2( 324, 180 )
+frame = 0
 
 [node name="hedge54" parent="." index="20" instance=ExtResource( 4 )]
-position = Vector2( 276, 156 )
-frame = 2
+position = Vector2( 324, 204 )
+frame = 0
 
 [node name="hedge37" parent="." index="21" instance=ExtResource( 4 )]
-position = Vector2( 276, 36 )
+position = Vector2( 324, 84 )
+frame = 2
 
 [node name="hedge38" parent="." index="22" instance=ExtResource( 4 )]
-position = Vector2( 300, 180 )
-frame = 2
+position = Vector2( 348, 228 )
+frame = 0
 
 [node name="hedge39" parent="." index="23" instance=ExtResource( 4 )]
-position = Vector2( 324, 180 )
-frame = 2
+position = Vector2( 372, 228 )
+frame = 0
 
 [node name="hedge40" parent="." index="24" instance=ExtResource( 4 )]
-position = Vector2( 348, 180 )
-frame = 2
+position = Vector2( 396, 228 )
+frame = 0
 
 [node name="hedge41" parent="." index="25" instance=ExtResource( 4 )]
-position = Vector2( 372, 180 )
+position = Vector2( 420, 228 )
+frame = 2
 
 [node name="hedge42" parent="." index="26" instance=ExtResource( 4 )]
-position = Vector2( 396, 180 )
-frame = 2
+position = Vector2( 444, 228 )
+frame = 0
 
 [node name="hedge43" parent="." index="27" instance=ExtResource( 4 )]
-position = Vector2( 420, 180 )
+position = Vector2( 468, 228 )
+frame = 2
 
 [node name="hedge44" parent="." index="28" instance=ExtResource( 4 )]
-position = Vector2( 276, 180 )
-frame = 0
+position = Vector2( 324, 228 )
 
 [node name="hedge12" parent="." index="29" instance=ExtResource( 4 )]
-position = Vector2( 60, 132 )
-frame = 0
+position = Vector2( 108, 180 )
 
 [node name="hedge4" parent="." index="30" instance=ExtResource( 4 )]
-position = Vector2( 12, 108 )
+position = Vector2( 60, 156 )
+frame = 2
 
 [node name="hedge5" parent="." index="31" instance=ExtResource( 4 )]
-position = Vector2( 12, 132 )
+position = Vector2( 60, 180 )
+frame = 2
 
 [node name="hedge6" parent="." index="32" instance=ExtResource( 4 )]
-position = Vector2( 12, 156 )
+position = Vector2( 60, 204 )
+frame = 2
 
 [node name="hedge10" parent="." index="33" instance=ExtResource( 4 )]
-position = Vector2( 12, 180 )
-frame = 0
+position = Vector2( 60, 228 )
 
 [node name="hedge11" parent="." index="34" instance=ExtResource( 4 )]
-position = Vector2( 36, 180 )
-frame = 0
+position = Vector2( 84, 228 )
 
 [node name="hedge13" parent="." index="35" instance=ExtResource( 4 )]
-position = Vector2( 108, 180 )
-frame = 2
+position = Vector2( 156, 228 )
+frame = 0
 
 [node name="hedge14" parent="." index="36" instance=ExtResource( 4 )]
-position = Vector2( 108, 204 )
-frame = 2
+position = Vector2( 156, 252 )
+frame = 0
 
 [node name="hedge16" parent="." index="37" instance=ExtResource( 4 )]
-position = Vector2( 156, 204 )
+position = Vector2( 210, 252 )
+scale = Vector2( 1.5, 1 )
+frame = 2
 
 [node name="hedge17" parent="." index="38" instance=ExtResource( 4 )]
-position = Vector2( 180, 204 )
+position = Vector2( 228, 252 )
+frame = 2
 
 [node name="hedge18" parent="." index="39" instance=ExtResource( 4 )]
-position = Vector2( 204, 204 )
-frame = 0
+position = Vector2( 252, 252 )
 
 [node name="hedge19" parent="." index="40" instance=ExtResource( 4 )]
-position = Vector2( 204, 228 )
-frame = 2
-
-[node name="hedge20" parent="." index="41" instance=ExtResource( 4 )]
-position = Vector2( 204, 252 )
-frame = 2
-
-[node name="hedge21" parent="." index="42" instance=ExtResource( 4 )]
-position = Vector2( 204, 276 )
-
-[node name="hedge22" parent="." index="43" instance=ExtResource( 4 )]
-position = Vector2( 204, 300 )
-
-[node name="hedge23" parent="." index="44" instance=ExtResource( 4 )]
-position = Vector2( 180, 300 )
+position = Vector2( 252, 276 )
 frame = 0
 
+[node name="hedge20" parent="." index="41" instance=ExtResource( 4 )]
+position = Vector2( 252, 300 )
+frame = 0
+
+[node name="hedge21" parent="." index="42" instance=ExtResource( 4 )]
+position = Vector2( 252, 324 )
+frame = 2
+
+[node name="hedge22" parent="." index="43" instance=ExtResource( 4 )]
+position = Vector2( 252, 348 )
+frame = 2
+
+[node name="hedge23" parent="." index="44" instance=ExtResource( 4 )]
+position = Vector2( 228, 348 )
+
 [node name="hedge24" parent="." index="45" instance=ExtResource( 4 )]
+position = Vector2( 204, 348 )
+
+[node name="hedge25" parent="." index="46" instance=ExtResource( 4 )]
+position = Vector2( 180, 348 )
+
+[node name="hedge26" parent="." index="47" instance=ExtResource( 4 )]
+position = Vector2( 156, 348 )
+frame = 0
+
+[node name="hedge27" parent="." index="48" instance=ExtResource( 4 )]
+position = Vector2( 156, 324 )
+frame = 0
+
+[node name="hedge28" parent="." index="49" instance=ExtResource( 4 )]
 position = Vector2( 156, 300 )
 frame = 0
 
-[node name="hedge25" parent="." index="46" instance=ExtResource( 4 )]
-position = Vector2( 132, 300 )
-frame = 0
-
-[node name="hedge26" parent="." index="47" instance=ExtResource( 4 )]
-position = Vector2( 108, 300 )
-frame = 2
-
-[node name="hedge27" parent="." index="48" instance=ExtResource( 4 )]
-position = Vector2( 108, 276 )
-frame = 2
-
-[node name="hedge28" parent="." index="49" instance=ExtResource( 4 )]
-position = Vector2( 108, 252 )
-frame = 2
-
 [node name="hedge29" parent="." index="50" instance=ExtResource( 4 )]
-position = Vector2( 132, 252 )
+position = Vector2( 180, 300 )
+frame = 2
 
 [node name="hedge30" parent="." index="51" instance=ExtResource( 4 )]
-position = Vector2( 132, 276 )
-frame = 0
+position = Vector2( 180, 324 )
 
 [node name="hedge15" parent="." index="52" instance=ExtResource( 4 )]
-position = Vector2( 108, 228 )
-
-[node name="key" parent="." index="53" instance=ExtResource( 2 )]
-position = Vector2( 132, 180 )
+position = Vector2( 156, 276 )
 frame = 2
 
+[node name="key" parent="." index="53" instance=ExtResource( 2 )]
+position = Vector2( 180, 228 )
+
 [node name="key_text" parent="." index="54" instance=ExtResource( 5 )]
-position = Vector2( 36, 60 )
+position = Vector2( 84, 108 )
+frame = 0
 
 [node name="is_text" parent="." index="55" instance=ExtResource( 3 )]
-position = Vector2( 36, 84 )
-frame = 1
+position = Vector2( 84, 132 )
 
 [node name="push_text" parent="." index="56" instance=ExtResource( 6 )]
-position = Vector2( 36, 108 )
+position = Vector2( 84, 156 )
+frame = 0
 
 [node name="and_text" parent="." index="57" instance=ExtResource( 7 )]
-position = Vector2( 36, 132 )
-frame = 0
+position = Vector2( 84, 180 )
 
 [node name="open_text" parent="." index="58" instance=ExtResource( 8 )]
-position = Vector2( 36, 156 )
-frame = 0
+position = Vector2( 84, 204 )
 
 [node name="flag" parent="." index="59" instance=ExtResource( 9 )]
-position = Vector2( 348, 108 )
-frame = 1
+position = Vector2( 396, 156 )
 
 [node name="flag_text" parent="." index="60" instance=ExtResource( 11 )]
-position = Vector2( 156, 228 )
-frame = 1
+position = Vector2( 204, 276 )
+frame = 2
 
 [node name="is_text2" parent="." index="61" instance=ExtResource( 3 )]
-position = Vector2( 180, 252 )
-frame = 1
+position = Vector2( 228, 300 )
 
 [node name="win_text" parent="." index="62" instance=ExtResource( 12 )]
-position = Vector2( 180, 276 )
-
-[node name="and_text2" parent="." index="63" instance=ExtResource( 7 )]
-position = Vector2( 396, 84 )
+position = Vector2( 228, 324 )
 frame = 0
 
+[node name="and_text2" parent="." index="63" instance=ExtResource( 7 )]
+position = Vector2( 444, 132 )
+
 [node name="hedge_text" parent="." index="64" instance=ExtResource( 13 )]
-position = Vector2( 396, 60 )
+position = Vector2( 444, 108 )
+frame = 2
 
 [node name="door" parent="." index="65" instance=ExtResource( 14 )]
-position = Vector2( 276, 108 )
+position = Vector2( 324, 156 )
+frame = 1
 
 [node name="door_text" parent="." index="66" instance=ExtResource( 15 )]
-position = Vector2( 396, 108 )
-frame = 1
+position = Vector2( 444, 156 )
+frame = 2
 
 [node name="door_text2" parent="." index="67" instance=ExtResource( 15 )]
-position = Vector2( 204, 12 )
+position = Vector2( 252, 60 )
+frame = 1
 
 [node name="is_text3" parent="." index="68" instance=ExtResource( 3 )]
-position = Vector2( 396, 132 )
-frame = 1
+position = Vector2( 444, 180 )
 
 [node name="stop_text" parent="." index="69" instance=ExtResource( 19 )]
-position = Vector2( 396, 156 )
-frame = 1
+position = Vector2( 444, 204 )
+frame = 2
 
 [node name="keke" parent="." index="70" instance=ExtResource( 18 )]
-position = Vector2( 156, 108 )
-frame = 1
+position = Vector2( 204, 156 )
+frame = 2
 
 [node name="keke_text" parent="." index="71" instance=ExtResource( 17 )]
-position = Vector2( 156, 12 )
+position = Vector2( 204, 60 )
+frame = 0
 
 [node name="is_text4" parent="." index="72" instance=ExtResource( 3 )]
-position = Vector2( 156, 36 )
+position = Vector2( 204, 84 )
+frame = 0
 
 [node name="is_text5" parent="." index="73" instance=ExtResource( 3 )]
-position = Vector2( 204, 36 )
-frame = 1
+position = Vector2( 252, 84 )
 
 [node name="you_text" parent="." index="74" instance=ExtResource( 10 )]
-position = Vector2( 156, 60 )
+position = Vector2( 204, 108 )
+frame = 1
 
 [node name="shut_text" parent="." index="75" instance=ExtResource( 16 )]
-position = Vector2( 204, 60 )
+position = Vector2( 252, 108 )
+frame = 0

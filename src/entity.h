@@ -5,6 +5,7 @@
 #include "property.h"
 #include "level_controller.h"
 #include "vector2.h"
+#include "entity_name_and_type.hpp"
 
 #include <Godot.hpp>
 #include <AnimatedSprite.hpp>
@@ -80,9 +81,6 @@ public:
     void _exit_tree() {
         unregister_entity();
         LevelController::instance->controlled_entities.erase(this);
-        if (LevelController::instance->controlled_entities.empty()) {
-            LevelController::instance->show_lose_screen();
-        }
     }
 
     /**
@@ -152,6 +150,20 @@ public:
         properties.on_destroyed(this);
     }
 
+    virtual void update_tile_pos() {
+        auto tileSize = get_tile_size();
+        auto tilePos = (get_position() - 0.5f * godot::Vector2(tileSize, tileSize)) / tileSize;
+        _tile_pos = TilePosition(std::lround(tilePos.x), std::lround(tilePos.y));
+    }
+
+    static const char* get_sprite_type(Nouns noun) {
+        return entity_type_str[static_cast<size_t>(name_and_type[static_cast<size_t>(noun)-1].type)];
+    }
+
+    static const char* get_eneity_name(Nouns noun) {
+        return name_and_type[static_cast<size_t>(noun)-1].name;
+    }
+
 protected:
     const real_t speed = 4;
 
@@ -175,11 +187,7 @@ protected:
         }
     }
 
-    virtual void update_tile_pos() {
-        auto tileSize = get_tile_size();
-        auto tilePos = (get_position() - 0.5f * godot::Vector2(tileSize, tileSize)) / tileSize;
-        _tile_pos = TilePosition(std::lround(tilePos.x), std::lround(tilePos.y));
-    }
+
 };
 
 #endif //BABA_IS_YOU_ENTITY_H

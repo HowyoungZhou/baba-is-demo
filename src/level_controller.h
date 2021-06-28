@@ -36,6 +36,10 @@ public:
                                                         &LevelController::get_scene_width, 20);
         godot::register_property<LevelController, int>("sceneHeight", &LevelController::set_scene_height,
                                                         &LevelController::get_scene_height, 18);
+        godot::register_signal<LevelController>((char*)"spawn_signals", "sprite_type", GODOT_VARIANT_TYPE_STRING, 
+                                                                        "entity_name", GODOT_VARIANT_TYPE_STRING,
+                                                                        "pos_x", GODOT_VARIANT_TYPE_VECTOR2,
+                                                                        "pos_y", GODOT_VARIANT_TYPE_VECTOR2);
     }
 
     void _init() {}
@@ -118,6 +122,10 @@ public:
     int get_scene_height() const {
         return _scene_size.y;
     }
+
+    void spawn(Nouns object, TilePosition position);
+
+    bool is_win();
 
 private:
     real_t _tile_size = 24.f;

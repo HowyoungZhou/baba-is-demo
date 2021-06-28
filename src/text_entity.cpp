@@ -46,12 +46,14 @@ void TextEntity::rule_check() {
 
     for (auto pair : _pos_entity_map) pair.second->properties.clear();
     LevelController::instance->controlled_entities.clear();
-    // TODO: undo transformation
 
+    //apply updated rules to all
     for (auto pair : positive) pair.second->apply_all();
     for (auto pair : negative) pair.second->revert_all();
 
-    if (LevelController::instance->controlled_entities.empty()) {
+    if (LevelController::instance->controlled_entities.empty())
         LevelController::instance->show_lose_screen();
-    }
+
+    if (LevelController::instance->is_win())
+        LevelController::instance->show_win_screen();
 }

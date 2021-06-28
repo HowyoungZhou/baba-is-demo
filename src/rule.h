@@ -49,7 +49,11 @@ public:
         switch (noun.noun) {
             default:
                 auto range = Entity::find_entities_of_noun(noun.noun);
-                for (auto iter = range.first; iter != range.second; ++iter) apply(iter->second);
+                std::vector<Entity*> entities;
+                for (auto iter = range.first; iter != range.second; ++iter) 
+                    entities.push_back(iter->second);
+                for(auto entity:entities)
+                    apply(entity);
                 break;
         }
     }
@@ -130,7 +134,11 @@ class TransformRule : public NounRule {
 public:
     TransformRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, noun, object) {}
 
-    void apply(Entity *entity) override {}
+    void apply(Entity *entity) override {
+        LevelController::instance->spawn(object.noun, entity->get_tile_pos());
+        entity->_exit_tree();
+        entity->queue_free();
+    }
 };
 
 class HasRule : public NounRule {
@@ -144,7 +152,9 @@ class MakeRule : public NounRule {
 public:
     MakeRule(bool inverted, Noun noun, Noun object) : NounRule(inverted, std::move(noun), std::move(object)) {}
 
-    void apply(Entity *entity) override {}
+    void apply(Entity *entity) override {
+        LevelController::instance->spawn(object.noun, entity->get_tile_pos());
+    }
 };
 
 #endif //BABA_IS_YOU_RULE_H
